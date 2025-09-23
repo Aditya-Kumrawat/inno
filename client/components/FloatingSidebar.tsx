@@ -109,15 +109,16 @@ export const FloatingSidebar = ({
 
   return (
     <motion.div
+      layout
       className={`fixed left-4 top-4 bottom-4 ${
         isCollapsed ? "w-16" : "w-64"
       } z-50 max-h-screen`}
       animate={{ width: isCollapsed ? 64 : 256 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.45, ease: [0.2, 0.9, 0.2, 1] }}
     >
       {/* Smooth Off-White Glass Sidebar */}
       <div
-        className="h-full overflow-hidden transition-all duration-300"
+        className="h-full overflow-hidden"
         style={{
           background: "linear-gradient(to bottom, #eeeff4 0%, #eeeff4 50%, #f6f7fa 100%)",
           backdropFilter: "blur(14px) saturate(150%)",
@@ -125,6 +126,7 @@ export const FloatingSidebar = ({
           borderRadius: "2rem",
           border: "3px solid #ffffff",
           boxShadow: "0 8px 30px rgba(0, 0, 0, 0.12), 0 0 30px 8px rgba(221,222,225,0.28)",
+          transition: "background 450ms cubic-bezier(.2,.9,.2,1), box-shadow 450ms cubic-bezier(.2,.9,.2,1), backdrop-filter 450ms cubic-bezier(.2,.9,.2,1), border-radius 450ms cubic-bezier(.2,.9,.2,1)"
         }}
       >
         {/* Logo Section */}
