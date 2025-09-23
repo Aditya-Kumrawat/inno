@@ -15,6 +15,7 @@ import Chatbot from "./pages/Chatbot";
 import ComputerVision from "./pages/ComputerVision";
 import DiseaseDetection from "./pages/DiseaseDetection";
 import VaccinationTracker from "./pages/VaccinationTracker";
+import ExerciseGuidance from "./pages/ExerciseGuidance";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
