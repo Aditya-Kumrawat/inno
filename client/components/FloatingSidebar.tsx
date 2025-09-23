@@ -45,38 +45,6 @@ export const FloatingSidebar = ({
       href: "/dashboard/analytics",
     },
     {
-      id: "products",
-      label: "Products",
-      icon: Package,
-      href: "/dashboard/products",
-    },
-    {
-      id: "orders",
-      label: "Orders",
-      icon: ShoppingCart,
-      href: "/dashboard/orders",
-      badge: 5,
-    },
-    {
-      id: "customers",
-      label: "Customers",
-      icon: Users,
-      href: "/dashboard/customers",
-    },
-    {
-      id: "messages",
-      label: "Messages",
-      icon: MessageSquare,
-      href: "/dashboard/messages",
-      badge: 3,
-    },
-    {
-      id: "calendar",
-      label: "Calendar",
-      icon: Calendar,
-      href: "/dashboard/calendar",
-    },
-    {
       id: "chatbot",
       label: "AI Chat",
       icon: Brain,
