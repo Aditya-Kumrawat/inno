@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
@@ -124,6 +124,16 @@ export default function Dashboard() {
 
   const [hoveredRegion, setHoveredRegion] = useState(null);
 
+  // Load model-viewer script to render GLB models if not already present
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (document.querySelector('script[src*="model-viewer"]')) return;
+    const s = document.createElement("script");
+    s.type = "module";
+    s.src = "https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js";
+    document.head.appendChild(s);
+  }, []);
+
   return (
     <div className="dashboard-page min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <FloatingSidebar
@@ -169,47 +179,16 @@ export default function Dashboard() {
                     "url(https://cdn.builder.io/api/v1/file/assets%2F3ef4243ecdf248dabd75417d35606fac%2F54bd8a0dcac741cabf36c1fc34c597e2)",
                 }}
               >
-                {/* Embedded 3D model (Sketchfab) */}
-                <div className="sketchfab-embed-wrapper w-full h-full">
-                  <iframe
-                    title="Realistic Human Heart"
-                    frameBorder="0"
-                    allowFullScreen
-                    mozallowFullScreen="true"
-                    webkitallowFullScreen="true"
-                    allow="autoplay; fullscreen; xr-spatial-tracking"
-                    src="https://sketchfab.com/models/3f8072336ce94d18b3d0d055a1ece089/embed"
-                    className="w-full h-full"
-                    style={{ borderRadius: 16 }}
+                <div className="w-full h-full">
+                  {/* @ts-ignore - model-viewer web component */}
+                  <model-viewer
+                    src="https://cdn.builder.io/o/assets%2F13b906ad39be4bc99170117fa7908edc%2F17dc1a1ebf484d88b74b53c84ec62453?alt=media&token=765a47e4-6697-4e40-9380-3a940b09ff98&apiKey=13b906ad39be4bc99170117fa7908edc"
+                    alt="Realistic Human Heart"
+                    camera-controls
+                    auto-rotate
+                    exposure="1"
+                    style={{ width: "100%", height: "100%", borderRadius: 16 }}
                   />
-                  <p style={{ fontSize: 13, fontWeight: "normal", margin: 5, color: "#4A4A4A" }}>
-                    <a
-                      href="https://sketchfab.com/3d-models/realistic-human-heart-3f8072336ce94d18b3d0d055a1ece089?utm_medium=embed&utm_campaign=share-popup&utm_content=3f8072336ce94d18b3d0d055a1ece089"
-                      target="_blank"
-                      rel="nofollow noreferrer"
-                      style={{ fontWeight: "bold", color: "#1CAAD9" }}
-                    >
-                      Realistic Human Heart
-                    </a>
-                    {' '}by{' '}
-                    <a
-                      href="https://sketchfab.com/neshallads?utm_medium=embed&utm_campaign=share-popup&utm_content=3f8072336ce94d18b3d0d055a1ece089"
-                      target="_blank"
-                      rel="nofollow noreferrer"
-                      style={{ fontWeight: "bold", color: "#1CAAD9" }}
-                    >
-                      neshallads
-                    </a>
-                    {' '}on{' '}
-                    <a
-                      href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3f8072336ce94d18b3d0d055a1ece089"
-                      target="_blank"
-                      rel="nofollow noreferrer"
-                      style={{ fontWeight: "bold", color: "#1CAAD9" }}
-                    >
-                      Sketchfab
-                    </a>
-                  </p>
                 </div>
 
               </div>
