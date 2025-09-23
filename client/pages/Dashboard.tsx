@@ -212,18 +212,6 @@ export default function Dashboard() {
                   </p>
                 </div>
 
-                {/* Transparent glass overlay with text at bottom */}
-                <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-lg p-6">
-                  <div className="text-left">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-2 dashboard-title">
-                      Business Analytics
-                    </h2>
-                    <p className="text-gray-600 text-sm dashboard-text">
-                      Monitor your business performance with real-time insights
-                      and comprehensive data visualization.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
 
