@@ -119,7 +119,7 @@ export const FloatingSidebar = ({
       <div
         className="h-full overflow-hidden transition-all duration-300"
         style={{
-          background: "linear-gradient(to bottom, #eeeff4 0%, #eeeff4 50%, #dbdce1 100%)",
+          background: "linear-gradient(to bottom, #eeeff4 0%, #eeeff4 50%, #f6f7fa 100%)",
           backdropFilter: "blur(14px) saturate(150%)",
           WebkitBackdropFilter: "blur(14px) saturate(150%)",
           borderRadius: "1.25rem",
