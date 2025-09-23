@@ -123,7 +123,7 @@ export const FloatingSidebar = ({
           backdropFilter: "blur(14px) saturate(150%)",
           WebkitBackdropFilter: "blur(14px) saturate(150%)",
           borderRadius: "1.25rem",
-          border: "1.5px solid #ffffff",
+          border: "3px solid #ffffff",
           boxShadow: "0 8px 30px rgba(0, 0, 0, 0.12), 0 0 30px 8px rgba(221,222,225,0.28)",
         }}
       >
