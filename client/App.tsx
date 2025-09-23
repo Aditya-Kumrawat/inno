@@ -35,6 +35,10 @@ const App = () => (
               path="/dashboard/computer-vision"
               element={<ComputerVision />}
             />
+            <Route
+              path="/dashboard/disease-detection"
+              element={<DiseaseDetection />}
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
