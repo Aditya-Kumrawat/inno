@@ -119,11 +119,11 @@ export const FloatingSidebar = ({
       <div
         className="h-full overflow-hidden transition-all duration-300"
         style={{
-          background: "rgba(245, 245, 245, 0.55)",
+          background: "linear-gradient(to bottom, #eeeff4, #dbdce1)",
           backdropFilter: "blur(10px) saturate(150%)",
           WebkitBackdropFilter: "blur(10px) saturate(150%)",
           borderRadius: "1.25rem",
-          border: "1px solid rgba(255, 255, 255, 0.3)",
+          border: "1.5px solid #ffffff",
           boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12)",
         }}
       >
