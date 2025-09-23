@@ -23,6 +23,7 @@ export default function DiseaseDetection() {
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<any>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const [afterWidth, setAfterWidth] = useState(50);
 
   const categories = ["Skin", "Leaf", "Eye", "Oral", "Nail"];
 
