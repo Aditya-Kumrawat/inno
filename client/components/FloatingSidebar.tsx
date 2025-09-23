@@ -21,6 +21,7 @@ import {
   Star,
   Camera,
   Cpu,
+  Syringe,
 } from "lucide-react";
 
 interface FloatingSidebarProps {
