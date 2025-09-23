@@ -45,6 +45,10 @@ const App = () => (
               path="/dashboard/vaccination-tracker"
               element={<VaccinationTracker />}
             />
+            <Route
+              path="/dashboard/exercise-guidance"
+              element={<ExerciseGuidance />}
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
