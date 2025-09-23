@@ -124,40 +124,52 @@ export default function DiseaseDetection() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <section className="lg:col-span-4 bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow border border-white/30">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
-            <select className="w-full p-2 rounded-md mb-4 border" value={category} onChange={(e) => setCategory(e.target.value)}>
-              {categories.map((c) => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
+          {/* Tile 1 — Upload & Analyze (Hero Card) */}
+          <section className="lg:col-span-6 bg-gradient-to-br from-teal-50 to-blue-50 rounded-2xl p-6 shadow hover:shadow-lg transition-shadow transform hover:-translate-y-1">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-semibold">Upload Your Image</h3>
+                <p className="text-sm text-gray-600">Drag & drop or choose files (1–5). Select a category and analyze.</p>
+              </div>
+              <div className="text-sm text-gray-500">Category: <span className="font-medium">{category}</span></div>
+            </div>
 
-            <div
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={(e) => {
-                e.preventDefault();
-                onFiles(e.dataTransfer.files);
-              }}
-              className="mb-4 p-4 rounded-lg border-2 border-dashed border-gray-200 bg-white/40"
-            >
-              <p className="text-sm text-gray-600 mb-2">Drag & drop images here (1–5)</p>
-              <div className="flex items-center gap-2">
-                <input
-                  ref={inputRef}
-                  type="file"
-                  accept="image/*"
-                  multiple
-                  className="hidden"
-                  onChange={(e) => onFiles(e.target.files)}
-                />
-                <Button onClick={() => inputRef.current?.click()} className="bg-purple-500 text-white">Choose File</Button>
-                <div className="text-sm text-gray-500 ml-2">{images.length}/5 uploaded</div>
+            <div className="mb-4">
+              <label className="block text-sm font-medium text-gray-700 mb-2">Select Category</label>
+              <select className="w-full p-2 rounded-md mb-3 border" value={category} onChange={(e) => setCategory(e.target.value)}>
+                {categories.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
+
+              <div
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => {
+                  e.preventDefault();
+                  onFiles(e.dataTransfer.files);
+                }}
+                className="p-6 rounded-xl border-2 border-dashed border-gray-200 bg-white/40 flex flex-col items-center justify-center gap-3"
+              >
+                <div className="text-4xl">📷</div>
+                <p className="text-sm text-gray-600">Drag & drop images here or</p>
+                <div className="flex items-center gap-3">
+                  <input
+                    ref={inputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    className="hidden"
+                    onChange={(e) => onFiles(e.target.files)}
+                  />
+                  <Button onClick={() => inputRef.current?.click()} className="bg-purple-600 text-white transform transition hover:scale-105">Choose File</Button>
+                </div>
+                <div className="text-xs text-gray-500 mt-2">{images.length}/5 uploaded</div>
               </div>
 
               {images.length > 0 && (
                 <div className="mt-4 flex gap-3 overflow-x-auto py-2">
                   {images.map((img) => (
-                    <div key={img.id} className="w-20 h-20 rounded-md relative flex-shrink-0">
+                    <div key={img.id} className="w-24 h-24 rounded-md relative flex-shrink-0 border border-white/40 shadow-sm">
                       <img src={img.dataUrl} alt={img.name} className="w-full h-full object-cover rounded-md" />
                       <button onClick={() => removeImage(img.id)} className="absolute top-1 right-1 bg-white/80 rounded-full w-6 h-6 flex items-center justify-center text-xs">✕</button>
                     </div>
@@ -167,31 +179,29 @@ export default function DiseaseDetection() {
 
             </div>
 
-            <Button onClick={startAnalyze} className="w-full py-3 text-white bg-purple-600 hover:bg-purple-700" disabled={images.length === 0 || analyzing}>
-              Analyze Now
-            </Button>
+            <div className="mt-2">
+              <Button onClick={startAnalyze} className="w-full py-4 bg-purple-600 text-white text-lg font-semibold transform transition hover:scale-105" disabled={images.length === 0 || analyzing}>
+                Analyze Now
+              </Button>
+            </div>
           </section>
 
-          <section className="lg:col-span-4 bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow border border-white/30 flex items-center justify-center">
+          {/* Tile 2 — AI Analysis State (Dynamic Tile) */}
+          <section className="lg:col-span-3 bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow border border-white/30 flex flex-col justify-center transition-all">
             {!analyzing && !result && (
-              <div className="text-center text-gray-600">Ready to analyze. Upload images and click Analyze Now.</div>
+              <div className="text-center text-gray-600">Ready to analyze.</div>
             )}
-
             {analyzing && (
-              <div className="w-full text-center">
-                <div className="mx-auto w-40 h-40 rounded-full flex items-center justify-center bg-white/30 mb-4 relative">
-                  <div className="absolute inset-0 rounded-full border border-white/60 animate-pulse" />
-                  <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div className="text-center">
+                <div className="mx-auto w-28 h-28 rounded-full flex items-center justify-center bg-white/30 mb-4 relative animate-pulse">
+                  <svg width="88" height="88" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                      <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                      <linearGradient id="g2" x1="0" x2="1" y1="0" y2="1">
                         <stop offset="0%" stopColor="#8b5cf6" />
                         <stop offset="100%" stopColor="#06b6d4" />
                       </linearGradient>
                     </defs>
-                    <g>
-                      <circle cx="60" cy="60" r="40" stroke="url(#g1)" strokeWidth="6" strokeOpacity="0.5" />
-                      <path d="M40 80C50 60 70 60 80 40" stroke="url(#g1)" strokeWidth="3" strokeLinecap="round" strokeOpacity="0.9" />
-                    </g>
+                    <circle cx="44" cy="44" r="30" stroke="url(#g2)" strokeWidth="6" strokeOpacity="0.6" />
                   </svg>
                 </div>
                 <div className="text-sm font-medium mb-2">Analyzing with AI…</div>
@@ -203,98 +213,70 @@ export default function DiseaseDetection() {
             )}
 
             {!analyzing && result && (
-              <div className="w-full">
-                <div className="mb-4">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <h2 className="text-xl font-bold">{result.disease}</h2>
-                      <div className="text-sm text-gray-600">Confidence: <span className="font-semibold">{result.confidence}%</span></div>
-                    </div>
-                    <div className="text-2xl">
-                      {result.severity === "mild" && <span className="text-green-500">🟢</span>}
-                      {result.severity === "moderate" && <span className="text-yellow-400">🟡</span>}
-                      {result.severity === "severe" && <span className="text-red-500">🔴</span>}
-                    </div>
-                  </div>
+              <div>
+                <h4 className="text-lg font-bold mb-2">{result.disease}</h4>
+                <div className="flex items-center justify-between mb-3">
+                  <div className="text-sm text-gray-600">Confidence</div>
+                  <div className="font-semibold">{result.confidence}%</div>
                 </div>
-
-                <div className="flex gap-3 mb-4">
-                  <div className="w-1/2 rounded-md overflow-hidden bg-gray-50">
-                    {images[0] && <img src={images[0].dataUrl} alt="original" className="w-full h-48 object-cover" />}
-                  </div>
-                  <div className="w-1/2 rounded-md overflow-hidden bg-gradient-to-tr from-transparent to-red-200/40 relative">
-                    {images[0] && <img src={images[0].dataUrl} alt="processed" className="w-full h-48 object-cover mix-blend-overlay" />}
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,0,0,0.12)_0,_rgba(255,0,0,0)_50%)] pointer-events-none" />
-                  </div>
+                <div className="w-full h-3 rounded-full bg-green-100 overflow-hidden mb-3">
+                  <div className={`h-full transition-all ${result.confidence > 80 ? "bg-red-400 w-3/4" : result.confidence > 70 ? "bg-yellow-300 w-1/2" : "bg-green-400 w-1/4"}`}></div>
                 </div>
-
-                <p className="text-sm text-gray-700 mb-4">{result.description}</p>
-
-                <div className="mb-3">
-                  <div className="flex gap-2">
-                    <button className={`px-3 py-2 rounded-md ${"bg-white/80"}`}>Overview</button>
-                    <button className={`px-3 py-2 rounded-md ${"bg-white/30 text-gray-600"}`}>History</button>
-                  </div>
-                </div>
-
-                <div className="bg-white/50 p-3 rounded-md border border-white/30 mb-3">
-                  <div className="text-sm font-medium mb-2">Treatment Options</div>
-                  <div>
-                    <div className="mb-2">
-                      <div className="font-semibold">Organic / Lifestyle Remedies</div>
-                      <ul className="list-disc list-inside text-sm text-gray-700">
-                        <li>Keep the area clean and dry.</li>
-                        <li>Avoid known irritants and allergens.</li>
-                        <li>Use gentle moisturizers and sunscreen.</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <div className="font-semibold">Medical / Chemical Treatments</div>
-                      <ul className="list-disc list-inside text-sm text-gray-700">
-                        <li>Topical medicated creams as prescribed.</li>
-                        <li>Oral medication for severe or systemic cases.</li>
-                        <li>Consult a specialist for targeted therapy.</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className="text-xs text-gray-500 mt-3">This is an AI suggestion, not a medical diagnosis. Consult a doctor for confirmation.</div>
-                </div>
-
-                <div className="flex gap-3">
-                  <Button onClick={saveToHistory} className="bg-white/90 text-gray-900">Save Diagnosis to History</Button>
-                  <Button onClick={findDoctors} className="bg-purple-500 text-white">Find Nearby Doctors</Button>
-                  <Button onClick={chatWithAssistant} className="bg-teal-500 text-white">Chat with Health Assistant</Button>
-                </div>
+                <div className="text-sm text-gray-700">Severity: {result.severity}</div>
               </div>
             )}
-
           </section>
 
-          <section className="lg:col-span-4 bg-white/60 backdrop-blur-sm rounded-2xl p-6 shadow border border-white/30">
-            <div className="mb-3">
-              <h3 className="text-lg font-semibold">Community Insights</h3>
-              <p className="text-sm text-gray-600">10 similar cases detected in your area this week.</p>
+          {/* Tile 3 — Image Comparison (Side-by-Side Card) */}
+          <section className="lg:col-span-3 bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow border border-white/30">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-semibold">Image Comparison</h4>
+              <div className="text-xs text-gray-500">Before / After</div>
             </div>
+            <div className="rounded-md overflow-hidden relative h-56 bg-gray-50">
+              {images[0] ? (
+                <>
+                  <img src={images[0].dataUrl} alt="before" className="absolute inset-0 w-full h-full object-cover" />
+                  <div className="absolute inset-0 overflow-hidden">
+                    <img src={images[0].dataUrl} alt="after" className="absolute left-0 top-0 h-full object-cover mix-blend-overlay" style={{ width: `${Math.max(20, Math.min(100, result ? 100 : 50))}%` }} />
+                  </div>
+                </>
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-gray-400">No image</div>
+              )}
+            </div>
+            <div className="mt-3">
+              <input type="range" min={0} max={100} defaultValue={50} className="w-full" onChange={(e) => {
+                const val = Number((e.target as HTMLInputElement).value);
+                const after = document.querySelectorAll('section .lg\\:col-span-3 img[alt="after"]') as any;
+                if (after && after[0]) after[0].style.width = val + "%";
+              }} />
+            </div>
+          </section>
 
-            <div className="mb-4">
-              <div className="text-sm font-medium">Quick Risk</div>
-              <div className="w-full h-4 rounded-full bg-green-100 overflow-hidden mt-2">
-                <div className={`h-full transition-all ${result ? (result.confidence > 80 ? "bg-red-400 w-3/4" : "bg-yellow-300 w-1/2") : "bg-green-400 w-1/4"}`}></div>
-              </div>
+          {/* Second row: Treatment, Actions, Community */}
+          <section className="lg:col-span-4 bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow border border-white/30">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-semibold">Treatment Options</h4>
+              <div className="text-xs text-gray-500">Choose a tab</div>
             </div>
+            <TreatmentTabs />
+          </section>
 
-            <div className="mb-4">
-              <div className="text-sm font-medium">Timeline</div>
-              <div className="text-sm text-gray-600">No previous scans. Saved diagnoses will appear here.</div>
+          <section className="lg:col-span-4 bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow border border-white/30">
+            <h4 className="font-semibold mb-3">Next Actions</h4>
+            <div className="flex flex-col gap-3">
+              <button onClick={saveToHistory} className="w-full px-4 py-3 rounded-md bg-white/90 text-gray-900 font-semibold shadow hover:shadow-md">💾 Save to History</button>
+              <button onClick={findDoctors} className="w-full px-4 py-3 rounded-md bg-purple-600 text-white font-semibold shadow hover:shadow-md">🩺 Find Nearby Doctor</button>
+              <button onClick={chatWithAssistant} className="w-full px-4 py-3 rounded-md bg-teal-500 text-white font-semibold shadow hover:shadow-md">🤖 Chat with Health Assistant</button>
             </div>
+          </section>
 
-            <div>
-              <Button onClick={() => {
-                const h = JSON.parse(localStorage.getItem("disease_history") || "[]");
-                if (h.length === 0) return alert("No history yet");
-                navigate("/dashboard");
-              }} className="w-full">View History</Button>
-            </div>
+          <section className="lg:col-span-4 bg-white/60 backdrop-blur-sm rounded-2xl p-4 shadow border border-white/30">
+            <h4 className="font-semibold mb-2">Community Insight</h4>
+            <p className="text-sm text-gray-600 mb-3">10 similar cases detected near Indore this week.</p>
+            <div className="h-28 rounded-md bg-gradient-to-r from-red-100 via-yellow-100 to-green-100 opacity-60" />
+            <div className="text-xs text-gray-500 mt-2">Data anonymized, for awareness only.</div>
           </section>
         </div>
       </motion.div>
