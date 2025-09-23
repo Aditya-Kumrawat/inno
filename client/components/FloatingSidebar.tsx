@@ -120,11 +120,11 @@ export const FloatingSidebar = ({
         className="h-full overflow-hidden transition-all duration-300"
         style={{
           background: "linear-gradient(to bottom, #eeeff4 0%, #eeeff4 50%, #dbdce1 100%)",
-          backdropFilter: "blur(10px) saturate(150%)",
-          WebkitBackdropFilter: "blur(10px) saturate(150%)",
+          backdropFilter: "blur(14px) saturate(150%)",
+          WebkitBackdropFilter: "blur(14px) saturate(150%)",
           borderRadius: "1.25rem",
           border: "1.5px solid #ffffff",
-          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12)",
+          boxShadow: "0 8px 30px rgba(0, 0, 0, 0.12), 0 0 30px 8px rgba(221,222,225,0.28)",
         }}
       >
         {/* Logo Section */}
