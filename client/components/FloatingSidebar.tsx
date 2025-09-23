@@ -122,7 +122,7 @@ export const FloatingSidebar = ({
           background: "linear-gradient(to bottom, #eeeff4 0%, #eeeff4 50%, #f6f7fa 100%)",
           backdropFilter: "blur(14px) saturate(150%)",
           WebkitBackdropFilter: "blur(14px) saturate(150%)",
-          borderRadius: "1.25rem",
+          borderRadius: "2rem",
           border: "3px solid #ffffff",
           boxShadow: "0 8px 30px rgba(0, 0, 0, 0.12), 0 0 30px 8px rgba(221,222,225,0.28)",
         }}
@@ -179,7 +179,7 @@ export const FloatingSidebar = ({
               key={item.id}
               className={`w-full flex items-center gap-3 transition-all duration-200 group relative z-10 ${
                 isCollapsed ? "p-2 justify-center" : "p-3"
-              } rounded-xl ${
+              } rounded-2xl ${
                 isActive(item.href)
                   ? "text-white bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg"
                   : "hover:bg-white/40 text-gray-700 hover:text-gray-900"
