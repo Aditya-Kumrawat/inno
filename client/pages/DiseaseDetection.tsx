@@ -247,11 +247,7 @@ export default function DiseaseDetection() {
               )}
             </div>
             <div className="mt-3">
-              <input type="range" min={0} max={100} defaultValue={50} className="w-full" onChange={(e) => {
-                const val = Number((e.target as HTMLInputElement).value);
-                const after = document.querySelectorAll('section .lg\\:col-span-3 img[alt="after"]') as any;
-                if (after && after[0]) after[0].style.width = val + "%";
-              }} />
+              <input type="range" min={0} max={100} value={afterWidth} className="w-full" onChange={(e) => setAfterWidth(Number((e.target as HTMLInputElement).value))} />
             </div>
           </section>
 
