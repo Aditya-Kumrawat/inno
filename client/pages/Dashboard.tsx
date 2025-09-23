@@ -169,6 +169,49 @@ export default function Dashboard() {
                     "url(https://cdn.builder.io/api/v1/file/assets%2F3ef4243ecdf248dabd75417d35606fac%2F54bd8a0dcac741cabf36c1fc34c597e2)",
                 }}
               >
+                {/* Embedded 3D model (Sketchfab) */}
+                <div className="sketchfab-embed-wrapper w-full h-full">
+                  <iframe
+                    title="Realistic Human Heart"
+                    frameBorder="0"
+                    allowFullScreen
+                    mozallowFullScreen="true"
+                    webkitallowFullScreen="true"
+                    allow="autoplay; fullscreen; xr-spatial-tracking"
+                    src="https://sketchfab.com/models/3f8072336ce94d18b3d0d055a1ece089/embed"
+                    className="w-full h-full"
+                    style={{ borderRadius: 16 }}
+                  />
+                  <p style={{ fontSize: 13, fontWeight: "normal", margin: 5, color: "#4A4A4A" }}>
+                    <a
+                      href="https://sketchfab.com/3d-models/realistic-human-heart-3f8072336ce94d18b3d0d055a1ece089?utm_medium=embed&utm_campaign=share-popup&utm_content=3f8072336ce94d18b3d0d055a1ece089"
+                      target="_blank"
+                      rel="nofollow noreferrer"
+                      style={{ fontWeight: "bold", color: "#1CAAD9" }}
+                    >
+                      Realistic Human Heart
+                    </a>
+                    {' '}by{' '}
+                    <a
+                      href="https://sketchfab.com/neshallads?utm_medium=embed&utm_campaign=share-popup&utm_content=3f8072336ce94d18b3d0d055a1ece089"
+                      target="_blank"
+                      rel="nofollow noreferrer"
+                      style={{ fontWeight: "bold", color: "#1CAAD9" }}
+                    >
+                      neshallads
+                    </a>
+                    {' '}on{' '}
+                    <a
+                      href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3f8072336ce94d18b3d0d055a1ece089"
+                      target="_blank"
+                      rel="nofollow noreferrer"
+                      style={{ fontWeight: "bold", color: "#1CAAD9" }}
+                    >
+                      Sketchfab
+                    </a>
+                  </p>
+                </div>
+
                 {/* Transparent glass overlay with text at bottom */}
                 <div className="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-sm rounded-b-lg p-6">
                   <div className="text-left">
