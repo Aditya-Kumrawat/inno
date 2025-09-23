@@ -173,11 +173,7 @@ export default function Dashboard() {
             {/* Left Column - Image */}
             <div className="flex flex-col w-1/2 max-lg:w-full">
               <div
-                className="flex flex-col relative mt-5 h-[365px] bg-cover bg-center bg-no-repeat border-none rounded-2xl"
-                style={{
-                  backgroundImage:
-                    "url(https://cdn.builder.io/api/v1/file/assets%2F3ef4243ecdf248dabd75417d35606fac%2F54bd8a0dcac741cabf36c1fc34c597e2)",
-                }}
+                className="flex flex-col relative mt-5 h-[365px] border-none rounded-2xl"
               >
                 <div className="w-full h-full">
                   {/* @ts-ignore - model-viewer web component */}
