@@ -239,7 +239,7 @@ export default function DiseaseDetection() {
                 <>
                   <img src={images[0].dataUrl} alt="before" className="absolute inset-0 w-full h-full object-cover" />
                   <div className="absolute inset-0 overflow-hidden">
-                    <img src={images[0].dataUrl} alt="after" className="absolute left-0 top-0 h-full object-cover mix-blend-overlay" style={{ width: `${Math.max(20, Math.min(100, result ? 100 : 50))}%` }} />
+                    <img src={images[0].dataUrl} alt="after" className="absolute left-0 top-0 h-full object-cover mix-blend-overlay" style={{ width: `${afterWidth}%` }} />
                   </div>
                 </>
               ) : (
