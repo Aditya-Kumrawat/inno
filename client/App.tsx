@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
 import Chatbot from "./pages/Chatbot";
 import ComputerVision from "./pages/ComputerVision";
+import DiseaseDetection from "./pages/DiseaseDetection";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
