@@ -23,10 +23,6 @@ import {
   RadialBar,
 } from "recharts";
 
-// Workaround: remove defaultProps from Recharts function components to avoid React warning
-// React will warn about defaultProps on function components; unset them safely here
-;(XAxis as any).defaultProps = undefined;
-;(YAxis as any).defaultProps = undefined;
 import {
   Calendar,
   Download,
