@@ -88,6 +88,12 @@ export const FloatingSidebar = ({
       icon: Camera,
       href: "/dashboard/computer-vision",
     },
+    {
+      id: "disease-detection",
+      label: "Disease Detection",
+      icon: Star,
+      href: "/dashboard/disease-detection",
+    },
   ];
 
   const isActive = (href: string) => {
