@@ -110,6 +110,36 @@ export default function DiseaseDetection() {
     navigate(`/dashboard/chatbot?prefill=${encodeURIComponent(prefill)}`);
   };
 
+  function TreatmentTabs() {
+    const [tab, setTab] = useState<"organic" | "medical">("organic");
+    return (
+      <div>
+        <div className="flex gap-2 mb-3">
+          <button onClick={() => setTab("organic")} className={`px-3 py-2 rounded-md ${tab === "organic" ? "bg-purple-600 text-white" : "bg-white/30 text-gray-700"}`}>🌿 Organic</button>
+          <button onClick={() => setTab("medical")} className={`px-3 py-2 rounded-md ${tab === "medical" ? "bg-purple-600 text-white" : "bg-white/30 text-gray-700"}`}>💊 Medical</button>
+        </div>
+        {tab === "organic" ? (
+          <div className="text-sm text-gray-700">
+            <ul className="list-disc list-inside">
+              <li>Keep the area clean and dry.</li>
+              <li>Avoid known irritants and allergens.</li>
+              <li>Use gentle moisturizers and sunscreen.</li>
+            </ul>
+          </div>
+        ) : (
+          <div className="text-sm text-gray-700">
+            <ul className="list-disc list-inside">
+              <li>Topical medicated creams as prescribed.</li>
+              <li>Oral medication for severe or systemic cases.</li>
+              <li>Consult a specialist for targeted therapy.</li>
+            </ul>
+          </div>
+        )}
+        <div className="text-xs text-gray-500 mt-3">This is an AI suggestion, not a medical diagnosis. Consult a doctor for confirmation.</div>
+      </div>
+    );
+  }
+
   return (
     <div className="dashboard-page min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       <FloatingSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
