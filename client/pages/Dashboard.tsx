@@ -682,8 +682,8 @@ export default function Dashboard() {
           <div className="lg:col-span-2">
             <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
               <h3
-                className="text-lg font-semibold text-gray-900 mb-4"
-                style={{ fontFamily: "Montserrat, sans-serif" }}
+                className="text-xl md:text-2xl font-semibold text-gray-900 mb-4"
+                style={{ fontFamily: "Montserrat, sans-serif", letterSpacing: '0.2px' }}
               >
                 Recent Activity
               </h3>
