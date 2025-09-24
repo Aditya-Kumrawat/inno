@@ -174,6 +174,11 @@ export default function Dashboard() {
             <div className="flex flex-col w-1/2 max-lg:w-full">
               <div
                 className="flex flex-col relative mt-5 h-[365px] border-none rounded-2xl"
+                style={{
+                  background: "radial-gradient(circle at center, rgba(124,58,237,0.12) 0%, rgba(124,58,237,0) 40%), radial-gradient(circle at center, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0) 30%)",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                }}
               >
                 <div className="w-full h-full relative">
                   {/* Decorative concentric circles behind the model */}
