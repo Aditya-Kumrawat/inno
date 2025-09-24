@@ -489,7 +489,7 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
+          <div className="glass-card-lg p-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -636,7 +636,7 @@ export default function Dashboard() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
+          <div className="glass-card-lg p-6">
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold text-gray-900 dashboard-title">
                 Global Business Presence
@@ -866,7 +866,7 @@ export default function Dashboard() {
         >
           {/* Recent Activity */}
           <div className="lg:col-span-2">
-            <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
+            <div className="glass-card-lg p-6">
               <h3
                 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4"
                 style={{
@@ -929,7 +929,7 @@ export default function Dashboard() {
 
           {/* Quick Stats */}
           <div className="space-y-6">
-            <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
+            <div className="glass-card-lg p-6">
               <h3
                 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4"
                 style={{
