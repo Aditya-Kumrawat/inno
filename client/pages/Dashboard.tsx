@@ -312,7 +312,7 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.4 }}
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-6 dashboard-title">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 dashboard-title tracking-tight" style={{ fontFamily: "Poppins, sans-serif" }}>
                 Revenue & Orders Trend
               </h3>
               <motion.div
