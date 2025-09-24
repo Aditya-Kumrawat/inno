@@ -163,7 +163,23 @@ export default function Dashboard() {
                 Welcome back! Here's what's happening with your business today.
               </p>
             </div>
-            <div className="flex items-center gap-4" />
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                <div className="text-sm font-medium text-gray-800">Good morning, Aditya!</div>
+                <div className="text-xs text-gray-500">Here's your health snapshot</div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="relative">
+                  <Avatar className="w-10 h-10">
+                    <AvatarImage src="https://github.com/shadcn.png" />
+                    <AvatarFallback>AD</AvatarFallback>
+                  </Avatar>
+                  {/* status indicator */}
+                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white bg-green-500" title="Healthy" />
+                </div>
+              </div>
+            </div>
           </div>
         </motion.header>
 
@@ -298,7 +314,7 @@ export default function Dashboard() {
                 {/* Quick Actions */}
                 <div className="flex items-center gap-3 mt-2">
                   <Button size="sm" className="bg-red-500 text-white rounded-2xl px-3 py-2">🚨 Emergency SOS</Button>
-                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺️ Doctor Heatmap</Button>
+                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺�� Doctor Heatmap</Button>
                   <Button size="sm" className="bg-green-600 text-white rounded-2xl px-3 py-2">➕ Add New Record</Button>
                 </div>
 
