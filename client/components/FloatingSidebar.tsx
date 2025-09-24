@@ -120,7 +120,7 @@ export const FloatingSidebar = ({
         >
           <div className="flex items-center gap-3">
             <motion.div
-              className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg text-white"
+              className="w-8 h-8 bg-gradient-to-r from-[#3B82F6] to-[#14B8A6] rounded-lg flex items-center justify-center font-bold text-sm shadow-lg text-white"
               whileHover={{ scale: 1.05 }}
             >
               D
