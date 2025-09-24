@@ -347,7 +347,7 @@ export default function Dashboard() {
                           Last scanned: 3 days ago
                         </p>
                       </div>
-                      <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
+                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-2">
                         <Button
                           size="sm"
                           className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
@@ -386,7 +386,7 @@ export default function Dashboard() {
                           Next: Yoga — Tomorrow 7:00 AM
                         </p>
                       </div>
-                      <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
+                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-2">
                         <Avatar className="w-12 h-12">
                           <AvatarImage src="https://github.com/shadcn.png" />
                           <AvatarFallback>AD</AvatarFallback>
@@ -419,7 +419,7 @@ export default function Dashboard() {
                           No recent alerts
                         </p>
                       </div>
-                      <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
+                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-2">
                         <Button
                           size="sm"
                           className="text-white rounded-2xl px-3 py-2 flex items-center gap-2"
