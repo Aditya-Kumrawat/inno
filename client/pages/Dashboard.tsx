@@ -155,7 +155,7 @@ export default function Dashboard() {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dashboard-title" style={{ fontFamily: "Poppins, sans-serif", lineHeight: 1.05 }}>
+              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dashboard-title tracking-tight" style={{ fontFamily: "Poppins, sans-serif", lineHeight: 1.02 }}>
                 <span className="block">Dashboard</span>
                 <span className="block">Overview</span>
               </h1>
