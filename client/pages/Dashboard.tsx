@@ -181,30 +181,38 @@ export default function Dashboard() {
                 }}
               >
                 <div className="w-full h-full relative">
-                  {/* Decorative concentric circles behind the model: placed first */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-visible">
-                    <div
-                      className="absolute rounded-full"
-                      style={{
-                        width: "420px",
-                        height: "420px",
-                        background:
-                          "radial-gradient(circle at center, rgba(124,58,237,0.22), rgba(124,58,237,0) 60%)",
-                        boxShadow: "0 0 80px rgba(124,58,237,0.35)",
-                        opacity: 1,
-                      }}
-                    />
-                    <div
-                      className="absolute rounded-full"
-                      style={{
-                        width: "260px",
-                        height: "260px",
-                        background:
-                          "radial-gradient(circle at center, rgba(99,102,241,0.28), rgba(99,102,241,0) 60%)",
-                        boxShadow: "0 0 40px rgba(99,102,241,0.32)",
-                        opacity: 1,
-                      }}
-                    />
+                  {/* Decorative concentric circles behind the model: rotating */}
+                  <div>
+                    <style>{`@keyframes rotClockwise { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+                    @keyframes rotCounter { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }`}</style>
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-visible">
+                      <div
+                        className="absolute rounded-full"
+                        style={{
+                          width: "420px",
+                          height: "420px",
+                          background:
+                            "radial-gradient(circle at center, rgba(124,58,237,0.22), rgba(124,58,237,0) 60%)",
+                          boxShadow: "0 0 80px rgba(124,58,237,0.35)",
+                          opacity: 1,
+                          transformOrigin: "50% 50%",
+                          animation: "rotClockwise 36s linear infinite",
+                        }}
+                      />
+                      <div
+                        className="absolute rounded-full"
+                        style={{
+                          width: "260px",
+                          height: "260px",
+                          background:
+                            "radial-gradient(circle at center, rgba(99,102,241,0.28), rgba(99,102,241,0) 60%)",
+                          boxShadow: "0 0 40px rgba(99,102,241,0.32)",
+                          opacity: 1,
+                          transformOrigin: "50% 50%",
+                          animation: "rotCounter 48s linear infinite",
+                        }}
+                      />
+                    </div>
                   </div>
 
                   {/* @ts-ignore - model-viewer web component */}
