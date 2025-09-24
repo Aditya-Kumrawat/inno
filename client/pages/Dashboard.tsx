@@ -335,22 +335,33 @@ export default function Dashboard() {
 
                   {/* Disease Detection */}
                   <div className="glass-card p-5">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                      <div>
-                        <h4
-                          className="text-sm md:text-base font-semibold text-gray-800"
-                          style={{ fontFamily: "Poppins, sans-serif" }}
-                        >
-                          Disease Detection
-                        </h4>
-                        <p className="text-xl font-bold text-gray-900 mt-2">
-                          Last scan: No issues detected
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1">
-                          Last scanned: 3 days ago
-                        </p>
+                    <div className="flex flex-col">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <h4
+                            className="text-sm md:text-base font-semibold text-gray-800"
+                            style={{ fontFamily: "Poppins, sans-serif" }}
+                          >
+                            Disease Detection
+                          </h4>
+                          <p className="text-xl font-bold text-gray-900 mt-2">
+                            Last scan: No issues detected
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Last scanned: 3 days ago
+                          </p>
+                        </div>
+
+                        <div className="flex items-center gap-3">
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
+                            <span>Clear</span>
+                          </div>
+                        </div>
                       </div>
-                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-2">
+
+                      {/* Actions */}
+                      <div className="mt-4 flex flex-wrap items-center gap-3">
                         <Button
                           size="sm"
                           className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
@@ -359,14 +370,12 @@ export default function Dashboard() {
                           <Microscope className="w-4 h-4" /> Start New Scan
                         </Button>
 
-                        <div className="flex items-center gap-2">
-                          <Button variant="glass" size="sm" className="p-2" aria-label="Scan history">
-                            <FilePlus className="w-4 h-4" />
-                          </Button>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
-                            <span>Clear</span>
-                          </div>
+                        <Button variant="glass" size="sm" className="p-2" aria-label="Scan history">
+                          <FilePlus className="w-4 h-4" />
+                        </Button>
+
+                        <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
+                          <span className="text-gray-500">Last: 3 days ago</span>
                         </div>
                       </div>
                     </div>
