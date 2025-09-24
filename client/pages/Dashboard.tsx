@@ -373,7 +373,7 @@ export default function Dashboard() {
 
                   {/* Emergency Alerts */}
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
-                    <div className="flex items-start justify-between">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
                           className="text-sm md:text-base font-semibold text-gray-800"
@@ -388,10 +388,11 @@ export default function Dashboard() {
                           No recent alerts
                         </p>
                       </div>
-                      <div className="flex flex-col items-end gap-2">
+                      <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
                         <Button
                           size="sm"
-                          className="bg-red-600 text-white rounded-2xl px-3 py-2"
+                          className="text-white rounded-2xl px-3 py-2"
+                          style={{ backgroundColor: '#DC2626' }}
                         >
                           Emergency SOS
                         </Button>
