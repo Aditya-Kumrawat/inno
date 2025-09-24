@@ -776,8 +776,8 @@ export default function Dashboard() {
 
                 <div className="flex justify-between items-center">
                   <span
-                    className="text-sm text-gray-600"
-                    style={{ fontFamily: "Poppins, sans-serif" }}
+                    className="text-sm md:text-sm text-gray-600 font-medium"
+                    style={{ fontFamily: "Poppins, sans-serif", letterSpacing: '0.1px' }}
                   >
                     Server Uptime
                   </span>
