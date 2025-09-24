@@ -167,7 +167,7 @@ export const FloatingSidebar = ({
                 isCollapsed ? "p-2 justify-center" : "p-3"
               } rounded-2xl ${
                 isActive(item.href)
-                  ? "text-white bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg"
+                  ? "text-white bg-gradient-to-r from-[#3B82F6] to-[#14B8A6] shadow-lg"
                   : "hover:bg-white/40 text-gray-700 hover:text-gray-900"
               }`}
               onClick={() => navigate(item.href)}
