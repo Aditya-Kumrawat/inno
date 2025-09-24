@@ -102,15 +102,15 @@ export const FloatingSidebar = ({
         className="h-full overflow-hidden"
         style={{
           background:
-            "linear-gradient(to bottom, #eeeff4 0%, #eeeff4 50%, #f6f7fa 100%)",
-          backdropFilter: "blur(14px) saturate(150%)",
-          WebkitBackdropFilter: "blur(14px) saturate(150%)",
-          borderRadius: "2rem",
-          border: "3px solid #ffffff",
+            "linear-gradient(to bottom, rgba(249,250,251,0.9) 0%, rgba(249,250,251,0.9) 50%, rgba(246,247,250,0.95) 100%)",
+          backdropFilter: "blur(10px) saturate(120%)",
+          WebkitBackdropFilter: "blur(10px) saturate(120%)",
+          borderRadius: "1.5rem",
+          border: "1.5px solid rgba(255,255,255,0.7)",
           boxShadow:
-            "0 8px 30px rgba(0, 0, 0, 0.12), 0 0 30px 8px rgba(221,222,225,0.28)",
+            "0 8px 20px rgba(17,24,39,0.06), 0 -4px 12px rgba(17,24,39,0.03), 4px 0 10px rgba(17,24,39,0.02), -4px 0 10px rgba(17,24,39,0.02)",
           transition:
-            "background 450ms cubic-bezier(.2,.9,.2,1), box-shadow 450ms cubic-bezier(.2,.9,.2,1), backdrop-filter 450ms cubic-bezier(.2,.9,.2,1), border-radius 450ms cubic-bezier(.2,.9,.2,1)",
+            "background 350ms cubic-bezier(.2,.9,.2,1), box-shadow 350ms cubic-bezier(.2,.9,.2,1), backdrop-filter 350ms cubic-bezier(.2,.9,.2,1), border-radius 350ms cubic-bezier(.2,.9,.2,1)",
         }}
       >
         {/* Logo Section */}
