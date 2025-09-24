@@ -429,15 +429,15 @@ export default function Dashboard() {
                         key={idx}
                         className="flex items-center justify-between p-2 rounded-lg hover:bg-white/40 transition-colors"
                       >
-                        <div>
-                          <div className="text-sm font-medium text-gray-800">
+                        <div className="max-w-[70%]">
+                          <div className="text-sm font-medium text-gray-800 truncate">
                             {item.title}
                           </div>
                           <div className="text-xs text-gray-500">
                             {item.time}
                           </div>
                         </div>
-                        <div className="text-xs text-indigo-600 font-medium">
+                        <div className="text-xs" style={{ color: '#3B82F6', fontWeight: 600 }}>
                           View
                         </div>
                       </div>
