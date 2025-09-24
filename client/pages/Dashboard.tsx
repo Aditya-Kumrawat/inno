@@ -188,10 +188,10 @@ export default function Dashboard() {
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: '480px',
-                        height: '480px',
+                        width: '420px',
+                        height: '420px',
                         background: 'radial-gradient(circle at center, rgba(124,58,237,0.28), rgba(124,58,237,0) 60%)',
-                        boxShadow: '0 0 140px rgba(124,58,237,0.45)',
+                        boxShadow: '0 0 120px rgba(124,58,237,0.45)',
                         opacity: 0.95,
                         transformOrigin: '50% 50%',
                         animation: 'rotCW 48s linear infinite, subtlePulse 8s ease-in-out infinite',
@@ -201,10 +201,10 @@ export default function Dashboard() {
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: '320px',
-                        height: '320px',
+                        width: '280px',
+                        height: '280px',
                         background: 'radial-gradient(circle at center, rgba(99,102,241,0.36), rgba(99,102,241,0) 60%)',
-                        boxShadow: '0 0 80px rgba(99,102,241,0.36)',
+                        boxShadow: '0 0 60px rgba(99,102,241,0.36)',
                         opacity: 0.95,
                         transformOrigin: '50% 50%',
                         animation: 'rotCCW 60s linear infinite, subtlePulse 7s ease-in-out infinite',
