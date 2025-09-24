@@ -19,16 +19,15 @@ export const FloatingTopBar = ({
 }: FloatingTopBarProps) => {
   return (
     <motion.div
-      className={`fixed top-4 right-4 z-40 transition-all duration-300 ${
-        isCollapsed ? "left-20" : "left-72"
-      }`}
+      className={`fixed top-4 z-40 right-4 transition-all duration-300`}
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
+      style={{ right: 16 }}
     >
       <div
         className="bg-white/60 backdrop-blur-lg rounded-3xl shadow-sm border border-gray-100 px-4 py-3"
-        style={{ width: "50vw", maxWidth: "820px" }}
+        style={{ width: 'max-content', maxWidth: '820px', minWidth: '360px' }}
       >
         <div className="flex items-center justify-between gap-4">
           {/* Left section - Search */}
