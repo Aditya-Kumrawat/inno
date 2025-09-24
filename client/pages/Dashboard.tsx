@@ -304,8 +304,13 @@ export default function Dashboard() {
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <div className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
-                            style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)' }}>
+                          <div
+                            className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
+                            style={{
+                              background:
+                                "linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)",
+                            }}
+                          >
                             78%
                           </div>
                         </div>
@@ -316,12 +321,17 @@ export default function Dashboard() {
                         <Button
                           size="sm"
                           className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
-                          style={{ backgroundColor: '#3B82F6' }}
+                          style={{ backgroundColor: "#3B82F6" }}
                         >
                           <FilePlus className="w-4 h-4" /> Add / Import
                         </Button>
 
-                        <Button variant="glass" size="sm" className="p-2" aria-label="Upload certificate">
+                        <Button
+                          variant="glass"
+                          size="sm"
+                          className="p-2"
+                          aria-label="Upload certificate"
+                        >
                           <UploadCloud className="w-4 h-4" />
                         </Button>
 
@@ -365,17 +375,24 @@ export default function Dashboard() {
                         <Button
                           size="sm"
                           className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
-                          style={{ backgroundColor: '#14B8A6' }}
+                          style={{ backgroundColor: "#14B8A6" }}
                         >
                           <Microscope className="w-4 h-4" /> Start New Scan
                         </Button>
 
-                        <Button variant="glass" size="sm" className="p-2" aria-label="Scan history">
+                        <Button
+                          variant="glass"
+                          size="sm"
+                          className="p-2"
+                          aria-label="Scan history"
+                        >
                           <FilePlus className="w-4 h-4" />
                         </Button>
 
                         <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
-                          <span className="text-gray-500">Last: 3 days ago</span>
+                          <span className="text-gray-500">
+                            Last: 3 days ago
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -406,7 +423,7 @@ export default function Dashboard() {
                         <Button
                           size="sm"
                           className="text-white rounded-lg px-3 py-2"
-                          style={{ backgroundColor: '#22C55E' }}
+                          style={{ backgroundColor: "#22C55E" }}
                         >
                           Start Workout
                         </Button>
@@ -435,7 +452,9 @@ export default function Dashboard() {
 
                         <div className="flex items-center gap-3">
                           <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <span className="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs">Ready</span>
+                            <span className="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs">
+                              Ready
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -445,21 +464,32 @@ export default function Dashboard() {
                         <Button
                           size="sm"
                           className="text-white rounded-2xl px-3 py-2 flex items-center gap-2"
-                          style={{ backgroundColor: '#DC2626' }}
+                          style={{ backgroundColor: "#DC2626" }}
                         >
                           <Zap className="w-4 h-4" /> Emergency SOS
                         </Button>
 
-                        <Button size="sm" className="text-white rounded-2xl px-3 py-2 flex items-center gap-2" style={{ backgroundColor: '#3B82F6' }}>
+                        <Button
+                          size="sm"
+                          className="text-white rounded-2xl px-3 py-2 flex items-center gap-2"
+                          style={{ backgroundColor: "#3B82F6" }}
+                        >
                           <Phone className="w-4 h-4 mr-2" /> Connect Ambulance
                         </Button>
 
-                        <Button variant="glass" size="sm" className="p-2" aria-label="Find doctor">
+                        <Button
+                          variant="glass"
+                          size="sm"
+                          className="p-2"
+                          aria-label="Find doctor"
+                        >
                           <MapPin className="w-4 h-4" />
                         </Button>
 
                         <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
-                          <span className="text-gray-500">No recent alerts</span>
+                          <span className="text-gray-500">
+                            No recent alerts
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -468,9 +498,27 @@ export default function Dashboard() {
 
                 {/* Quick Actions */}
                 <div className="flex flex-wrap items-center gap-3 mt-2">
-                  <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#DC2626' }}>🚨 Emergency SOS</Button>
-                  <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#3B82F6' }}>🗺️ Doctor Heatmap</Button>
-                  <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#22C55E' }}>➕ Add New Record</Button>
+                  <Button
+                    size="sm"
+                    className="text-white rounded-2xl px-3 py-2"
+                    style={{ backgroundColor: "#DC2626" }}
+                  >
+                    🚨 Emergency SOS
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="text-white rounded-2xl px-3 py-2"
+                    style={{ backgroundColor: "#3B82F6" }}
+                  >
+                    🗺️ Doctor Heatmap
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="text-white rounded-2xl px-3 py-2"
+                    style={{ backgroundColor: "#22C55E" }}
+                  >
+                    ➕ Add New Record
+                  </Button>
                 </div>
 
                 {/* Activity Feed */}
@@ -502,7 +550,10 @@ export default function Dashboard() {
                             {item.time}
                           </div>
                         </div>
-                        <div className="text-xs" style={{ color: '#3B82F6', fontWeight: 600 }}>
+                        <div
+                          className="text-xs"
+                          style={{ color: "#3B82F6", fontWeight: 600 }}
+                        >
                           View
                         </div>
                       </div>
@@ -516,19 +567,37 @@ export default function Dashboard() {
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Vaccination over time
                     </h5>
-                    <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))' }} />
+                    <div
+                      className="h-16 rounded-md"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))",
+                      }}
+                    />
                   </div>
                   <div className="glass-card p-4">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Exercise adherence
                     </h5>
-                    <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(34,197,94,0.06), rgba(34,197,94,0.02))' }} />
+                    <div
+                      className="h-16 rounded-md"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(34,197,94,0.06), rgba(34,197,94,0.02))",
+                      }}
+                    />
                   </div>
                   <div className="glass-card p-4">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Disease risk trend
                     </h5>
-                    <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02))' }} />
+                    <div
+                      className="h-16 rounded-md"
+                      style={{
+                        background:
+                          "linear-gradient(90deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02))",
+                      }}
+                    />
                   </div>
                 </div>
 
@@ -540,7 +609,13 @@ export default function Dashboard() {
                     </h5>
                     <p className="text-xs text-gray-500">Tap to expand</p>
                   </div>
-                  <div className="w-36 md:w-40 h-24 rounded-lg" style={{ background: 'linear-gradient(90deg, rgba(59,130,246,0.06), rgba(20,184,166,0.06))' }} />
+                  <div
+                    className="w-36 md:w-40 h-24 rounded-lg"
+                    style={{
+                      background:
+                        "linear-gradient(90deg, rgba(59,130,246,0.06), rgba(20,184,166,0.06))",
+                    }}
+                  />
                 </div>
               </motion.div>
             </div>
@@ -968,7 +1043,10 @@ export default function Dashboard() {
                     key={index}
                     className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white/40 transition-colors"
                   >
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#3B82F6' }}></div>
+                    <div
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: "#3B82F6" }}
+                    ></div>
                     <div className="flex-1">
                       <p
                         className="text-sm md:text-base font-medium text-gray-800"
