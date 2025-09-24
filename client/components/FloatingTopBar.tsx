@@ -74,7 +74,7 @@ export const FloatingTopBar = ({
             </Button>
 
             {/* Profile */}
-            <div className="flex items-center gap-2 cursor-pointer bg-white border border-gray-100 rounded-2xl px-2 py-1 shadow-sm hover:shadow-md transition-all">
+            <div className="flex items-center gap-2 cursor-pointer bg-white/10 border border-white/20 rounded-2xl px-2 py-1 hover:shadow-md transition-all">
               <Avatar className="w-8 h-8">
                 <AvatarImage src="https://github.com/shadcn.png" />
                 <AvatarFallback>JD</AvatarFallback>
