@@ -283,48 +283,51 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Vaccination Status */}
                   <div className="glass-card p-5">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                      <div>
-                        <h4
-                          className="text-sm md:text-base font-semibold text-gray-800"
-                          style={{ fontFamily: "Poppins, sans-serif" }}
-                        >
-                          Vaccination Status
-                        </h4>
-                        <p
-                          className="text-2xl font-bold text-gray-900 mt-2"
-                          style={{ fontFamily: "Montserrat, sans-serif" }}
-                        >
-                          78% completed
-                        </p>
-                        <p className="text-xs text-gray-500 mt-1">
-                          Next due: Tdap — 2025-03-10
-                        </p>
-                      </div>
-                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-3">
-                        <div className="flex items-center gap-2">
-                          <Button
-                            size="sm"
-                            className="text-white rounded-lg px-3 py-2"
-                            style={{ backgroundColor: '#3B82F6' }}
+                    <div className="flex flex-col">
+                      <div className="flex items-start justify-between gap-4">
+                        <div>
+                          <h4
+                            className="text-sm md:text-base font-semibold text-gray-800"
+                            style={{ fontFamily: "Poppins, sans-serif" }}
                           >
-                            <FilePlus className="w-4 h-4 mr-2" /> Add / Import
-                          </Button>
-
-                          <Button variant="glass" size="sm" className="p-2" aria-label="Upload certificate">
-                            <UploadCloud className="w-4 h-4" />
-                          </Button>
+                            Vaccination Status
+                          </h4>
+                          <p
+                            className="text-2xl font-bold text-gray-900 mt-2"
+                            style={{ fontFamily: "Montserrat, sans-serif" }}
+                          >
+                            78% completed
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1">
+                            Next due: Tdap — 2025-03-10
+                          </p>
                         </div>
 
-                        <div className="flex flex-col items-center gap-2">
+                        <div className="flex items-center gap-3">
                           <div className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
                             style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)' }}>
                             78%
                           </div>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <ShieldCheck className="w-4 h-4 text-[#14B8A6]" />
-                            <span>Up to date</span>
-                          </div>
+                        </div>
+                      </div>
+
+                      {/* Actions */}
+                      <div className="mt-4 flex flex-wrap items-center gap-3">
+                        <Button
+                          size="sm"
+                          className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
+                          style={{ backgroundColor: '#3B82F6' }}
+                        >
+                          <FilePlus className="w-4 h-4" /> Add / Import
+                        </Button>
+
+                        <Button variant="glass" size="sm" className="p-2" aria-label="Upload certificate">
+                          <UploadCloud className="w-4 h-4" />
+                        </Button>
+
+                        <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
+                          <ShieldCheck className="w-4 h-4 text-[#14B8A6]" />
+                          <span>Up to date</span>
                         </div>
                       </div>
                     </div>
