@@ -159,7 +159,7 @@ export default function Dashboard() {
                 <span className="block">Dashboard</span>
                 <span className="block">Overview</span>
               </h1>
-              <p className="text-gray-600 mt-1 dashboard-text">
+              <p className="text-gray-600 mt-2 text-lg max-w-2xl leading-relaxed dashboard-text" style={{ fontFamily: "Poppins, sans-serif" }}>
                 Welcome back! Here's what's happening with your business today.
               </p>
             </div>
