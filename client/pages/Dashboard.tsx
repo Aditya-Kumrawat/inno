@@ -829,7 +829,7 @@ export default function Dashboard() {
                 {mapData.map((region, index) => (
                   <motion.div
                     key={region.region}
-                    className="bg-white/50 backdrop-blur-sm rounded-2xl p-3 border border-white/30 hover:bg-white/70 transition-all duration-300"
+                    className="glass-card p-3 hover:bg-white/70 transition-all duration-300"
                     whileHover={{ scale: 1.02, y: -2 }}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
