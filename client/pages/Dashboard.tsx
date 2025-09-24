@@ -269,7 +269,7 @@ export default function Dashboard() {
             </div>
 
             {/* Right Column - Dashboard Stats */}
-            <div className="flex flex-col w-1/2 ml-5 max-lg:w-full max-lg:ml-0">
+            <div className="flex flex-col w-full lg:w-1/2 lg:ml-5">
               <motion.div className="space-y-6">
                 {/* Health Overview Bento Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
