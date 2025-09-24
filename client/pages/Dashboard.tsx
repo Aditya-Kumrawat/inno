@@ -274,7 +274,7 @@ export default function Dashboard() {
                 {/* Health Overview Bento Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Vaccination Status */}
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                  <div className="glass-card p-5">
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
@@ -310,7 +310,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Disease Detection */}
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                  <div className="glass-card p-5">
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
@@ -339,7 +339,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Exercise */}
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                  <div className="glass-card p-5">
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
@@ -372,7 +372,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Emergency Alerts */}
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                  <div className="glass-card p-5">
                     <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
@@ -409,7 +409,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* Activity Feed */}
-                <div className="mt-4 bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                <div className="mt-4 glass-card p-4">
                   <h4 className="text-sm font-semibold text-gray-800 mb-3">
                     Recent Activity
                   </h4>
@@ -447,19 +447,19 @@ export default function Dashboard() {
 
                 {/* Analytics & Insights - Small cards */}
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                  <div className="glass-card p-4">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Vaccination over time
                     </h5>
                     <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))' }} />
                   </div>
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                  <div className="glass-card p-4">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Exercise adherence
                     </h5>
                     <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(34,197,94,0.06), rgba(34,197,94,0.02))' }} />
                   </div>
-                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                  <div className="glass-card p-4">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Disease risk trend
                     </h5>
@@ -468,7 +468,7 @@ export default function Dashboard() {
                 </div>
 
                 {/* Doctor Heatmap Preview */}
-                <div className="mt-4 bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30 flex items-center justify-between">
+                <div className="mt-4 glass-card p-4 flex items-center justify-between">
                   <div>
                     <h5 className="text-sm font-medium text-gray-800">
                       Doctor Heatmap Preview
