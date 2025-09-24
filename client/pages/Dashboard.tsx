@@ -156,18 +156,28 @@ export default function Dashboard() {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dashboard-title tracking-tight" style={{ fontFamily: "Poppins, sans-serif", lineHeight: 1.02 }}>
+              <h1
+                className="text-4xl md:text-5xl font-extrabold text-gray-900 dashboard-title tracking-tight"
+                style={{ fontFamily: "Poppins, sans-serif", lineHeight: 1.02 }}
+              >
                 <span className="block">Dashboard</span>
                 <span className="block">Overview</span>
               </h1>
-              <p className="text-gray-600 mt-2 text-lg max-w-2xl leading-relaxed dashboard-text" style={{ fontFamily: "Poppins, sans-serif" }}>
+              <p
+                className="text-gray-600 mt-2 text-lg max-w-2xl leading-relaxed dashboard-text"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
                 Welcome back! Here's what's happening with your business today.
               </p>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right">
-                <div className="text-sm font-medium text-gray-800">Good morning, Aditya!</div>
-                <div className="text-xs text-gray-500">Here's your health snapshot</div>
+                <div className="text-sm font-medium text-gray-800">
+                  Good morning, Aditya!
+                </div>
+                <div className="text-xs text-gray-500">
+                  Here's your health snapshot
+                </div>
               </div>
 
               <div className="flex items-center gap-3">
@@ -177,7 +187,10 @@ export default function Dashboard() {
                     <AvatarFallback>AD</AvatarFallback>
                   </Avatar>
                   {/* status indicator */}
-                  <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white bg-green-500" title="Healthy" />
+                  <span
+                    className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white bg-green-500"
+                    title="Healthy"
+                  />
                 </div>
               </div>
             </div>
@@ -206,26 +219,30 @@ export default function Dashboard() {
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: '420px',
-                        height: '420px',
-                        background: 'radial-gradient(circle at center, rgba(124,58,237,0.28), rgba(124,58,237,0) 60%)',
-                        boxShadow: '0 0 120px rgba(124,58,237,0.45)',
+                        width: "420px",
+                        height: "420px",
+                        background:
+                          "radial-gradient(circle at center, rgba(124,58,237,0.28), rgba(124,58,237,0) 60%)",
+                        boxShadow: "0 0 120px rgba(124,58,237,0.45)",
                         opacity: 0.95,
-                        transformOrigin: '50% 50%',
-                        animation: 'rotCW 48s linear infinite, subtlePulse 8s ease-in-out infinite',
+                        transformOrigin: "50% 50%",
+                        animation:
+                          "rotCW 48s linear infinite, subtlePulse 8s ease-in-out infinite",
                       }}
                     />
 
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: '280px',
-                        height: '280px',
-                        background: 'radial-gradient(circle at center, rgba(99,102,241,0.36), rgba(99,102,241,0) 60%)',
-                        boxShadow: '0 0 60px rgba(99,102,241,0.36)',
+                        width: "280px",
+                        height: "280px",
+                        background:
+                          "radial-gradient(circle at center, rgba(99,102,241,0.36), rgba(99,102,241,0) 60%)",
+                        boxShadow: "0 0 60px rgba(99,102,241,0.36)",
                         opacity: 0.95,
-                        transformOrigin: '50% 50%',
-                        animation: 'rotCCW 60s linear infinite, subtlePulse 7s ease-in-out infinite',
+                        transformOrigin: "50% 50%",
+                        animation:
+                          "rotCCW 60s linear infinite, subtlePulse 7s ease-in-out infinite",
                       }}
                     />
                   </div>
@@ -238,7 +255,13 @@ export default function Dashboard() {
                       camera-controls
                       auto-rotate
                       exposure="1"
-                      style={{ width: '100%', height: '100%', borderRadius: 16, background: 'transparent', opacity: 0.9 }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: 16,
+                        background: "transparent",
+                        opacity: 0.9,
+                      }}
                     />
                   </div>
                 </div>
@@ -254,13 +277,32 @@ export default function Dashboard() {
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Vaccination Status</h4>
-                        <p className="text-2xl font-bold text-gray-900 mt-2" style={{ fontFamily: "Montserrat, sans-serif" }}>78% completed</p>
-                        <p className="text-xs text-gray-500 mt-1">Next due: Tdap — 2025-03-10</p>
+                        <h4
+                          className="text-sm md:text-base font-semibold text-gray-800"
+                          style={{ fontFamily: "Poppins, sans-serif" }}
+                        >
+                          Vaccination Status
+                        </h4>
+                        <p
+                          className="text-2xl font-bold text-gray-900 mt-2"
+                          style={{ fontFamily: "Montserrat, sans-serif" }}
+                        >
+                          78% completed
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Next due: Tdap — 2025-03-10
+                        </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <Button size="sm" className="bg-indigo-600 text-white rounded-lg px-3 py-2">Add / Import</Button>
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-semibold">78%</div>
+                        <Button
+                          size="sm"
+                          className="bg-indigo-600 text-white rounded-lg px-3 py-2"
+                        >
+                          Add / Import
+                        </Button>
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-semibold">
+                          78%
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -269,12 +311,26 @@ export default function Dashboard() {
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Disease Detection</h4>
-                        <p className="text-xl font-bold text-gray-900 mt-2">Last scan: No issues detected</p>
-                        <p className="text-xs text-gray-500 mt-1">Last scanned: 3 days ago</p>
+                        <h4
+                          className="text-sm md:text-base font-semibold text-gray-800"
+                          style={{ fontFamily: "Poppins, sans-serif" }}
+                        >
+                          Disease Detection
+                        </h4>
+                        <p className="text-xl font-bold text-gray-900 mt-2">
+                          Last scan: No issues detected
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Last scanned: 3 days ago
+                        </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <Button size="sm" className="bg-amber-500 text-white rounded-lg px-3 py-2">Start New Scan</Button>
+                        <Button
+                          size="sm"
+                          className="bg-amber-500 text-white rounded-lg px-3 py-2"
+                        >
+                          Start New Scan
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -283,16 +339,30 @@ export default function Dashboard() {
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Exercise</h4>
-                        <p className="text-xl font-bold text-gray-900 mt-2">Streak: 7 days</p>
-                        <p className="text-xs text-gray-500 mt-1">Next: Yoga — Tomorrow 7:00 AM</p>
+                        <h4
+                          className="text-sm md:text-base font-semibold text-gray-800"
+                          style={{ fontFamily: "Poppins, sans-serif" }}
+                        >
+                          Exercise
+                        </h4>
+                        <p className="text-xl font-bold text-gray-900 mt-2">
+                          Streak: 7 days
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          Next: Yoga — Tomorrow 7:00 AM
+                        </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
                         <Avatar className="w-12 h-12">
                           <AvatarImage src="https://github.com/shadcn.png" />
                           <AvatarFallback>AD</AvatarFallback>
                         </Avatar>
-                        <Button size="sm" className="bg-indigo-600 text-white rounded-lg px-3 py-2">Start Workout</Button>
+                        <Button
+                          size="sm"
+                          className="bg-indigo-600 text-white rounded-lg px-3 py-2"
+                        >
+                          Start Workout
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -301,12 +371,26 @@ export default function Dashboard() {
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
                     <div className="flex items-start justify-between">
                       <div>
-                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Emergency Alerts</h4>
-                        <p className="text-xl font-bold text-gray-900 mt-2">All systems normal</p>
-                        <p className="text-xs text-gray-500 mt-1">No recent alerts</p>
+                        <h4
+                          className="text-sm md:text-base font-semibold text-gray-800"
+                          style={{ fontFamily: "Poppins, sans-serif" }}
+                        >
+                          Emergency Alerts
+                        </h4>
+                        <p className="text-xl font-bold text-gray-900 mt-2">
+                          All systems normal
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          No recent alerts
+                        </p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <Button size="sm" className="bg-red-600 text-white rounded-2xl px-3 py-2">Emergency SOS</Button>
+                        <Button
+                          size="sm"
+                          className="bg-red-600 text-white rounded-2xl px-3 py-2"
+                        >
+                          Emergency SOS
+                        </Button>
                       </div>
                     </div>
                   </div>
@@ -314,26 +398,58 @@ export default function Dashboard() {
 
                 {/* Quick Actions */}
                 <div className="flex flex-wrap items-center gap-3 mt-2">
-                  <Button size="sm" className="bg-red-600 text-white rounded-2xl px-3 py-2 min-w-[140px]">🚨 Emergency SOS</Button>
-                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2 min-w-[140px]">🗺️ Doctor Heatmap</Button>
-                  <Button size="sm" className="bg-emerald-600 text-white rounded-2xl px-3 py-2 min-w-[140px]">➕ Add New Record</Button>
+                  <Button
+                    size="sm"
+                    className="bg-red-600 text-white rounded-2xl px-3 py-2 min-w-[140px]"
+                  >
+                    🚨 Emergency SOS
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-indigo-600 text-white rounded-2xl px-3 py-2 min-w-[140px]"
+                  >
+                    🗺️ Doctor Heatmap
+                  </Button>
+                  <Button
+                    size="sm"
+                    className="bg-emerald-600 text-white rounded-2xl px-3 py-2 min-w-[140px]"
+                  >
+                    ➕ Add New Record
+                  </Button>
                 </div>
 
                 {/* Activity Feed */}
                 <div className="mt-4 bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
-                  <h4 className="text-sm font-semibold text-gray-800 mb-3">Recent Activity</h4>
+                  <h4 className="text-sm font-semibold text-gray-800 mb-3">
+                    Recent Activity
+                  </h4>
                   <div className="space-y-3">
                     {[
-                      { title: 'Uploaded vaccine certificate', time: '1 day ago' },
-                      { title: 'Completed workout', time: '2 days ago' },
-                      { title: 'Disease detection scan - clear', time: '3 days ago' },
+                      {
+                        title: "Uploaded vaccine certificate",
+                        time: "1 day ago",
+                      },
+                      { title: "Completed workout", time: "2 days ago" },
+                      {
+                        title: "Disease detection scan - clear",
+                        time: "3 days ago",
+                      },
                     ].map((item, idx) => (
-                      <div key={idx} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/40 transition-colors">
+                      <div
+                        key={idx}
+                        className="flex items-center justify-between p-2 rounded-lg hover:bg-white/40 transition-colors"
+                      >
                         <div>
-                          <div className="text-sm font-medium text-gray-800">{item.title}</div>
-                          <div className="text-xs text-gray-500">{item.time}</div>
+                          <div className="text-sm font-medium text-gray-800">
+                            {item.title}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            {item.time}
+                          </div>
                         </div>
-                        <div className="text-xs text-indigo-600 font-medium">View</div>
+                        <div className="text-xs text-indigo-600 font-medium">
+                          View
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -342,15 +458,21 @@ export default function Dashboard() {
                 {/* Analytics & Insights - Small cards */}
                 <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
-                    <h5 className="text-sm font-medium text-gray-800 mb-2">Vaccination over time</h5>
+                    <h5 className="text-sm font-medium text-gray-800 mb-2">
+                      Vaccination over time
+                    </h5>
                     <div className="h-16 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-md" />
                   </div>
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
-                    <h5 className="text-sm font-medium text-gray-800 mb-2">Exercise adherence</h5>
+                    <h5 className="text-sm font-medium text-gray-800 mb-2">
+                      Exercise adherence
+                    </h5>
                     <div className="h-16 bg-gradient-to-r from-green-50 to-green-100 rounded-md" />
                   </div>
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
-                    <h5 className="text-sm font-medium text-gray-800 mb-2">Disease risk trend</h5>
+                    <h5 className="text-sm font-medium text-gray-800 mb-2">
+                      Disease risk trend
+                    </h5>
                     <div className="h-16 bg-gradient-to-r from-amber-50 to-amber-100 rounded-md" />
                   </div>
                 </div>
@@ -358,12 +480,13 @@ export default function Dashboard() {
                 {/* Doctor Heatmap Preview */}
                 <div className="mt-4 bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30 flex items-center justify-between">
                   <div>
-                    <h5 className="text-sm font-medium text-gray-800">Doctor Heatmap Preview</h5>
+                    <h5 className="text-sm font-medium text-gray-800">
+                      Doctor Heatmap Preview
+                    </h5>
                     <p className="text-xs text-gray-500">Tap to expand</p>
                   </div>
                   <div className="w-36 md:w-40 h-24 bg-gradient-to-br from-indigo-50 to-emerald-50 rounded-lg" />
                 </div>
-
               </motion.div>
             </div>
           </div>
@@ -382,7 +505,10 @@ export default function Dashboard() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.4 }}
             >
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 dashboard-title tracking-tight" style={{ fontFamily: "Poppins, sans-serif" }}>
+              <h3
+                className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 dashboard-title tracking-tight"
+                style={{ fontFamily: "Poppins, sans-serif" }}
+              >
                 Revenue & Orders Trend
               </h3>
               <motion.div
@@ -753,7 +879,10 @@ export default function Dashboard() {
             <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
               <h3
                 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4"
-                style={{ fontFamily: "Montserrat, sans-serif", letterSpacing: '0.2px' }}
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  letterSpacing: "0.2px",
+                }}
               >
                 Recent Activity
               </h3>
@@ -813,7 +942,10 @@ export default function Dashboard() {
             <div className="bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30">
               <h3
                 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4"
-                style={{ fontFamily: "Montserrat, sans-serif", letterSpacing: '0.2px' }}
+                style={{
+                  fontFamily: "Montserrat, sans-serif",
+                  letterSpacing: "0.2px",
+                }}
               >
                 Quick Stats
               </h3>
@@ -821,7 +953,10 @@ export default function Dashboard() {
                 <div className="flex justify-between items-center">
                   <span
                     className="text-sm md:text-sm text-gray-600 font-medium"
-                    style={{ fontFamily: "Poppins, sans-serif", letterSpacing: '0.1px' }}
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                      letterSpacing: "0.1px",
+                    }}
                   >
                     Conversion Rate
                   </span>
@@ -834,7 +969,10 @@ export default function Dashboard() {
                 <div className="flex justify-between items-center">
                   <span
                     className="text-sm md:text-sm text-gray-600 font-medium"
-                    style={{ fontFamily: "Poppins, sans-serif", letterSpacing: '0.1px' }}
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                      letterSpacing: "0.1px",
+                    }}
                   >
                     Customer Satisfaction
                   </span>
@@ -847,7 +985,10 @@ export default function Dashboard() {
                 <div className="flex justify-between items-center">
                   <span
                     className="text-sm md:text-sm text-gray-600 font-medium"
-                    style={{ fontFamily: "Poppins, sans-serif", letterSpacing: '0.1px' }}
+                    style={{
+                      fontFamily: "Poppins, sans-serif",
+                      letterSpacing: "0.1px",
+                    }}
                   >
                     Server Uptime
                   </span>
@@ -859,8 +1000,6 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-
-
         </motion.div>
       </motion.div>
     </div>

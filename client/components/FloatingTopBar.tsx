@@ -27,7 +27,7 @@ export const FloatingTopBar = ({
     >
       <div
         className="bg-white/60 backdrop-blur-lg rounded-3xl shadow-sm border border-gray-100 px-4 py-3"
-        style={{ width: 'max-content', maxWidth: '820px', minWidth: '360px' }}
+        style={{ width: "max-content", maxWidth: "820px", minWidth: "360px" }}
       >
         <div className="flex items-center justify-between gap-4">
           {/* Left section - Search */}
