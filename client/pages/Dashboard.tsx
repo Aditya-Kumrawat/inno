@@ -284,8 +284,8 @@ export default function Dashboard() {
                             {stat.title}
                           </h3>
                           <p
-                            className="text-2xl font-bold text-gray-900"
-                            style={{ fontFamily: "Montserrat, sans-serif" }}
+                            className="text-3xl md:text-4xl font-extrabold text-gray-900"
+                            style={{ fontFamily: "Montserrat, sans-serif", lineHeight: 1.05 }}
                           >
                             {stat.value}
                           </p>
