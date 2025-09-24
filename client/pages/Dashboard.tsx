@@ -177,38 +177,40 @@ export default function Dashboard() {
               >
                 <div className="w-full h-full relative">
                   {/* Decorative concentric circles behind the model */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: 420,
-                        height: 420,
-                        background: "radial-gradient(circle at center, rgba(124,58,237,0.12), rgba(124,58,237,0) 60%)",
-                        filter: "blur(28px)",
-                        opacity: 0.9,
+                        width: 520,
+                        height: 520,
+                        border: "2px solid rgba(124,58,237,0.18)",
+                        filter: "blur(20px)",
+                        opacity: 0.95,
+                        mixBlendMode: "screen",
                       }}
                     />
                     <div
                       className="absolute rounded-full"
                       style={{
-                        width: 260,
-                        height: 260,
-                        background: "radial-gradient(circle at center, rgba(124,58,237,0.18), rgba(124,58,237,0) 60%)",
-                        filter: "blur(14px)",
+                        width: 360,
+                        height: 360,
+                        border: "2px solid rgba(124,58,237,0.28)",
+                        filter: "blur(12px)",
                         opacity: 0.95,
+                        mixBlendMode: "screen",
                       }}
                     />
                   </div>
 
                   {/* @ts-ignore - model-viewer web component */}
-                  <div className="relative z-10 w-full h-full">
+                  <div className="relative z-20 w-full h-full">
                     <model-viewer
                       src="https://cdn.builder.io/o/assets%2F13b906ad39be4bc99170117fa7908edc%2F17dc1a1ebf484d88b74b53c84ec62453?alt=media&token=765a47e4-6697-4e40-9380-3a940b09ff98&apiKey=13b906ad39be4bc99170117fa7908edc"
                       alt="Realistic Human Heart"
                       camera-controls
                       auto-rotate
                       exposure="1"
-                      style={{ width: "100%", height: "100%", borderRadius: 16 }}
+                      style={{ width: "100%", height: "100%", borderRadius: 16, background: "transparent" }}
                     />
                   </div>
                 </div>
