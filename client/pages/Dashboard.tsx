@@ -230,70 +230,123 @@ export default function Dashboard() {
 
             {/* Right Column - Dashboard Stats */}
             <div className="flex flex-col w-1/2 ml-5 max-lg:w-full max-lg:ml-0">
-              <motion.div
-                className="grid grid-cols-2 gap-6"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-              >
-                {dashboardStats.map((stat, index) => (
-                  <motion.div
-                    key={stat.title}
-                    className="group relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 + index * 0.1 }}
-                    whileHover={{ y: -8, scale: 1.02 }}
-                  >
-                    {/* Glass effect card with soft off-white background */}
-                    <div className="relative bg-white/60 backdrop-blur-lg rounded-3xl p-6 shadow-lg border border-white/30 overflow-hidden">
-                      {/* Soft lift effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-3xl"></div>
-                      <div
-                        className="absolute -bottom-2 -right-2 w-24 h-24 bg-gradient-to-br opacity-10 rounded-full blur-xl group-hover:opacity-20 transition-opacity duration-300"
-                        style={{
-                          background: `linear-gradient(135deg, ${stat.color.split(" ")[1]}, ${stat.color.split(" ")[3]})`,
-                        }}
-                      ></div>
-
-                      <div className="relative z-10">
-                        <div className="flex items-center justify-between mb-4">
-                          <div
-                            className={`p-3 rounded-2xl bg-gradient-to-br ${stat.bgColor} shadow-sm`}
-                          >
-                            <stat.icon
-                              size={24}
-                              className={`bg-gradient-to-br ${stat.color} bg-clip-text text-transparent`}
-                            />
-                          </div>
-                          <div className="text-right">
-                            <p
-                              className="text-sm font-medium text-green-600 bg-green-50 px-2 py-1 rounded-full"
-                              style={{ fontFamily: "Poppins, sans-serif" }}
-                            >
-                              {stat.change}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div>
-                          <h3
-                            className="text-sm md:text-base font-medium text-gray-500 mb-1 tracking-wide"
-                            style={{ fontFamily: "Poppins, sans-serif", letterSpacing: '0.2px' }}
-                          >
-                            {stat.title}
-                          </h3>
-                          <p
-                            className="text-3xl md:text-4xl font-extrabold text-gray-900"
-                            style={{ fontFamily: "Montserrat, sans-serif", lineHeight: 1.05 }}
-                          >
-                            {stat.value}
-                          </p>
-                        </div>
+              <motion.div className="space-y-6">
+                {/* Health Overview Bento Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Vaccination Status */}
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Vaccination Status</h4>
+                        <p className="text-2xl font-bold text-gray-900 mt-2" style={{ fontFamily: "Montserrat, sans-serif" }}>78% completed</p>
+                        <p className="text-xs text-gray-500 mt-1">Next due: Tdap — 2025-03-10</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <Button size="sm" className="bg-indigo-600 text-white rounded-lg px-3 py-2">Add / Import</Button>
+                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-semibold">78%</div>
                       </div>
                     </div>
-                  </motion.div>
-                ))}
+                  </div>
+
+                  {/* Disease Detection */}
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Disease Detection</h4>
+                        <p className="text-xl font-bold text-gray-900 mt-2">Last scan: No issues detected</p>
+                        <p className="text-xs text-gray-500 mt-1">Last scanned: 3 days ago</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <Button size="sm" className="bg-amber-500 text-white rounded-lg px-3 py-2">Start New Scan</Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Exercise */}
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Exercise</h4>
+                        <p className="text-xl font-bold text-gray-900 mt-2">Streak: 7 days</p>
+                        <p className="text-xs text-gray-500 mt-1">Next: Yoga — Tomorrow 7:00 AM</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <Avatar className="w-12 h-12">
+                          <AvatarImage src="https://github.com/shadcn.png" />
+                          <AvatarFallback>AD</AvatarFallback>
+                        </Avatar>
+                        <Button size="sm" className="bg-indigo-600 text-white rounded-lg px-3 py-2">Start Workout</Button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Emergency Alerts */}
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="text-sm md:text-base font-semibold text-gray-800" style={{ fontFamily: "Poppins, sans-serif" }}>Emergency Alerts</h4>
+                        <p className="text-xl font-bold text-gray-900 mt-2">All systems normal</p>
+                        <p className="text-xs text-gray-500 mt-1">No recent alerts</p>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        <Button size="sm" className="bg-red-500 text-white rounded-lg px-3 py-2">Emergency SOS</Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Quick Actions */}
+                <div className="flex items-center gap-3 mt-2">
+                  <Button size="sm" className="bg-red-500 text-white rounded-2xl px-3 py-2">🚨 Emergency SOS</Button>
+                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺️ Doctor Heatmap</Button>
+                  <Button size="sm" className="bg-green-600 text-white rounded-2xl px-3 py-2">➕ Add New Record</Button>
+                </div>
+
+                {/* Activity Feed */}
+                <div className="mt-4 bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                  <h4 className="text-sm font-semibold text-gray-800 mb-3">Recent Activity</h4>
+                  <div className="space-y-3">
+                    {[
+                      { title: 'Uploaded vaccine certificate', time: '1 day ago' },
+                      { title: 'Completed workout', time: '2 days ago' },
+                      { title: 'Disease detection scan - clear', time: '3 days ago' },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center justify-between p-2 rounded-lg hover:bg-white/40 transition-colors">
+                        <div>
+                          <div className="text-sm font-medium text-gray-800">{item.title}</div>
+                          <div className="text-xs text-gray-500">{item.time}</div>
+                        </div>
+                        <div className="text-xs text-indigo-600 font-medium">View</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Analytics & Insights - Small cards */}
+                <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                    <h5 className="text-sm font-medium text-gray-800 mb-2">Vaccination over time</h5>
+                    <div className="h-16 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-md" />
+                  </div>
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                    <h5 className="text-sm font-medium text-gray-800 mb-2">Exercise adherence</h5>
+                    <div className="h-16 bg-gradient-to-r from-green-50 to-green-100 rounded-md" />
+                  </div>
+                  <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
+                    <h5 className="text-sm font-medium text-gray-800 mb-2">Disease risk trend</h5>
+                    <div className="h-16 bg-gradient-to-r from-amber-50 to-amber-100 rounded-md" />
+                  </div>
+                </div>
+
+                {/* Doctor Heatmap Preview */}
+                <div className="mt-4 bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30 flex items-center justify-between">
+                  <div>
+                    <h5 className="text-sm font-medium text-gray-800">Doctor Heatmap Preview</h5>
+                    <p className="text-xs text-gray-500">Tap to expand</p>
+                  </div>
+                  <div className="w-40 h-24 bg-gradient-to-br from-red-50 to-green-50 rounded-lg" />
+                </div>
+
               </motion.div>
             </div>
           </div>
