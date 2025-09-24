@@ -178,8 +178,26 @@ export default function Dashboard() {
                 <div className="w-full h-full relative">
                   {/* Decorative concentric circles behind the model */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-                    <div className="rounded-full border-2 border-purple-200 w-64 h-64 blur-sm opacity-60" />
-                    <div className="rounded-full border-2 border-purple-100 w-40 h-40 blur-sm opacity-40 absolute" />
+                    <div
+                      className="absolute rounded-full"
+                      style={{
+                        width: 420,
+                        height: 420,
+                        background: "radial-gradient(circle at center, rgba(124,58,237,0.12), rgba(124,58,237,0) 60%)",
+                        filter: "blur(28px)",
+                        opacity: 0.9,
+                      }}
+                    />
+                    <div
+                      className="absolute rounded-full"
+                      style={{
+                        width: 260,
+                        height: 260,
+                        background: "radial-gradient(circle at center, rgba(124,58,237,0.18), rgba(124,58,237,0) 60%)",
+                        filter: "blur(14px)",
+                        opacity: 0.95,
+                      }}
+                    />
                   </div>
 
                   {/* @ts-ignore - model-viewer web component */}
