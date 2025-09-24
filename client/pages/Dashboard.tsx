@@ -177,33 +177,8 @@ export default function Dashboard() {
               >
                 <div className="w-full h-full relative">
                   {/* Decorative concentric circles behind the model */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
-                    <div
-                      className="absolute rounded-full"
-                      style={{
-                        width: 520,
-                        height: 520,
-                        border: "2px solid rgba(124,58,237,0.18)",
-                        filter: "blur(20px)",
-                        opacity: 0.95,
-                        mixBlendMode: "screen",
-                      }}
-                    />
-                    <div
-                      className="absolute rounded-full"
-                      style={{
-                        width: 360,
-                        height: 360,
-                        border: "2px solid rgba(124,58,237,0.28)",
-                        filter: "blur(12px)",
-                        opacity: 0.95,
-                        mixBlendMode: "screen",
-                      }}
-                    />
-                  </div>
-
-                  {/* @ts-ignore - model-viewer web component */}
-                  <div className="relative z-20 w-full h-full">
+                    {/* @ts-ignore - model-viewer web component */}
+                  <div className="relative z-10 w-full h-full overflow-visible">
                     <model-viewer
                       src="https://cdn.builder.io/o/assets%2F13b906ad39be4bc99170117fa7908edc%2F17dc1a1ebf484d88b74b53c84ec62453?alt=media&token=765a47e4-6697-4e40-9380-3a940b09ff98&apiKey=13b906ad39be4bc99170117fa7908edc"
                       alt="Realistic Human Heart"
@@ -212,6 +187,30 @@ export default function Dashboard() {
                       exposure="1"
                       style={{ width: "100%", height: "100%", borderRadius: 16, background: "transparent" }}
                     />
+
+                    {/* Decorative concentric circles OVERLAY */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-50">
+                      <div
+                        className="absolute rounded-full"
+                        style={{
+                          width: "420px",
+                          height: "420px",
+                          background: "radial-gradient(circle at center, rgba(124,58,237,0.22), rgba(124,58,237,0) 60%)",
+                          boxShadow: "0 0 80px rgba(124,58,237,0.35)",
+                          opacity: 1,
+                        }}
+                      />
+                      <div
+                        className="absolute rounded-full"
+                        style={{
+                          width: "260px",
+                          height: "260px",
+                          background: "radial-gradient(circle at center, rgba(99,102,241,0.28), rgba(99,102,241,0) 60%)",
+                          boxShadow: "0 0 40px rgba(99,102,241,0.32)",
+                          opacity: 1,
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
 
