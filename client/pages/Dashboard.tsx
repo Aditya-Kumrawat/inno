@@ -175,16 +175,24 @@ export default function Dashboard() {
               <div
                 className="flex flex-col relative mt-5 h-[365px] border-none rounded-2xl"
               >
-                <div className="w-full h-full">
+                <div className="w-full h-full relative">
+                  {/* Decorative concentric circles behind the model */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                    <div className="rounded-full border-2 border-purple-200 w-64 h-64 blur-sm opacity-60" />
+                    <div className="rounded-full border-2 border-purple-100 w-40 h-40 blur-sm opacity-40 absolute" />
+                  </div>
+
                   {/* @ts-ignore - model-viewer web component */}
-                  <model-viewer
-                    src="https://cdn.builder.io/o/assets%2F13b906ad39be4bc99170117fa7908edc%2F17dc1a1ebf484d88b74b53c84ec62453?alt=media&token=765a47e4-6697-4e40-9380-3a940b09ff98&apiKey=13b906ad39be4bc99170117fa7908edc"
-                    alt="Realistic Human Heart"
-                    camera-controls
-                    auto-rotate
-                    exposure="1"
-                    style={{ width: "100%", height: "100%", borderRadius: 16 }}
-                  />
+                  <div className="relative z-10 w-full h-full">
+                    <model-viewer
+                      src="https://cdn.builder.io/o/assets%2F13b906ad39be4bc99170117fa7908edc%2F17dc1a1ebf484d88b74b53c84ec62453?alt=media&token=765a47e4-6697-4e40-9380-3a940b09ff98&apiKey=13b906ad39be4bc99170117fa7908edc"
+                      alt="Realistic Human Heart"
+                      camera-controls
+                      auto-rotate
+                      exposure="1"
+                      style={{ width: "100%", height: "100%", borderRadius: 16 }}
+                    />
+                  </div>
                 </div>
 
               </div>
