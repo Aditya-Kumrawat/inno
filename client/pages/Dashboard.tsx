@@ -306,17 +306,17 @@ export default function Dashboard() {
                         <p className="text-xs text-gray-500 mt-1">No recent alerts</p>
                       </div>
                       <div className="flex flex-col items-end gap-2">
-                        <Button size="sm" className="bg-red-500 text-white rounded-lg px-3 py-2">Emergency SOS</Button>
+                        <Button size="sm" className="bg-red-600 text-white rounded-2xl px-3 py-2">Emergency SOS</Button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 {/* Quick Actions */}
-                <div className="flex items-center gap-3 mt-2">
-                  <Button size="sm" className="bg-red-500 text-white rounded-2xl px-3 py-2">�� Emergency SOS</Button>
-                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺️ Doctor Heatmap</Button>
-                  <Button size="sm" className="bg-green-600 text-white rounded-2xl px-3 py-2">➕ Add New Record</Button>
+                <div className="flex flex-wrap items-center gap-3 mt-2">
+                  <Button size="sm" className="bg-red-600 text-white rounded-2xl px-3 py-2 min-w-[140px]">🚨 Emergency SOS</Button>
+                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2 min-w-[140px]">🗺️ Doctor Heatmap</Button>
+                  <Button size="sm" className="bg-emerald-600 text-white rounded-2xl px-3 py-2 min-w-[140px]">➕ Add New Record</Button>
                 </div>
 
                 {/* Activity Feed */}
@@ -361,7 +361,7 @@ export default function Dashboard() {
                     <h5 className="text-sm font-medium text-gray-800">Doctor Heatmap Preview</h5>
                     <p className="text-xs text-gray-500">Tap to expand</p>
                   </div>
-                  <div className="w-40 h-24 bg-gradient-to-br from-red-50 to-green-50 rounded-lg" />
+                  <div className="w-36 md:w-40 h-24 bg-gradient-to-br from-indigo-50 to-emerald-50 rounded-lg" />
                 </div>
 
               </motion.div>
@@ -860,17 +860,6 @@ export default function Dashboard() {
             </div>
           </div>
 
-          {/* Footer Navigation */}
-          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40">
-            <div className="bg-white/70 backdrop-blur-sm rounded-full shadow-md px-4 py-2 flex items-center gap-3 border border-white/30">
-              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Dashboard</button>
-              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Disease Detection</button>
-              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Vaccination</button>
-              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Exercise</button>
-              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Emergency</button>
-              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">History</button>
-            </div>
-          </div>
 
         </motion.div>
       </motion.div>
