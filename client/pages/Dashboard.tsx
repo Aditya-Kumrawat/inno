@@ -717,7 +717,7 @@ export default function Dashboard() {
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                     <div className="flex-1">
                       <p
-                        className="text-sm font-medium text-gray-800"
+                        className="text-sm md:text-base font-medium text-gray-800"
                         style={{ fontFamily: "Poppins, sans-serif" }}
                       >
                         {activity.action}
