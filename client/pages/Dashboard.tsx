@@ -13,6 +13,14 @@ import {
   Users,
   ShoppingCart,
   DollarSign,
+  Syringe,
+  UploadCloud,
+  FilePlus,
+  Microscope,
+  ShieldCheck,
+  Phone,
+  MapPin,
+  Zap,
 } from "lucide-react";
 import {
   AreaChart,
