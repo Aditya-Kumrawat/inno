@@ -422,11 +422,20 @@ export default function Dashboard() {
                       <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
                         <Button
                           size="sm"
-                          className="text-white rounded-2xl px-3 py-2"
+                          className="text-white rounded-2xl px-3 py-2 flex items-center gap-2"
                           style={{ backgroundColor: '#DC2626' }}
                         >
-                          Emergency SOS
+                          <Zap className="w-4 h-4" /> Emergency SOS
                         </Button>
+
+                        <div className="flex items-center gap-2">
+                          <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#3B82F6' }}>
+                            <Phone className="w-4 h-4 mr-2" /> Connect Ambulance
+                          </Button>
+                          <Button variant="glass" size="sm" className="p-2" aria-label="Find doctor">
+                            <MapPin className="w-4 h-4" />
+                          </Button>
+                        </div>
                       </div>
                     </div>
                   </div>
