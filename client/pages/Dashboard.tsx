@@ -451,19 +451,19 @@ export default function Dashboard() {
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Vaccination over time
                     </h5>
-                    <div className="h-16 bg-gradient-to-r from-indigo-50 to-indigo-100 rounded-md" />
+                    <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(59,130,246,0.06), rgba(59,130,246,0.02))' }} />
                   </div>
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Exercise adherence
                     </h5>
-                    <div className="h-16 bg-gradient-to-r from-green-50 to-green-100 rounded-md" />
+                    <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(34,197,94,0.06), rgba(34,197,94,0.02))' }} />
                   </div>
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-4 shadow-sm border border-white/30">
                     <h5 className="text-sm font-medium text-gray-800 mb-2">
                       Disease risk trend
                     </h5>
-                    <div className="h-16 bg-gradient-to-r from-amber-50 to-amber-100 rounded-md" />
+                    <div className="h-16 rounded-md" style={{ background: 'linear-gradient(90deg, rgba(249,115,22,0.06), rgba(249,115,22,0.02))' }} />
                   </div>
                 </div>
 
