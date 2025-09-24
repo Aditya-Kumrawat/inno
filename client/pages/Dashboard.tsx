@@ -760,18 +760,18 @@ export default function Dashboard() {
               >
                 {/* Total Global Reach */}
                 <motion.div
-                  className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-4 border border-purple-200/50"
+                  className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-4 border border-blue-200/50"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <h4 className="text-lg font-bold text-purple-800 mb-2">
+                  <h4 className="text-lg font-bold text-[#111827] mb-2">
                     Global Reach
                   </h4>
-                  <p className="text-2xl font-bold text-purple-900">
+                  <p className="text-2xl font-bold text-[#111827]">
                     {mapData
                       .reduce((sum, region) => sum + region.customers, 0)
                       .toLocaleString()}
                   </p>
-                  <p className="text-sm text-purple-600">
+                  <p className="text-sm text-gray-600">
                     Total Customers Worldwide
                   </p>
                 </motion.div>
