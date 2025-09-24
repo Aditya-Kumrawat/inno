@@ -58,7 +58,7 @@ export const FloatingTopBar = ({
             <Button
               variant="ghost"
               size="sm"
-              className="relative p-2 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-shadow"
+              className="relative p-2 bg-white/10 border border-white/20 rounded-2xl hover:shadow-md transition-shadow"
             >
               <Bell size={18} />
               <span className="absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full"></span>
