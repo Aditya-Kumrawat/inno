@@ -314,7 +314,7 @@ export default function Dashboard() {
 
                 {/* Quick Actions */}
                 <div className="flex items-center gap-3 mt-2">
-                  <Button size="sm" className="bg-red-500 text-white rounded-2xl px-3 py-2">🚨 Emergency SOS</Button>
+                  <Button size="sm" className="bg-red-500 text-white rounded-2xl px-3 py-2">�� Emergency SOS</Button>
                   <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺️ Doctor Heatmap</Button>
                   <Button size="sm" className="bg-green-600 text-white rounded-2xl px-3 py-2">➕ Add New Record</Button>
                 </div>
@@ -859,6 +859,19 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+
+          {/* Footer Navigation */}
+          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-40">
+            <div className="bg-white/70 backdrop-blur-sm rounded-full shadow-md px-4 py-2 flex items-center gap-3 border border-white/30">
+              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Dashboard</button>
+              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Disease Detection</button>
+              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Vaccination</button>
+              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Exercise</button>
+              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">Emergency</button>
+              <button className="text-sm px-3 py-2 rounded-full hover:bg-gray-100">History</button>
+            </div>
+          </div>
+
         </motion.div>
       </motion.div>
     </div>
