@@ -350,11 +350,21 @@ export default function Dashboard() {
                       <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
                         <Button
                           size="sm"
-                          className="text-white rounded-lg px-3 py-2"
+                          className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
                           style={{ backgroundColor: '#14B8A6' }}
                         >
-                          Start New Scan
+                          <Microscope className="w-4 h-4" /> Start New Scan
                         </Button>
+
+                        <div className="flex items-center gap-2">
+                          <Button variant="glass" size="sm" className="p-2" aria-label="Scan history">
+                            <FilePlus className="w-4 h-4" />
+                          </Button>
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
+                            <span>Clear</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
