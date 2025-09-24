@@ -475,7 +475,7 @@ export default function Dashboard() {
                     </h5>
                     <p className="text-xs text-gray-500">Tap to expand</p>
                   </div>
-                  <div className="w-36 md:w-40 h-24 bg-gradient-to-br from-indigo-50 to-emerald-50 rounded-lg" />
+                  <div className="w-36 md:w-40 h-24 rounded-lg" style={{ background: 'linear-gradient(90deg, rgba(59,130,246,0.06), rgba(20,184,166,0.06))' }} />
                 </div>
               </motion.div>
             </div>
