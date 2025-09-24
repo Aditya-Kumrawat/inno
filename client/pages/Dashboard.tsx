@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { FloatingSidebar } from "@/components/FloatingSidebar";
 import { FloatingTopBar } from "@/components/FloatingTopBar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useSidebar } from "@/contexts/SidebarContext";
 import {
   Search,
@@ -314,7 +315,7 @@ export default function Dashboard() {
                 {/* Quick Actions */}
                 <div className="flex items-center gap-3 mt-2">
                   <Button size="sm" className="bg-red-500 text-white rounded-2xl px-3 py-2">🚨 Emergency SOS</Button>
-                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺�� Doctor Heatmap</Button>
+                  <Button size="sm" className="bg-indigo-600 text-white rounded-2xl px-3 py-2">🗺️ Doctor Heatmap</Button>
                   <Button size="sm" className="bg-green-600 text-white rounded-2xl px-3 py-2">➕ Add New Record</Button>
                 </div>
 
