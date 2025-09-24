@@ -43,6 +43,26 @@
 
     --radius: 1rem;
 
+    /* Brand palette (Bento UI inspired) */
+    --primary: 216.9 92.8% 60.6%; /* #3B82F6 Soft Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --teal: 174 78% 40%; /* #14B8A6 Teal */
+    --teal-foreground: 0 0% 100%;
+
+    --success: 140 60% 45%; /* #22C55E Vibrant Green */
+    --success-foreground: 0 0% 100%;
+
+    --warm: 23 95% 53%; /* #F97316 Warm Orange */
+    --warm-foreground: 0 0% 100%;
+
+    --danger: 0 65% 51%; /* #DC2626 Red */
+    --danger-foreground: 0 0% 100%;
+
+    --off-white: 210 20% 98%; /* #F9FAFB */
+    --cool-gray: 217.6 6% 45.9%; /* #6B7280 */
+    --charcoal: 222.2 0% 6.5%; /* #111827 */
+
     /* Custom colors for the creative design */
     --purple-start: 280 100% 30%;
     --purple-end: 320 100% 20%;
