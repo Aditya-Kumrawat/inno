@@ -40,7 +40,7 @@ export const FloatingTopBar = ({
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-11 pr-4 py-2 bg-white rounded-2xl border border-gray-100 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-300 text-sm w-36 sm:w-48 transition-shadow"
+                className="pl-11 pr-4 py-2 bg-white/20 backdrop-blur-sm rounded-2xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-[rgba(59,130,246,0.18)] text-sm w-32 sm:w-44 transition-shadow"
               />
             </div>
           </div>
