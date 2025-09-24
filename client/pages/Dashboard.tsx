@@ -278,8 +278,8 @@ export default function Dashboard() {
 
                         <div>
                           <h3
-                            className="text-sm font-medium text-gray-600 mb-1"
-                            style={{ fontFamily: "Poppins, sans-serif" }}
+                            className="text-sm md:text-base font-medium text-gray-500 mb-1 tracking-wide"
+                            style={{ fontFamily: "Poppins, sans-serif", letterSpacing: '0.2px' }}
                           >
                             {stat.title}
                           </h3>
