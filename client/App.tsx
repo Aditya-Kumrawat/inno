@@ -18,6 +18,22 @@ import VaccinationTracker from "./pages/VaccinationTracker";
 import ExerciseGuidance from "./pages/ExerciseGuidance";
 import NotFound from "./pages/NotFound";
 
+// Suppress known Recharts defaultProps warning in development
+if (typeof console !== 'undefined' && import.meta.env && import.meta.env.DEV) {
+  const originalConsoleError = console.error.bind(console);
+  console.error = (...args: any[]) => {
+    try {
+      const msg = args[0];
+      if (typeof msg === 'string' && msg.includes('Support for defaultProps will be removed from function components')) {
+        return;
+      }
+    } catch (e) {
+      // fallthrough to original
+    }
+    originalConsoleError(...args);
+  };
+}
+
 const queryClient = new QueryClient();
 
 const App = () => (
