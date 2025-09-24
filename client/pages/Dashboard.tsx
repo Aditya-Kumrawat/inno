@@ -403,24 +403,9 @@ export default function Dashboard() {
 
                 {/* Quick Actions */}
                 <div className="flex flex-wrap items-center gap-3 mt-2">
-                  <Button
-                    size="sm"
-                    className="bg-red-600 text-white rounded-2xl px-3 py-2 min-w-[140px]"
-                  >
-                    🚨 Emergency SOS
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="bg-indigo-600 text-white rounded-2xl px-3 py-2 min-w-[140px]"
-                  >
-                    🗺️ Doctor Heatmap
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="bg-emerald-600 text-white rounded-2xl px-3 py-2 min-w-[140px]"
-                  >
-                    ➕ Add New Record
-                  </Button>
+                  <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#DC2626' }}>🚨 Emergency SOS</Button>
+                  <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#3B82F6' }}>🗺️ Doctor Heatmap</Button>
+                  <Button size="sm" className="text-white rounded-2xl px-3 py-2" style={{ backgroundColor: '#22C55E' }}>➕ Add New Record</Button>
                 </div>
 
                 {/* Activity Feed */}
