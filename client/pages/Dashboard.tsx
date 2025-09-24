@@ -301,7 +301,7 @@ export default function Dashboard() {
                           Next due: Tdap — 2025-03-10
                         </p>
                       </div>
-                      <div className="flex flex-row md:flex-col items-center md:items-end gap-3">
+                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-3">
                         <div className="flex items-center gap-2">
                           <Button
                             size="sm"
