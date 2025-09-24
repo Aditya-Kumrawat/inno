@@ -275,7 +275,7 @@ export default function Dashboard() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Vaccination Status */}
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
-                    <div className="flex items-start justify-between">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
                           className="text-sm md:text-base font-semibold text-gray-800"
@@ -293,14 +293,16 @@ export default function Dashboard() {
                           Next due: Tdap — 2025-03-10
                         </p>
                       </div>
-                      <div className="flex flex-col items-end gap-2">
+                      <div className="flex flex-row md:flex-col items-center md:items-end gap-3">
                         <Button
                           size="sm"
-                          className="bg-indigo-600 text-white rounded-lg px-3 py-2"
+                          className="text-white rounded-lg px-3 py-2"
+                          style={{ backgroundColor: '#3B82F6' }}
                         >
                           Add / Import
                         </Button>
-                        <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-white font-semibold">
+                        <div className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
+                          style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)' }}>
                           78%
                         </div>
                       </div>
