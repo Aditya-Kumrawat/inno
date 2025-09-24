@@ -302,16 +302,29 @@ export default function Dashboard() {
                         </p>
                       </div>
                       <div className="flex flex-row md:flex-col items-center md:items-end gap-3">
-                        <Button
-                          size="sm"
-                          className="text-white rounded-lg px-3 py-2"
-                          style={{ backgroundColor: '#3B82F6' }}
-                        >
-                          Add / Import
-                        </Button>
-                        <div className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
-                          style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)' }}>
-                          78%
+                        <div className="flex items-center gap-2">
+                          <Button
+                            size="sm"
+                            className="text-white rounded-lg px-3 py-2"
+                            style={{ backgroundColor: '#3B82F6' }}
+                          >
+                            <FilePlus className="w-4 h-4 mr-2" /> Add / Import
+                          </Button>
+
+                          <Button variant="glass" size="sm" className="p-2" aria-label="Upload certificate">
+                            <UploadCloud className="w-4 h-4" />
+                          </Button>
+                        </div>
+
+                        <div className="flex flex-col items-center gap-2">
+                          <div className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
+                            style={{ background: 'linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)' }}>
+                            78%
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <ShieldCheck className="w-4 h-4 text-[#14B8A6]" />
+                            <span>Up to date</span>
+                          </div>
                         </div>
                       </div>
                     </div>
