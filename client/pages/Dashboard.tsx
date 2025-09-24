@@ -903,7 +903,7 @@ export default function Dashboard() {
                     key={index}
                     className="flex items-center gap-3 p-3 rounded-2xl hover:bg-white/40 transition-colors"
                   >
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#3B82F6' }}></div>
                     <div className="flex-1">
                       <p
                         className="text-sm md:text-base font-medium text-gray-800"
