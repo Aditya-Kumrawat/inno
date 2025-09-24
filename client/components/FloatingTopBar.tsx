@@ -27,7 +27,7 @@ export const FloatingTopBar = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-lg border border-white/30 px-6 py-3">
+      <div className="bg-white/80 backdrop-blur-lg rounded-3xl shadow-lg border border-white/30 px-6 py-3" style={{ width: '50vw', maxWidth: '820px' }}>
         <div className="flex items-center justify-between">
           {/* Left section - Search */}
           <div className="flex items-center gap-4 flex-1">
@@ -36,7 +36,7 @@ export const FloatingTopBar = ({
               <input
                 type="text"
                 placeholder="Search..."
-                className="pl-10 pr-4 py-2 bg-gray-100/50 rounded-2xl border-0 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-sm w-48 sm:w-64"
+                className="pl-10 pr-4 py-2 bg-gray-100/50 rounded-2xl border-0 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-sm w-36 sm:w-48"
               />
             </div>
           </div>
