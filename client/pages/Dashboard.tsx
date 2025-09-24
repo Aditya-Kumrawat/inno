@@ -23,7 +23,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-
 export default function Dashboard() {
   const { isCollapsed, setIsCollapsed } = useSidebar();
 
@@ -175,7 +174,8 @@ export default function Dashboard() {
               <div
                 className="flex flex-col relative mt-5 h-[365px] border-none rounded-2xl"
                 style={{
-                  background: "radial-gradient(circle at center, rgba(124,58,237,0.12) 0%, rgba(124,58,237,0) 40%), radial-gradient(circle at center, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0) 30%)",
+                  background:
+                    "radial-gradient(circle at center, rgba(124,58,237,0.12) 0%, rgba(124,58,237,0) 40%), radial-gradient(circle at center, rgba(99,102,241,0.08) 0%, rgba(99,102,241,0) 30%)",
                   backgroundPosition: "center",
                   backgroundRepeat: "no-repeat",
                 }}
@@ -188,7 +188,8 @@ export default function Dashboard() {
                       style={{
                         width: "420px",
                         height: "420px",
-                        background: "radial-gradient(circle at center, rgba(124,58,237,0.22), rgba(124,58,237,0) 60%)",
+                        background:
+                          "radial-gradient(circle at center, rgba(124,58,237,0.22), rgba(124,58,237,0) 60%)",
                         boxShadow: "0 0 80px rgba(124,58,237,0.35)",
                         opacity: 1,
                       }}
@@ -198,7 +199,8 @@ export default function Dashboard() {
                       style={{
                         width: "260px",
                         height: "260px",
-                        background: "radial-gradient(circle at center, rgba(99,102,241,0.28), rgba(99,102,241,0) 60%)",
+                        background:
+                          "radial-gradient(circle at center, rgba(99,102,241,0.28), rgba(99,102,241,0) 60%)",
                         boxShadow: "0 0 40px rgba(99,102,241,0.32)",
                         opacity: 1,
                       }}
@@ -213,11 +215,15 @@ export default function Dashboard() {
                       camera-controls
                       auto-rotate
                       exposure="1"
-                      style={{ width: "100%", height: "100%", borderRadius: 16, background: "transparent" }}
+                      style={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: 16,
+                        background: "transparent",
+                      }}
                     />
                   </div>
                 </div>
-
               </div>
             </div>
 
