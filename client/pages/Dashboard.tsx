@@ -155,8 +155,9 @@ export default function Dashboard() {
         >
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 dashboard-title">
-                Dashboard Overview
+              <h1 className="text-3xl font-bold text-gray-900 dashboard-title" style={{ fontFamily: "Poppins, sans-serif", lineHeight: 1.05 }}>
+                <span className="block">Dashboard</span>
+                <span className="block">Overview</span>
               </h1>
               <p className="text-gray-600 mt-1 dashboard-text">
                 Welcome back! Here's what's happening with your business today.
