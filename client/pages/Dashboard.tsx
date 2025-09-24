@@ -311,7 +311,7 @@ export default function Dashboard() {
 
                   {/* Disease Detection */}
                   <div className="bg-white/60 backdrop-blur-lg rounded-2xl p-5 shadow-sm border border-white/30">
-                    <div className="flex items-start justify-between">
+                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                       <div>
                         <h4
                           className="text-sm md:text-base font-semibold text-gray-800"
@@ -326,10 +326,11 @@ export default function Dashboard() {
                           Last scanned: 3 days ago
                         </p>
                       </div>
-                      <div className="flex flex-col items-end gap-2">
+                      <div className="flex flex-row md:flex-col items-center md:items-end gap-2">
                         <Button
                           size="sm"
-                          className="bg-amber-500 text-white rounded-lg px-3 py-2"
+                          className="text-white rounded-lg px-3 py-2"
+                          style={{ backgroundColor: '#14B8A6' }}
                         >
                           Start New Scan
                         </Button>
