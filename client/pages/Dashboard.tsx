@@ -320,7 +320,7 @@ export default function Dashboard() {
                       <div className="mt-4 flex flex-wrap items-center gap-3">
                         <Button
                           size="sm"
-                          className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
+                          className="text-white rounded-md flex items-center gap-2"
                           style={{ backgroundColor: "#3B82F6" }}
                         >
                           <FilePlus className="w-4 h-4" /> Add / Import
@@ -374,7 +374,7 @@ export default function Dashboard() {
                       <div className="mt-4 flex flex-wrap items-center gap-3">
                         <Button
                           size="sm"
-                          className="text-white rounded-lg px-3 py-2 flex items-center gap-2"
+                          className="text-white rounded-md flex items-center gap-2"
                           style={{ backgroundColor: "#14B8A6" }}
                         >
                           <Microscope className="w-4 h-4" /> Start New Scan
@@ -399,8 +399,8 @@ export default function Dashboard() {
                   </div>
 
                   {/* Exercise */}
-                  <div className="glass-card p-5">
-                    <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                  <div className="glass-card p-5 flex flex-col">
+                    <div className="flex flex-col h-full justify-between">
                       <div>
                         <h4
                           className="text-sm md:text-base font-semibold text-gray-800"
@@ -415,14 +415,17 @@ export default function Dashboard() {
                           Next: Yoga — Tomorrow 7:00 AM
                         </p>
                       </div>
-                      <div className="flex flex-wrap flex-row md:flex-col items-center md:items-end gap-2">
-                        <Avatar className="w-12 h-12">
-                          <AvatarImage src="https://github.com/shadcn.png" />
-                          <AvatarFallback>AD</AvatarFallback>
-                        </Avatar>
+
+                      <div className="mt-4 flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <Avatar className="w-10 h-10">
+                            <AvatarImage src="https://github.com/shadcn.png" />
+                            <AvatarFallback>AD</AvatarFallback>
+                          </Avatar>
+                        </div>
                         <Button
                           size="sm"
-                          className="text-white rounded-lg px-3 py-2"
+                          className="text-white rounded-md"
                           style={{ backgroundColor: "#22C55E" }}
                         >
                           Start Workout
@@ -463,7 +466,7 @@ export default function Dashboard() {
                       <div className="mt-4 flex flex-wrap items-center gap-3">
                         <Button
                           size="sm"
-                          className="text-white rounded-2xl px-3 py-2 flex items-center gap-2"
+                          className="text-white rounded-2xl flex items-center gap-2"
                           style={{ backgroundColor: "#DC2626" }}
                         >
                           <Zap className="w-4 h-4" /> Emergency SOS
@@ -471,7 +474,7 @@ export default function Dashboard() {
 
                         <Button
                           size="sm"
-                          className="text-white rounded-2xl px-3 py-2 flex items-center gap-2"
+                          className="text-white rounded-2xl flex items-center gap-2"
                           style={{ backgroundColor: "#3B82F6" }}
                         >
                           <Phone className="w-4 h-4 mr-2" /> Connect Ambulance
