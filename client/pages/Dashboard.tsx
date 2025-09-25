@@ -503,21 +503,21 @@ export default function Dashboard() {
                 <div className="flex flex-wrap items-center gap-3 mt-2">
                   <Button
                     size="sm"
-                    className="text-white rounded-2xl px-3 py-2"
+                    className="text-white rounded-2xl"
                     style={{ backgroundColor: "#DC2626" }}
                   >
                     🚨 Emergency SOS
                   </Button>
                   <Button
                     size="sm"
-                    className="text-white rounded-2xl px-3 py-2"
+                    className="text-white rounded-2xl"
                     style={{ backgroundColor: "#3B82F6" }}
                   >
                     🗺️ Doctor Heatmap
                   </Button>
                   <Button
                     size="sm"
-                    className="text-white rounded-2xl px-3 py-2"
+                    className="text-white rounded-2xl"
                     style={{ backgroundColor: "#22C55E" }}
                   >
                     ➕ Add New Record
