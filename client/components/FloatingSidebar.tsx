@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -56,6 +57,12 @@ export const FloatingSidebar = ({
       label: "Computer Vision",
       icon: Camera,
       href: "/dashboard/computer-vision",
+    },
+    {
+      id: "exercise",
+      label: "Exercise",
+      icon: Cpu,
+      href: "/dashboard/exercise-guidance",
     },
     {
       id: "disease-detection",
