@@ -17,6 +17,7 @@ import DiseaseDetection from "./pages/DiseaseDetection";
 import VaccinationTracker from "./pages/VaccinationTracker";
 import ExerciseGuidance from "./pages/ExerciseGuidance";
 import NotFound from "./pages/NotFound";
+import { PageTransition } from "@/components/PageTransition";
 
 // Suppress known Recharts defaultProps warning in development
 if (typeof console !== 'undefined' && import.meta.env && import.meta.env.DEV) {
