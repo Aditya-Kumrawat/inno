@@ -182,7 +182,7 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <Card className="bg-white/90 backdrop-blur border-white/40 mb-0 w-full md:w-auto">
+              <Card className="glass-card-lg mb-0 w-full md:w-[760px]">
                 <CardContent className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
                   <div>
                     <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-green-50 text-green-700 text-xs font-semibold">
