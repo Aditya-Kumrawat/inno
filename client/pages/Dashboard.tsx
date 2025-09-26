@@ -206,7 +206,16 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <motion.div
-                    className="w-full md:w-72 h-40 bg-gradient-to-br from-green-100 to-teal-100 rounded-2xl border"
+                    className="rounded-2xl"
+                    style={{
+                      backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F13b906ad39be4bc99170117fa7908edc%2Fd488e401843a4fa7a8461588d40267c1)",
+                      width: 318,
+                      height: 160,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      border: "0.833333px none rgb(226, 232, 240)",
+                    }}
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                   />
@@ -215,10 +224,6 @@ export default function Dashboard() {
 
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <Avatar className="w-10 h-10">
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>AD</AvatarFallback>
-                  </Avatar>
                   {/* status indicator */}
                   <span
                     className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full ring-2 ring-white bg-green-500"
