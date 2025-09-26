@@ -151,7 +151,7 @@ export const FloatingSidebar = ({
         </motion.button>
 
         {/* Navigation Menu */}
-        <div className="flex-1 p-3 space-y-1 relative">
+        <div className={`flex-1 p-3 space-y-1 relative flex flex-col ${isCollapsed ? 'justify-center items-center' : 'justify-start items-stretch'}`}>
           {menuItems.map((item, index) => (
             <motion.button
               key={item.id}
