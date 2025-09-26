@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { FloatingSidebar } from "@/components/FloatingSidebar";
 import { FloatingTopBar } from "@/components/FloatingTopBar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent } from "@/components/ui/card";
 import { useSidebar } from "@/contexts/SidebarContext";
 import {
   Search,
@@ -21,6 +23,7 @@ import {
   Phone,
   MapPin,
   Zap,
+  Sparkles,
 } from "lucide-react";
 import {
   AreaChart,
@@ -34,6 +37,7 @@ import {
 
 export default function Dashboard() {
   const { isCollapsed, setIsCollapsed } = useSidebar();
+  const [assessmentOpen, setAssessmentOpen] = useState(false);
 
   const dashboardStats = [
     {
@@ -179,14 +183,36 @@ export default function Dashboard() {
               </p>
             </div>
             <div className="flex items-center gap-4">
-              <div className="text-right">
-                <div className="text-sm font-medium text-gray-800">
-                  Good morning, Aditya!
-                </div>
-                <div className="text-xs text-gray-500">
-                  Here's your health snapshot
-                </div>
-              </div>
+              <Card className="bg-white/90 backdrop-blur border-white/40 mb-0 w-full md:w-auto">
+                <CardContent className="p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-purple-50 text-purple-700 text-xs font-semibold">
+                      <Sparkles className="w-3.5 h-3.5" /> Recommended
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-bold mt-2 dashboard-title">
+                      Take your Career Assessment
+                    </h2>
+                    <p className="text-muted-foreground mt-1 max-w-xl dashboard-text">
+                      Discover your strengths and get a personalized roadmap with next
+                      steps, skills, and resources.
+                    </p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <Button
+                        className="bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                        onClick={() => setAssessmentOpen(true)}
+                      >
+                        Start Assessment
+                      </Button>
+                      <Button variant="outline">View Sample Report</Button>
+                    </div>
+                  </div>
+                  <motion.div
+                    className="w-full md:w-72 h-40 bg-gradient-to-br from-purple-100 to-pink-100 rounded-2xl border"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                  />
+                </CardContent>
+              </Card>
 
               <div className="flex items-center gap-3">
                 <div className="relative">
