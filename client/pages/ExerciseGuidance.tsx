@@ -188,7 +188,15 @@ export default function ExerciseGuidance() {
               <div className="font-semibold">Squats</div>
               <div className="text-sm text-gray-500">Target: 3 sets × 12 reps</div>
             </div>
-            <div className="rounded-md overflow-hidden bg-gray-50 h-40 mb-3 flex items-center justify-center">GIF / Demo placeholder</div>
+            <div className="rounded-md overflow-hidden bg-gray-50 h-40 mb-3">
+              <iframe
+                title="Squat Animation Demo"
+                src="https://sketchfab.com/models/3e07457bf9df4034bad23ec98b4dfca8/embed?autostart=1&camera=0&transparent=1"
+                frameBorder={0}
+                allow="autoplay; fullscreen; xr-spatial-tracking"
+                className="w-full h-full"
+              />
+            </div>
             <div className="text-sm text-gray-700 mb-2">Tips:</div>
             <ul className="list-disc list-inside text-sm text-gray-700 mb-3">
               <li>Engage your core.</li>
