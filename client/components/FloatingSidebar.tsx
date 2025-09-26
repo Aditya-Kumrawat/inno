@@ -169,14 +169,12 @@ export const FloatingSidebar = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <item.icon
-                size={isCollapsed ? 20 : 18}
-                className={`transition-all duration-200 ${
-                  isActive(item.href)
-                    ? "text-white"
-                    : "text-gray-600 group-hover:text-gray-800"
-                }`}
-              />
+              <div className={`flex items-center justify-center rounded-full ${isCollapsed ? 'w-9 h-9' : 'w-10 h-10'} border transition-all duration-200 ${isActive(item.href) ? 'border-white/40' : 'border-white/20 group-hover:border-white/30'}`}>
+                <item.icon
+                  size={isCollapsed ? 18 : 18}
+                  className={`transition-all duration-200 ${isActive(item.href) ? 'text-white' : 'text-gray-600 group-hover:text-gray-800'}`}
+                />
+              </div>
               <AnimatePresence>
                 {!isCollapsed && (
                   <motion.span
