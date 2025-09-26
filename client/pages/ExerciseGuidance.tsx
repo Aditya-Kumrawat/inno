@@ -105,11 +105,39 @@ export default function ExerciseGuidance() {
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Horizontal sub-navigation for Exercise */}
+          <div className="lg:col-span-12 w-full">
+            <div className="flex gap-2 overflow-x-auto mb-3">
+              <button className="px-3 py-1 rounded-full bg-white/80 border text-sm">Overview</button>
+              <button className="px-3 py-1 rounded-full bg-white/80 border text-sm">Live</button>
+              <button className="px-3 py-1 rounded-full bg-white/80 border text-sm">Tutorials</button>
+              <button className="px-3 py-1 rounded-full bg-white/80 border text-sm">History</button>
+              <button className="px-3 py-1 rounded-full bg-white/80 border text-sm">Settings</button>
+            </div>
+          </div>
+
           {/* Tile 1 - Live Camera Feed / Hero */}
           <section className="lg:col-span-7 bg-white rounded-2xl p-4 shadow hover:shadow-lg transition-shadow">
             <div className="flex items-center justify-between mb-3">
               <h3 className="text-lg font-semibold">Live Camera Feed</h3>
               <div className="text-sm text-gray-500">Posture overlay + guidance</div>
+            </div>
+
+            {/* Sketchfab embed placed above the live camera */}
+            <div className="sketchfab-embed-wrapper mb-3 w-full rounded-lg overflow-hidden border">
+              <iframe
+                title="Squat Animation Anatomy Male Muscle RIGED"
+                frameBorder={0}
+                allowFullScreen
+                mozAllowFullScreen={"true"}
+                webkitAllowFullScreen={"true"}
+                allow="autoplay; fullscreen; xr-spatial-tracking"
+                src="https://sketchfab.com/models/3e07457bf9df4034bad23ec98b4dfca8/embed?autostart=1&amp;camera=0&amp;transparent=1"
+                className="w-full h-56"
+              />
+              <p className="text-xs text-gray-500 p-2">
+                <a href="https://sketchfab.com/3d-models/squat-animation-anatomy-male-muscle-riged-3e07457bf9df4034bad23ec98b4dfca8?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=3e07457bf9df4034bad23ec98b4dfca8" target="_blank" rel="nofollow" className="font-semibold text-[#1CAAD9]">Squat Animation Anatomy Male Muscle RIGED</a> by <a href="https://sketchfab.com/flarar?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=3e07457bf9df4034bad23ec98b4dfca8" target="_blank" rel="nofollow" className="font-semibold text-[#1CAAD9]">flarar-01</a> on <a href="https://sketchfab.com?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=3e07457bf9df4034bad23ec98b4dfca8" target="_blank" rel="nofollow" className="font-semibold text-[#1CAAD9]">Sketchfab</a>
+              </p>
             </div>
 
             <div className="relative rounded-xl overflow-hidden bg-black/5 border border-gray-200 h-[420px] flex items-center justify-center">
