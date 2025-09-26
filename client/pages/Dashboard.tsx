@@ -206,11 +206,9 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <motion.div
-                    className="rounded-2xl"
+                    className="w-full md:w-[318px] h-40 rounded-2xl"
                     style={{
                       backgroundImage: "url(https://cdn.builder.io/api/v1/image/assets%2F13b906ad39be4bc99170117fa7908edc%2Fd488e401843a4fa7a8461588d40267c1)",
-                      width: 318,
-                      height: 160,
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
                       backgroundSize: "cover",
