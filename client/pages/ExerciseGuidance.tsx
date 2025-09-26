@@ -123,22 +123,6 @@ export default function ExerciseGuidance() {
               <div className="text-sm text-gray-500">Posture overlay + guidance</div>
             </div>
 
-            {/* Sketchfab embed placed above the live camera */}
-            <div className="sketchfab-embed-wrapper mb-3 w-full rounded-lg overflow-hidden border">
-              <iframe
-                title="Squat Animation Anatomy Male Muscle RIGED"
-                frameBorder={0}
-                allowFullScreen
-                mozAllowFullScreen={"true"}
-                webkitAllowFullScreen={"true"}
-                allow="autoplay; fullscreen; xr-spatial-tracking"
-                src="https://sketchfab.com/models/3e07457bf9df4034bad23ec98b4dfca8/embed?autostart=1&amp;camera=0&amp;transparent=1"
-                className="w-full h-56"
-              />
-              <p className="text-xs text-gray-500 p-2">
-                <a href="https://sketchfab.com/3d-models/squat-animation-anatomy-male-muscle-riged-3e07457bf9df4034bad23ec98b4dfca8?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=3e07457bf9df4034bad23ec98b4dfca8" target="_blank" rel="nofollow" className="font-semibold text-[#1CAAD9]">Squat Animation Anatomy Male Muscle RIGED</a> by <a href="https://sketchfab.com/flarar?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=3e07457bf9df4034bad23ec98b4dfca8" target="_blank" rel="nofollow" className="font-semibold text-[#1CAAD9]">flarar-01</a> on <a href="https://sketchfab.com?utm_medium=embed&amp;utm_campaign=share-popup&amp;utm_content=3e07457bf9df4034bad23ec98b4dfca8" target="_blank" rel="nofollow" className="font-semibold text-[#1CAAD9]">Sketchfab</a>
-              </p>
-            </div>
 
             <div className="relative rounded-xl overflow-hidden bg-black/5 border border-gray-200 h-[420px] flex items-center justify-center">
               {/* Webcam placeholder */}
@@ -178,8 +162,8 @@ export default function ExerciseGuidance() {
             </div>
           </section>
 
-          {/* Tile 2 - Instructions / Form Card */}
-          <section className="lg:col-span-3 bg-white rounded-2xl p-4 shadow">
+          {/* Tile 2 - Instructions / Form Card (expanded) */}
+          <section className="lg:col-span-5 bg-white rounded-2xl p-6 shadow">
             <div className="flex items-center justify-between mb-3">
               <h4 className="font-semibold">Exercise Instructions</h4>
               <div className="text-xs text-gray-500">Demo</div>
@@ -188,7 +172,7 @@ export default function ExerciseGuidance() {
               <div className="font-semibold">Squats</div>
               <div className="text-sm text-gray-500">Target: 3 sets × 12 reps</div>
             </div>
-            <div className="rounded-md overflow-hidden bg-gray-50 h-40 mb-3">
+            <div className="rounded-md overflow-hidden bg-gray-50 h-56 mb-4">
               <iframe
                 title="Squat Animation Demo"
                 src="https://sketchfab.com/models/3e07457bf9df4034bad23ec98b4dfca8/embed?autostart=1&camera=0&transparent=1"
@@ -203,21 +187,27 @@ export default function ExerciseGuidance() {
               <li>Keep back straight.</li>
               <li>Drive through heels.</li>
             </ul>
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-4">
               <Button onClick={() => alert("Start guided demo (placeholder)")}>Start Demo</Button>
               <Button onClick={() => alert("Expand instructions (placeholder)")}>More</Button>
             </div>
-          </section>
 
-          {/* Tile 3 - Live Metrics / Reps Tracker */}
-          <section className="lg:col-span-2 bg-white rounded-2xl p-4 shadow">
-            <h4 className="font-semibold mb-3">Live Metrics</h4>
-            <div className="text-sm text-gray-500 mb-2">Reps Completed</div>
-            <div className="text-3xl font-bold mb-3">{reps}</div>
-            <div className="text-sm text-gray-500 mb-2">Estimated Calories</div>
-            <div className="text-lg font-semibold mb-3">{Math.round((reps * 0.5 + duration / 60) * 5)} kcal</div>
-            <div className="text-sm text-gray-500 mb-2">Posture State</div>
-            <div className={`px-3 py-2 rounded-md border ${postureColor}`}>{postureLabel}</div>
+            {/* Live Metrics moved under instructions */}
+            <div className="bg-white/50 rounded-lg p-4 border">
+              <h5 className="font-semibold mb-2">Live Metrics</h5>
+              <div className="grid grid-cols-2 gap-3 mb-3">
+                <div className="p-3 bg-white/50 rounded-lg">
+                  <div className="text-xs text-gray-500">Reps Completed</div>
+                  <div className="font-semibold text-lg">{reps}</div>
+                </div>
+                <div className="p-3 bg-white/50 rounded-lg">
+                  <div className="text-xs text-gray-500">Estimated Calories</div>
+                  <div className="font-semibold text-lg">{Math.round((reps * 0.5 + duration / 60) * 5)} kcal</div>
+                </div>
+              </div>
+              <div className="text-sm text-gray-500 mb-2">Posture State</div>
+              <div className={`px-3 py-2 rounded-md border ${postureColor}`}>{postureLabel}</div>
+            </div>
           </section>
 
           {/* Tile 4 - Avatar / Motivation */}
