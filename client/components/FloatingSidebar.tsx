@@ -169,7 +169,7 @@ export const FloatingSidebar = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className={`flex items-center justify-center rounded-full ${isCollapsed ? 'w-9 h-9' : 'w-10 h-10'} transition-all duration-200 ${isActive(item.href) ? 'bg-gradient-to-r from-[#3B82F6] to-[#2563EB] border-transparent' : 'bg-[#eeeff4] border border-white/20 group-hover:border-white/30'}`}>
+              <div className={`flex items-center justify-center rounded-full overflow-hidden flex-shrink-0 ${isCollapsed ? 'w-9 h-9' : 'w-10 h-10'} transition-all duration-200 ${isActive(item.href) ? 'bg-gradient-to-r from-[#3B82F6] to-[#2563EB] border-transparent' : 'bg-[#eeeff4] border border-white/20 group-hover:border-white/30'}`}>
                 <item.icon
                   size={isCollapsed ? 18 : 18}
                   className={`transition-all duration-200 ${isActive(item.href) ? 'text-white' : 'text-gray-600 group-hover:text-gray-800'}`}
