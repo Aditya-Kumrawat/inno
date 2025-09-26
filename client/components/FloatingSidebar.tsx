@@ -104,21 +104,7 @@ export const FloatingSidebar = ({
       transition={{ duration: 0.45, ease: [0.2, 0.9, 0.2, 1] }}
     >
       {/* Smooth Off-White Glass Sidebar */}
-      <div
-        className="h-full overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(249,250,251,0.9) 0%, rgba(249,250,251,0.9) 50%, rgba(246,247,250,0.95) 100%)",
-          backdropFilter: "blur(10px) saturate(120%)",
-          WebkitBackdropFilter: "blur(10px) saturate(120%)",
-          borderRadius: "1.5rem",
-          border: "1.5px solid rgba(255,255,255,0.7)",
-          boxShadow:
-            "0 8px 20px rgba(17,24,39,0.06), 0 -4px 12px rgba(17,24,39,0.03), 4px 0 10px rgba(17,24,39,0.02), -4px 0 10px rgba(17,24,39,0.02)",
-          transition:
-            "background 350ms cubic-bezier(.2,.9,.2,1), box-shadow 350ms cubic-bezier(.2,.9,.2,1), backdrop-filter 350ms cubic-bezier(.2,.9,.2,1), border-radius 350ms cubic-bezier(.2,.9,.2,1)",
-        }}
-      >
+      <div className="h-full sidebar-glass">
         {/* Logo Section */}
         <motion.div
           className="p-4 border-b border-white/30 transition-colors duration-300"
