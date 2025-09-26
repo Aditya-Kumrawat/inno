@@ -310,18 +310,18 @@ export default function Dashboard() {
                 {/* Health Overview Bento Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Vaccination Status */}
-                  <div className="glass-card p-5">
+                  <div className="glass-card p-3 text-sm">
                     <div className="flex flex-col">
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start justify-between gap-3">
                         <div>
                           <h4
-                            className="text-sm md:text-base font-semibold text-gray-800"
+                            className="text-sm font-semibold text-gray-800"
                             style={{ fontFamily: "Poppins, sans-serif" }}
                           >
                             Vaccination Status
                           </h4>
                           <p
-                            className="text-2xl font-bold text-gray-900 mt-2"
+                            className="text-lg font-semibold text-gray-900 mt-1"
                             style={{ fontFamily: "Montserrat, sans-serif" }}
                           >
                             78% completed
@@ -331,9 +331,9 @@ export default function Dashboard() {
                           </p>
                         </div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                           <div
-                            className="w-16 md:w-20 h-16 md:h-20 rounded-full flex items-center justify-center text-white font-semibold"
+                            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold text-sm"
                             style={{
                               background:
                                 "linear-gradient(135deg, #3B82F6 0%, #14B8A6 100%)",
@@ -345,7 +345,7 @@ export default function Dashboard() {
                       </div>
 
                       {/* Actions */}
-                      <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
                         <Button
                           size="sm"
                           className="text-white rounded-md flex items-center gap-2"
@@ -363,7 +363,7 @@ export default function Dashboard() {
                           <UploadCloud className="w-4 h-4" />
                         </Button>
 
-                        <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
+                        <div className="ml-auto flex items-center gap-2 text-xs text-gray-600">
                           <ShieldCheck className="w-4 h-4 text-[#14B8A6]" />
                           <span>Up to date</span>
                         </div>
@@ -372,17 +372,17 @@ export default function Dashboard() {
                   </div>
 
                   {/* Disease Detection */}
-                  <div className="glass-card p-5">
+                  <div className="glass-card p-3 text-sm">
                     <div className="flex flex-col">
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start justify-between gap-3">
                         <div>
                           <h4
-                            className="text-sm md:text-base font-semibold text-gray-800"
+                            className="text-sm font-semibold text-gray-800"
                             style={{ fontFamily: "Poppins, sans-serif" }}
                           >
                             Disease Detection
                           </h4>
-                          <p className="text-xl font-bold text-gray-900 mt-2">
+                          <p className="text-sm font-semibold text-gray-900 mt-1">
                             Last scan: No issues detected
                           </p>
                           <p className="text-xs text-gray-500 mt-1">
@@ -390,8 +390,8 @@ export default function Dashboard() {
                           </p>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 text-xs text-gray-600">
                             <ShieldCheck className="w-4 h-4 text-[#3B82F6]" />
                             <span>Clear</span>
                           </div>
@@ -399,7 +399,7 @@ export default function Dashboard() {
                       </div>
 
                       {/* Actions */}
-                      <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
                         <Button
                           size="sm"
                           className="text-white rounded-md flex items-center gap-2"
@@ -417,7 +417,7 @@ export default function Dashboard() {
                           <FilePlus className="w-4 h-4" />
                         </Button>
 
-                        <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
+                        <div className="ml-auto flex items-center gap-2 text-xs text-gray-600">
                           <span className="text-gray-500">
                             Last: 3 days ago
                           </span>
@@ -427,16 +427,16 @@ export default function Dashboard() {
                   </div>
 
                   {/* Exercise */}
-                  <div className="glass-card p-5 flex flex-col">
+                  <div className="glass-card p-3 flex flex-col text-sm">
                     <div className="flex flex-col h-full justify-between">
                       <div>
                         <h4
-                          className="text-sm md:text-base font-semibold text-gray-800"
+                          className="text-sm font-semibold text-gray-800"
                           style={{ fontFamily: "Poppins, sans-serif" }}
                         >
                           Exercise
                         </h4>
-                        <p className="text-xl font-bold text-gray-900 mt-2">
+                        <p className="text-lg font-semibold text-gray-900 mt-1">
                           Streak: 7 days
                         </p>
                         <p className="text-xs text-gray-500 mt-1">
@@ -444,9 +444,9 @@ export default function Dashboard() {
                         </p>
                       </div>
 
-                      <div className="mt-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <Avatar className="w-10 h-10">
+                      <div className="mt-3 flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <Avatar className="w-8 h-8">
                             <AvatarImage src="https://github.com/shadcn.png" />
                             <AvatarFallback>AD</AvatarFallback>
                           </Avatar>
@@ -463,17 +463,17 @@ export default function Dashboard() {
                   </div>
 
                   {/* Emergency Alerts */}
-                  <div className="glass-card p-5">
+                  <div className="glass-card p-3 text-sm">
                     <div className="flex flex-col">
-                      <div className="flex items-start justify-between gap-4">
+                      <div className="flex items-start justify-between gap-3">
                         <div>
                           <h4
-                            className="text-sm md:text-base font-semibold text-gray-800"
+                            className="text-sm font-semibold text-gray-800"
                             style={{ fontFamily: "Poppins, sans-serif" }}
                           >
                             Emergency Alerts
                           </h4>
-                          <p className="text-xl font-bold text-gray-900 mt-2">
+                          <p className="text-lg font-semibold text-gray-900 mt-1">
                             All systems normal
                           </p>
                           <p className="text-xs text-gray-500 mt-1">
@@ -481,8 +481,8 @@ export default function Dashboard() {
                           </p>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                        <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 text-xs text-gray-600">
                             <span className="px-2 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs">
                               Ready
                             </span>
@@ -491,7 +491,7 @@ export default function Dashboard() {
                       </div>
 
                       {/* Actions */}
-                      <div className="mt-4 flex flex-wrap items-center gap-3">
+                      <div className="mt-3 flex flex-wrap items-center gap-2">
                         <Button
                           size="sm"
                           className="text-white rounded-2xl flex items-center gap-2"
@@ -517,7 +517,7 @@ export default function Dashboard() {
                           <MapPin className="w-4 h-4" />
                         </Button>
 
-                        <div className="ml-auto flex items-center gap-2 text-sm text-gray-600">
+                        <div className="ml-auto flex items-center gap-2 text-xs text-gray-600">
                           <span className="text-gray-500">
                             No recent alerts
                           </span>
