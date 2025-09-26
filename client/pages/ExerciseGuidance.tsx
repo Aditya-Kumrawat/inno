@@ -142,23 +142,23 @@ export default function ExerciseGuidance() {
               </div>
             </div>
 
-            <div className="mt-3 flex items-center gap-4">
-              <div className="p-3 bg-white rounded-lg shadow-sm">
+            <div className="mt-3 flex flex-wrap items-center gap-4">
+              <motion.div className="p-3 bg-white rounded-lg shadow-sm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45 }}>
                 <div className="text-xs text-gray-500">Reps</div>
-                <div className="font-semibold text-xl">{reps}</div>
-              </div>
-              <div className="p-3 bg-white rounded-lg shadow-sm">
+                <motion.div className="font-semibold text-xl" key={reps} initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.2 }}>{reps}</motion.div>
+              </motion.div>
+              <motion.div className="p-3 bg-white rounded-lg shadow-sm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.05 }}>
                 <div className="text-xs text-gray-500">Sets</div>
-                <div className="font-semibold text-xl">{sets}</div>
-              </div>
-              <div className="p-3 bg-white rounded-lg shadow-sm">
+                <motion.div className="font-semibold text-xl" key={sets} initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.2 }}>{sets}</motion.div>
+              </motion.div>
+              <motion.div className="p-3 bg-white rounded-lg shadow-sm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.1 }}>
                 <div className="text-xs text-gray-500">Duration</div>
-                <div className="font-semibold text-xl">{Math.floor(duration / 60)}:{String(duration % 60).padStart(2, "0")}</div>
-              </div>
-              <div className="p-3 bg-white rounded-lg shadow-sm">
+                <motion.div className="font-semibold text-xl" key={duration} initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.2 }}>{Math.floor(duration / 60)}:{String(duration % 60).padStart(2, "0")}</motion.div>
+              </motion.div>
+              <motion.div className="p-3 bg-white rounded-lg shadow-sm" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, delay: 0.15 }}>
                 <div className="text-xs text-gray-500">Posture Score</div>
-                <div className="font-semibold text-xl">{Math.max(60, 95 - Math.floor(Math.random() * 20))}%</div>
-              </div>
+                <motion.div className="font-semibold text-xl" initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.2 }}>{Math.max(60, 95 - Math.floor(Math.random() * 20))}%</motion.div>
+              </motion.div>
             </div>
           </section>
 
@@ -196,17 +196,17 @@ export default function ExerciseGuidance() {
             <div className="bg-white/50 rounded-lg p-4 border">
               <h5 className="font-semibold mb-2">Live Metrics</h5>
               <div className="grid grid-cols-2 gap-3 mb-3">
-                <div className="p-3 bg-white/50 rounded-lg">
+                <motion.div className="p-3 bg-white/50 rounded-lg" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
                   <div className="text-xs text-gray-500">Reps Completed</div>
-                  <div className="font-semibold text-lg">{reps}</div>
-                </div>
-                <div className="p-3 bg-white/50 rounded-lg">
+                  <motion.div className="font-semibold text-lg" key={reps} initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.25 }}>{reps}</motion.div>
+                </motion.div>
+                <motion.div className="p-3 bg-white/50 rounded-lg" initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.05 } }} transition={{ duration: 0.4 }}>
                   <div className="text-xs text-gray-500">Estimated Calories</div>
-                  <div className="font-semibold text-lg">{Math.round((reps * 0.5 + duration / 60) * 5)} kcal</div>
-                </div>
+                  <motion.div className="font-semibold text-lg" initial={{ scale: 0.95 }} animate={{ scale: 1 }} transition={{ duration: 0.25 }}>{Math.round((reps * 0.5 + duration / 60) * 5)} kcal</motion.div>
+                </motion.div>
               </div>
               <div className="text-sm text-gray-500 mb-2">Posture State</div>
-              <div className={`px-3 py-2 rounded-md border ${postureColor}`}>{postureLabel}</div>
+              <motion.div className={`px-3 py-2 rounded-md border ${postureColor}`} initial={{ scale: 0.98 }} animate={{ scale: 1 }} transition={{ duration: 0.35 }}>{postureLabel}</motion.div>
             </div>
           </section>
 
