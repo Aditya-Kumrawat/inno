@@ -523,6 +523,14 @@ export default function VaccinationTracker() {
                   transition={{ duration: 0.4 }}
                 >
                   <VaccineFacts />
+                  <div className="relative mt-5 flex flex-col pb-7">
+                    <img
+                      loading="lazy"
+                      srcSet="https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=100 100w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=200 200w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=400 400w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=800 800w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=1200 1200w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=1600 1600w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434&width=2000 2000w, https://cdn.builder.io/o/assets%2F8db721cb8f564b0b9c83e7cfbd23c434%2F708844e4c827412d867c3845974444f5?alt=media&token=ca81b097-4159-46f2-b432-d80317c2d919&apiKey=8db721cb8f564b0b9c83e7cfbd23c434"
+                      alt=""
+                      className="mt-5 aspect-[1.49] w-full min-h-[20px] min-w-[20px] overflow-hidden border border-white object-cover object-center"
+                    />
+                  </div>
                 </motion.div>
 
                 <motion.div
