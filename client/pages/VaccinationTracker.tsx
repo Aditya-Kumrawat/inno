@@ -269,7 +269,16 @@ function VideoPanel() {
             controls={false}
           />
         ) : (
-          <div className="flex aspect-[16/9] items-center justify-center p-6 text-center text-sm text-muted-foreground">
+          <div
+            className="flex aspect-[16/9] items-center justify-center p-6 text-center text-sm text-muted-foreground"
+            style={{
+              backgroundImage:
+                "url(https://cdn.builder.io/o/assets%2Fc4369bc924f040eb94eb923633069808%2F43b3447a0798456d89535bb5c79c8657?alt=media&token=379c0d35-6dbd-47cc-b084-c8f19a74b4ea&apiKey=c4369bc924f040eb94eb923633069808)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
             Provide a video URL using the "video" query parameter to display it here.
           </div>
         )}
