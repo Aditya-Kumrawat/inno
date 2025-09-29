@@ -56,7 +56,7 @@ const formatAge = (age: number) => {
 };
 
 const glassCardClass =
-  "rounded-3xl border border-white/45 bg-gradient-to-br from-white/85 via-white/50 to-white/25 backdrop-blur-xl shadow-[0_30px_80px_rgba(79,70,229,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(79,70,229,0.24)]";
+  "rounded-3xl border border-white/45 bg-gradient-to-br from-white/85 via-white/50 to-white/25 backdrop-blur-xl shadow-[0_24px_64px_rgba(79,70,229,0.16)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_28px_76px_rgba(79,70,229,0.22)] min-w-0 overflow-hidden";
 
 export function VaccineCard({
   vaccine,
@@ -71,14 +71,14 @@ export function VaccineCard({
       <Card
         className={cn(glassCardClass, "flex h-full flex-col justify-between")}
       >
-        <CardHeader className="space-y-3">
+        <CardHeader className="space-y-2 p-4">
           <div className="flex items-center justify-between gap-3">
-            <CardTitle className="text-lg font-semibold text-foreground">
+            <CardTitle className="text-base font-semibold leading-tight break-words text-foreground">
               {vaccine.vaccine}
             </CardTitle>
             <Badge className={severity.badgeClass}>{severity.label}</Badge>
           </div>
-          <CardDescription className="text-sm text-muted-foreground">
+          <CardDescription className="text-xs text-muted-foreground">
             Protects against{" "}
             <span className="font-medium text-foreground">
               {vaccine.disease}
@@ -86,8 +86,8 @@ export function VaccineCard({
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="flex flex-col gap-3 pt-0">
-          <div className="rounded-2xl border border-white/40 bg-white/35 p-3 text-sm text-muted-foreground shadow-inner shadow-white/30">
+        <CardContent className="flex flex-col gap-2 p-4 pt-0">
+          <div className="rounded-xl border border-white/40 bg-white/35 p-2 text-xs text-muted-foreground shadow-inner shadow-white/30">
             <div className="font-semibold text-foreground">Recommended at</div>
             <div>{formatAge(vaccine.age)}</div>
             {contextLabel ? (
@@ -122,14 +122,14 @@ export function VaccineCard({
         </CardContent>
       </Card>
 
-      <DialogContent className="rounded-3xl border border-white/40 bg-gradient-to-br from-white/90 via-white/55 to-white/30 backdrop-blur-2xl shadow-[0_40px_90px_rgba(79,70,229,0.28)]">
+      <DialogContent className="rounded-3xl border border-white/40 bg-gradient-to-br from-white/90 via-white/55 to-white/30 backdrop-blur-2xl shadow-[0_40px_90px_rgba(79,70,229,0.28)] p-4 sm:p-5">
         <DialogHeader>
-          <DialogTitle>{vaccine.vaccine}</DialogTitle>
+          <DialogTitle className="text-base leading-tight break-words">{vaccine.vaccine}</DialogTitle>
           <DialogDescription>
             Detailed information about the {vaccine.vaccine} vaccine.
           </DialogDescription>
         </DialogHeader>
-        <div className="space-y-4 text-sm text-muted-foreground">
+        <div className="space-y-3 text-xs text-muted-foreground">
           <div>
             <span className="font-semibold text-foreground">
               Disease prevented:
@@ -159,7 +159,7 @@ export function VaccineCard({
             </div>
           ) : null}
         </div>
-        <div className="mt-4 flex justify-end">
+        <div className="mt-3 flex justify-end">
           <Button onClick={() => onRemind(vaccine)} disabled={isSavingReminder}>
             {isSavingReminder ? "Saving..." : "Remind Me"}
           </Button>
