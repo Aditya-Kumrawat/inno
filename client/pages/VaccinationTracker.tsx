@@ -32,6 +32,7 @@ import type {
   VaccinesResponse,
   VaccineRecommendation,
 } from "@shared/api";
+import { useLocation } from "react-router-dom";
 
 const fetchVaccinationSchedule = async (
   age: number,
@@ -107,6 +108,10 @@ interface PersonalScheduleProps {
   isSavingReminder: boolean;
 }
 
+// Shared frosted glass card style used across this page
+const frostedCardClass =
+  "rounded-3xl border border-white/45 bg-gradient-to-br from-white/85 via-white/50 to-white/25 backdrop-blur-xl shadow-[0_30px_80px_rgba(59,130,246,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_36px_96px_rgba(59,130,246,0.24)]";
+
 function PersonalSchedule({
   schedule,
   isLoading,
@@ -116,7 +121,7 @@ function PersonalSchedule({
 }: PersonalScheduleProps) {
   if (isLoading) {
     return (
-      <Card className="flex items-center justify-center border-dashed border-muted/70 bg-muted/10 py-12">
+      <Card className={`${frostedCardClass} flex items-center justify-center py-12`}>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
           Generating personalised vaccination plan...
@@ -127,7 +132,7 @@ function PersonalSchedule({
 
   if (!schedule) {
     return (
-      <Card className="border-dashed border-muted/70 bg-muted/10">
+      <Card className={`${frostedCardClass}`}>
         <CardHeader>
           <CardTitle className="text-lg">
             Your vaccination plan awaits
@@ -188,7 +193,7 @@ function FamilyMemberSchedule({
 
   if (scheduleQuery.isLoading) {
     return (
-      <Card className="flex items-center justify-center border-dashed border-muted/70 bg-muted/10 py-12">
+      <Card className={`${frostedCardClass} flex items-center justify-center py-12`}>
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
           Preparing {member.name}'s vaccination plan...
@@ -199,7 +204,7 @@ function FamilyMemberSchedule({
 
   if (scheduleQuery.isError || !scheduleQuery.data) {
     return (
-      <Card className="border border-red-200 bg-red-50/70">
+      <Card className="rounded-3xl border border-red-200 bg-red-50/70">
         <CardHeader>
           <CardTitle className="text-base">Unable to load vaccines</CardTitle>
           <CardDescription>
@@ -231,6 +236,44 @@ function FamilyMemberSchedule({
         emptyMessage="No vaccines recorded in the past two years."
         isSavingReminder={isSavingReminder}
       />
+    </div>
+  );
+}
+
+function VideoPanel() {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const videoUrl = params.get("video");
+  const [videoMeta, setVideoMeta] = useState<{ w: number; h: number } | null>(
+    null,
+  );
+
+  return (
+    <div className={`${frostedCardClass} p-3 sm:p-4 md:p-5`}>
+      <div className="relative overflow-hidden rounded-2xl border border-white/40 bg-white/30">
+        {videoUrl ? (
+          <video
+            src={videoUrl}
+            className="block h-full w-full rounded-2xl object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+            onLoadedMetadata={(e) => {
+              const v = e.currentTarget;
+              if (v.videoWidth && v.videoHeight) {
+                setVideoMeta({ w: v.videoWidth, h: v.videoHeight });
+              }
+            }}
+            style={videoMeta ? { aspectRatio: `${videoMeta.w}/${videoMeta.h}` } : { aspectRatio: "16/9" }}
+            controls={false}
+          />
+        ) : (
+          <div className="flex aspect-[16/9] items-center justify-center p-6 text-center text-sm text-muted-foreground">
+            Provide a video URL using the "video" query parameter to display it here.
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -466,7 +509,7 @@ export default function VaccinationTracker() {
   );
 
   return (
-    <div className="dashboard-page min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="dashboard-page min-h-screen bg-gradient-to-br from-white via-[#f8fbff] to-[#eef2ff]">
       <FloatingSidebar
         isCollapsed={isCollapsed}
         setIsCollapsed={setIsCollapsed}
@@ -497,204 +540,228 @@ export default function VaccinationTracker() {
 
           <Tabs value={mode} onValueChange={(value) => setMode(value as Mode)}>
             <TabsContent value="personal" className="space-y-8">
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_1fr]">
-                <Card className="shadow-sm">
-                  <CardHeader>
-                    <CardTitle className="text-xl">Personal Details</CardTitle>
-                    <CardDescription>
-                      Enter your information to generate a personalised
-                      vaccination schedule.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <form className="space-y-4" onSubmit={handlePersonalSubmit}>
-                      <div className="space-y-2">
-                        <Label htmlFor="personal-name">Name</Label>
-                        <Input
-                          id="personal-name"
-                          value={personalForm.name}
-                          onChange={(event) =>
-                            setPersonalForm((prev) => ({
-                              ...prev,
-                              name: event.target.value,
-                            }))
-                          }
-                          placeholder="e.g. Riya Sharma"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="personal-age">Age (years)</Label>
-                        <Input
-                          id="personal-age"
-                          type="number"
-                          min={0}
-                          step={0.1}
-                          value={personalForm.age}
-                          onChange={(event) =>
-                            setPersonalForm((prev) => ({
-                              ...prev,
-                              age: event.target.value,
-                            }))
-                          }
-                          placeholder="e.g. 4 or 0.5"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Gender</Label>
-                        <Select
-                          value={personalForm.gender}
-                          onValueChange={(value) =>
-                            setPersonalForm((prev) => ({
-                              ...prev,
-                              gender: value as Gender,
-                            }))
-                          }
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="any">
-                              Any / Prefer not to say
-                            </SelectItem>
-                            <SelectItem value="female">Female</SelectItem>
-                            <SelectItem value="male">Male</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <Button
-                        type="submit"
-                        className="w-full"
-                        disabled={personalScheduleMutation.isPending}
-                      >
-                        {personalScheduleMutation.isPending
-                          ? "Generating..."
-                          : "Generate Schedule"}
-                      </Button>
-                    </form>
-                  </CardContent>
-                </Card>
+              <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
+                <div className="xl:col-span-4">
+                  <VideoPanel />
+                </div>
+                <div className="xl:col-span-8">
+                  <div className="grid gap-6 lg:grid-cols-2">
+                    <Card className={`${frostedCardClass}`}>
+                      <CardHeader>
+                        <CardTitle className="text-xl">Personal Details</CardTitle>
+                        <CardDescription>
+                          Enter your information to generate a personalised
+                          vaccination schedule.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <form className="space-y-4" onSubmit={handlePersonalSubmit}>
+                          <div className="space-y-2">
+                            <Label htmlFor="personal-name">Name</Label>
+                            <Input
+                              id="personal-name"
+                              value={personalForm.name}
+                              onChange={(event) =>
+                                setPersonalForm((prev) => ({
+                                  ...prev,
+                                  name: event.target.value,
+                                }))
+                              }
+                              placeholder="e.g. Riya Sharma"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="personal-age">Age (years)</Label>
+                            <Input
+                              id="personal-age"
+                              type="number"
+                              min={0}
+                              step={0.1}
+                              value={personalForm.age}
+                              onChange={(event) =>
+                                setPersonalForm((prev) => ({
+                                  ...prev,
+                                  age: event.target.value,
+                                }))
+                              }
+                              placeholder="e.g. 4 or 0.5"
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Gender</Label>
+                            <Select
+                              value={personalForm.gender}
+                              onValueChange={(value) =>
+                                setPersonalForm((prev) => ({
+                                  ...prev,
+                                  gender: value as Gender,
+                                }))
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="any">
+                                  Any / Prefer not to say
+                                </SelectItem>
+                                <SelectItem value="female">Female</SelectItem>
+                                <SelectItem value="male">Male</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={personalScheduleMutation.isPending}
+                          >
+                            {personalScheduleMutation.isPending
+                              ? "Generating..."
+                              : "Generate Schedule"}
+                          </Button>
+                        </form>
+                      </CardContent>
+                    </Card>
 
-                <PersonalSchedule
-                  schedule={personalSchedule}
-                  isLoading={personalScheduleMutation.isPending}
-                  contextName={personalContext?.name}
-                  onRemind={handlePersonalReminder}
-                  isSavingReminder={reminderMutation.isPending}
-                />
+                    <Card className={`${frostedCardClass}`}>
+                      <CardHeader>
+                        <CardTitle className="text-xl">Your Plan</CardTitle>
+                        <CardDescription>
+                          Upcoming and recent vaccines tailored to you.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <PersonalSchedule
+                          schedule={personalSchedule}
+                          isLoading={personalScheduleMutation.isPending}
+                          contextName={personalContext?.name}
+                          onRemind={handlePersonalReminder}
+                          isSavingReminder={reminderMutation.isPending}
+                        />
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
               </div>
             </TabsContent>
 
             <TabsContent value="family" className="space-y-8">
-              <div className="grid gap-6 lg:grid-cols-[minmax(0,360px)_1fr]">
-                <Card className="shadow-sm">
-                  <CardHeader>
-                    <CardTitle className="text-xl">Add Family Member</CardTitle>
-                    <CardDescription>
-                      Track vaccinations for everyone in your family. Add each
-                      member to view their tailored schedule.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <form
-                      className="space-y-4"
-                      onSubmit={handleAddFamilyMember}
-                    >
-                      <div className="space-y-2">
-                        <Label htmlFor="family-name">Name</Label>
-                        <Input
-                          id="family-name"
-                          value={familyForm.name}
-                          onChange={(event) =>
-                            setFamilyForm((prev) => ({
-                              ...prev,
-                              name: event.target.value,
-                            }))
-                          }
-                          placeholder="e.g. Aarav"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="family-age">Age (years)</Label>
-                        <Input
-                          id="family-age"
-                          type="number"
-                          min={0}
-                          step={0.1}
-                          value={familyForm.age}
-                          onChange={(event) =>
-                            setFamilyForm((prev) => ({
-                              ...prev,
-                              age: event.target.value,
-                            }))
-                          }
-                          placeholder="e.g. 11"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Gender</Label>
-                        <Select
-                          value={familyForm.gender}
-                          onValueChange={(value) =>
-                            setFamilyForm((prev) => ({
-                              ...prev,
-                              gender: value as Gender,
-                            }))
-                          }
+              <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
+                <div className="xl:col-span-4">
+                  <VideoPanel />
+                </div>
+                <div className="xl:col-span-8">
+                  <div className="grid gap-6 lg:grid-cols-2">
+                    <Card className={`${frostedCardClass}`}>
+                      <CardHeader>
+                        <CardTitle className="text-xl">Add Family Member</CardTitle>
+                        <CardDescription>
+                          Track vaccinations for everyone in your family. Add each
+                          member to view their tailored schedule.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <form
+                          className="space-y-4"
+                          onSubmit={handleAddFamilyMember}
                         >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="any">
-                              Any / Prefer not to say
-                            </SelectItem>
-                            <SelectItem value="female">Female</SelectItem>
-                            <SelectItem value="male">Male</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <Button
-                        type="submit"
-                        className="w-full"
-                        disabled={addFamilyMemberMutation.isPending}
-                      >
-                        {addFamilyMemberMutation.isPending
-                          ? "Adding..."
-                          : "Add Member"}
-                      </Button>
-                    </form>
-                  </CardContent>
-                </Card>
+                          <div className="space-y-2">
+                            <Label htmlFor="family-name">Name</Label>
+                            <Input
+                              id="family-name"
+                              value={familyForm.name}
+                              onChange={(event) =>
+                                setFamilyForm((prev) => ({
+                                  ...prev,
+                                  name: event.target.value,
+                                }))
+                              }
+                              placeholder="e.g. Aarav"
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="family-age">Age (years)</Label>
+                            <Input
+                              id="family-age"
+                              type="number"
+                              min={0}
+                              step={0.1}
+                              value={familyForm.age}
+                              onChange={(event) =>
+                                setFamilyForm((prev) => ({
+                                  ...prev,
+                                  age: event.target.value,
+                                }))
+                              }
+                              placeholder="e.g. 11"
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Gender</Label>
+                            <Select
+                              value={familyForm.gender}
+                              onValueChange={(value) =>
+                                setFamilyForm((prev) => ({
+                                  ...prev,
+                                  gender: value as Gender,
+                                }))
+                              }
+                            >
+                              <SelectTrigger>
+                                <SelectValue placeholder="Select" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectItem value="any">
+                                  Any / Prefer not to say
+                                </SelectItem>
+                                <SelectItem value="female">Female</SelectItem>
+                                <SelectItem value="male">Male</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={addFamilyMemberMutation.isPending}
+                          >
+                            {addFamilyMemberMutation.isPending
+                              ? "Adding..."
+                              : "Add Member"}
+                          </Button>
+                        </form>
+                      </CardContent>
+                    </Card>
 
-                <Card className="h-fit border-dashed border-muted/70 bg-muted/10 shadow-none">
-                  <CardHeader>
-                    <CardTitle className="text-lg">Family overview</CardTitle>
-                    <CardDescription>
-                      Add each family member to compare upcoming vaccines and
-                      ensure nobody misses an important dose.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="text-sm text-muted-foreground">
-                    Once added, each member appears in the dashboard below with
-                    personalised upcoming and recent vaccines.
-                  </CardContent>
-                </Card>
+                    <Card className={`${frostedCardClass}`}>
+                      <CardHeader>
+                        <CardTitle className="text-lg">Family overview</CardTitle>
+                        <CardDescription>
+                          Add each family member to compare upcoming vaccines and
+                          ensure nobody misses an important dose.
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent className="text-sm text-muted-foreground">
+                        Once added, each member appears in the dashboard below with
+                        personalised upcoming and recent vaccines.
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
               </div>
 
               <div>
                 {familyMembersQuery.isLoading ? (
-                  <Card className="flex items-center justify-center border-dashed border-muted/70 bg-muted/10 py-12">
+                  <Card className={`${frostedCardClass} flex items-center justify-center py-12`}>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Loader2 className="h-4 w-4 animate-spin" />
                       Loading family dashboard...
                     </div>
                   </Card>
                 ) : familyMembersQuery.isError ? (
-                  <Card className="border border-red-200 bg-red-50/70">
+                  <Card className="rounded-3xl border border-red-200 bg-red-50/70">
                     <CardHeader>
                       <CardTitle className="text-lg">
                         Unable to load family members
@@ -705,7 +772,7 @@ export default function VaccinationTracker() {
                     </CardHeader>
                   </Card>
                 ) : familyMembers.length === 0 ? (
-                  <Card className="border-dashed border-muted/70 bg-muted/10">
+                  <Card className={`${frostedCardClass}`}>
                     <CardHeader>
                       <CardTitle className="text-lg">
                         No family members yet
