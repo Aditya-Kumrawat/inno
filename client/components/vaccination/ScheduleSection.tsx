@@ -34,10 +34,10 @@ export function ScheduleSection({
     <section className="space-y-4">
       <header className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-purple-500">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-600">
             {title}
           </p>
-          <h3 className="text-sm font-semibold leading-snug text-slate-900">
+          <h3 className="dashboard-title text-lg md:text-xl font-semibold tracking-tight leading-snug text-slate-900">
             {subtitle}
           </h3>
         </div>
