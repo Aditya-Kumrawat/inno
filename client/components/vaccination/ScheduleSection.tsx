@@ -8,6 +8,7 @@ interface ScheduleSectionProps {
   onRemind: (vaccine: VaccineRecommendation) => void;
   contextLabel?: string;
   emptyMessage?: string;
+  isSavingReminder?: boolean;
 }
 
 export function ScheduleSection({
@@ -16,6 +17,7 @@ export function ScheduleSection({
   onRemind,
   contextLabel,
   emptyMessage = "No vaccines in this section for now.",
+  isSavingReminder = false,
 }: ScheduleSectionProps) {
   return (
     <section className="space-y-4">
@@ -30,7 +32,13 @@ export function ScheduleSection({
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {vaccines.map((vaccine) => (
-            <VaccineCard key={vaccine.id} vaccine={vaccine} onRemind={onRemind} contextLabel={contextLabel} />
+            <VaccineCard
+              key={vaccine.id}
+              vaccine={vaccine}
+              onRemind={onRemind}
+              contextLabel={contextLabel}
+              isSavingReminder={isSavingReminder}
+            />
           ))}
         </div>
       )}
