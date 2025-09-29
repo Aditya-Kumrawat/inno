@@ -13,7 +13,34 @@ import Dashboard from "./pages/Dashboard";
 import Analytics from "./pages/Analytics";
 import Chatbot from "./pages/Chatbot";
 import ComputerVision from "./pages/ComputerVision";
+import DiseaseDetection from "./pages/DiseaseDetection";
+import VaccinationTracker from "./pages/VaccinationTracker";
+import ExerciseGuidance from "./pages/ExerciseGuidance";
 import NotFound from "./pages/NotFound";
+
+// Suppress known Recharts defaultProps warning (filter both console.error and console.warn)
+if (typeof console !== "undefined") {
+  const filterMsg =
+    "Support for defaultProps will be removed from function components";
+  const originalConsoleError = console.error.bind(console);
+  const originalConsoleWarn = console.warn
+    ? console.warn.bind(console)
+    : originalConsoleError;
+  console.error = (...args: any[]) => {
+    try {
+      const msg = args[0];
+      if (typeof msg === "string" && msg.includes(filterMsg)) return;
+    } catch (e) {}
+    originalConsoleError(...args);
+  };
+  console.warn = (...args: any[]) => {
+    try {
+      const msg = args[0];
+      if (typeof msg === "string" && msg.includes(filterMsg)) return;
+    } catch (e) {}
+    originalConsoleWarn(...args);
+  };
+}
 
 const queryClient = new QueryClient();
 
@@ -33,6 +60,18 @@ const App = () => (
             <Route
               path="/dashboard/computer-vision"
               element={<ComputerVision />}
+            />
+            <Route
+              path="/dashboard/disease-detection"
+              element={<DiseaseDetection />}
+            />
+            <Route
+              path="/dashboard/vaccination-tracker"
+              element={<VaccinationTracker />}
+            />
+            <Route
+              path="/dashboard/exercise-guidance"
+              element={<ExerciseGuidance />}
             />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
