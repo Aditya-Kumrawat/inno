@@ -33,6 +33,7 @@ import type {
   VaccineRecommendation,
 } from "@shared/api";
 import { useLocation } from "react-router-dom";
+import { VaccineFacts } from "@/components/vaccination/VaccineFacts";
 
 const fetchVaccinationSchedule = async (
   age: number,
