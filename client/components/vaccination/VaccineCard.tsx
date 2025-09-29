@@ -105,14 +105,15 @@ export function VaccineCard({
               {vaccine.notes}
             </div>
           ) : null}
-          <div className="flex items-center justify-end gap-2">
+          <div className="flex flex-wrap items-center justify-between gap-2 mt-2">
             <DialogTrigger asChild>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="shrink-0">
                 View details
               </Button>
             </DialogTrigger>
             <Button
               size="sm"
+              className="shrink-0"
               onClick={() => onRemind(vaccine)}
               disabled={isSavingReminder}
             >
