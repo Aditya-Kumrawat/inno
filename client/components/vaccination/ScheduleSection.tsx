@@ -37,7 +37,9 @@ export function ScheduleSection({
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-purple-500">
             {title}
           </p>
-          <h3 className="text-sm font-semibold leading-snug text-slate-900">{subtitle}</h3>
+          <h3 className="text-sm font-semibold leading-snug text-slate-900">
+            {subtitle}
+          </h3>
         </div>
         <span className="text-xs text-muted-foreground">
           {vaccines.length} item{vaccines.length === 1 ? "" : "s"}

@@ -122,7 +122,9 @@ function PersonalSchedule({
 }: PersonalScheduleProps) {
   if (isLoading) {
     return (
-      <Card className={`${frostedCardClass} flex items-center justify-center py-12`}>
+      <Card
+        className={`${frostedCardClass} flex items-center justify-center py-12`}
+      >
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
           Generating personalised vaccination plan...
@@ -194,7 +196,9 @@ function FamilyMemberSchedule({
 
   if (scheduleQuery.isLoading) {
     return (
-      <Card className={`${frostedCardClass} flex items-center justify-center py-12`}>
+      <Card
+        className={`${frostedCardClass} flex items-center justify-center py-12`}
+      >
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Loader2 className="h-4 w-4 animate-spin" />
           Preparing {member.name}'s vaccination plan...
@@ -540,16 +544,23 @@ export default function VaccinationTracker() {
                   <div className="grid gap-6 lg:grid-cols-2">
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-base">Personal Details</CardTitle>
+                        <CardTitle className="text-base">
+                          Personal Details
+                        </CardTitle>
                         <CardDescription className="text-xs">
                           Enter your information to generate a personalised
                           vaccination schedule.
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <form className="space-y-4" onSubmit={handlePersonalSubmit}>
+                        <form
+                          className="space-y-4"
+                          onSubmit={handlePersonalSubmit}
+                        >
                           <div className="space-y-2">
-                            <Label htmlFor="personal-name" className="text-xs">Name</Label>
+                            <Label htmlFor="personal-name" className="text-xs">
+                              Name
+                            </Label>
                             <Input
                               id="personal-name"
                               value={personalForm.name}
@@ -564,7 +575,9 @@ export default function VaccinationTracker() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="personal-age" className="text-xs">Age (years)</Label>
+                            <Label htmlFor="personal-age" className="text-xs">
+                              Age (years)
+                            </Label>
                             <Input
                               id="personal-age"
                               type="number"
@@ -653,10 +666,12 @@ export default function VaccinationTracker() {
                   <div className="grid gap-6 lg:grid-cols-2">
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-base">Add Family Member</CardTitle>
+                        <CardTitle className="text-base">
+                          Add Family Member
+                        </CardTitle>
                         <CardDescription className="text-xs">
-                          Track vaccinations for everyone in your family. Add each
-                          member to view their tailored schedule.
+                          Track vaccinations for everyone in your family. Add
+                          each member to view their tailored schedule.
                         </CardDescription>
                       </CardHeader>
                       <CardContent>
@@ -665,7 +680,9 @@ export default function VaccinationTracker() {
                           onSubmit={handleAddFamilyMember}
                         >
                           <div className="space-y-2">
-                            <Label htmlFor="family-name" className="text-xs">Name</Label>
+                            <Label htmlFor="family-name" className="text-xs">
+                              Name
+                            </Label>
                             <Input
                               id="family-name"
                               value={familyForm.name}
@@ -681,7 +698,9 @@ export default function VaccinationTracker() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="family-age" className="text-xs">Age (years)</Label>
+                            <Label htmlFor="family-age" className="text-xs">
+                              Age (years)
+                            </Label>
                             <Input
                               id="family-age"
                               type="number"
@@ -738,15 +757,17 @@ export default function VaccinationTracker() {
 
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-base">Family overview</CardTitle>
+                        <CardTitle className="text-base">
+                          Family overview
+                        </CardTitle>
                         <CardDescription className="text-xs">
-                          Add each family member to compare upcoming vaccines and
-                          ensure nobody misses an important dose.
+                          Add each family member to compare upcoming vaccines
+                          and ensure nobody misses an important dose.
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="text-sm text-muted-foreground">
-                        Once added, each member appears in the dashboard below with
-                        personalised upcoming and recent vaccines.
+                        Once added, each member appears in the dashboard below
+                        with personalised upcoming and recent vaccines.
                       </CardContent>
                     </Card>
                   </div>
@@ -755,7 +776,9 @@ export default function VaccinationTracker() {
 
               <div>
                 {familyMembersQuery.isLoading ? (
-                  <Card className={`${frostedCardClass} flex items-center justify-center py-12`}>
+                  <Card
+                    className={`${frostedCardClass} flex items-center justify-center py-12`}
+                  >
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Loader2 className="h-4 w-4 animate-spin" />
                       Loading family dashboard...

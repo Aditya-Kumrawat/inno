@@ -29,7 +29,9 @@ function getRandomIndex(exclude: number | null, max: number) {
 }
 
 export function VaccineFacts({ className }: { className?: string }) {
-  const [index, setIndex] = useState<number>(() => getRandomIndex(null, FACTS.length));
+  const [index, setIndex] = useState<number>(() =>
+    getRandomIndex(null, FACTS.length),
+  );
 
   // Auto-rotate every 10s (pause-friendly: simple implementation)
   useEffect(() => {
@@ -42,14 +44,20 @@ export function VaccineFacts({ className }: { className?: string }) {
   const fact = useMemo(() => FACTS[index], [index]);
 
   return (
-    <Card className={cn(glassClass, "p-4") + (className ? ` ${className}` : "")}> 
+    <Card
+      className={cn(glassClass, "p-4") + (className ? ` ${className}` : "")}
+    >
       <CardHeader className="p-0 pb-3">
         <CardTitle className="text-base leading-tight">Vaccine Fact</CardTitle>
       </CardHeader>
       <CardContent className="p-0 text-xs text-muted-foreground">
         <p className="leading-relaxed">{fact}</p>
         <div className="mt-3 flex justify-end">
-          <Button size="sm" variant="outline" onClick={() => setIndex(getRandomIndex(index, FACTS.length))}>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setIndex(getRandomIndex(index, FACTS.length))}
+          >
             New fact
           </Button>
         </div>

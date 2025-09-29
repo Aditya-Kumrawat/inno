@@ -124,7 +124,9 @@ export function VaccineCard({
 
       <DialogContent className="rounded-3xl border border-white/40 bg-gradient-to-br from-white/90 via-white/55 to-white/30 backdrop-blur-2xl shadow-[0_40px_90px_rgba(79,70,229,0.28)] p-4 sm:p-5">
         <DialogHeader>
-          <DialogTitle className="text-base leading-tight break-words">{vaccine.vaccine}</DialogTitle>
+          <DialogTitle className="text-base leading-tight break-words">
+            {vaccine.vaccine}
+          </DialogTitle>
           <DialogDescription>
             Detailed information about the {vaccine.vaccine} vaccine.
           </DialogDescription>
