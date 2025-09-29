@@ -31,7 +31,13 @@ export function ScheduleSection({
     : subtitleBase;
 
   return (
-    <section className="space-y-4">
+    <motion.section
+      className="space-y-4"
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+    >
       <header className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-blue-600">
@@ -54,6 +60,30 @@ export function ScheduleSection({
         >
           {emptyMessage}
         </div>
+      ) : layout === "carousel" ? (
+        <div className="relative">
+          <Carousel opts={{ align: "start", slidesToScroll: 1 }}>
+            <CarouselContent>
+              {vaccines.map((vaccine) => (
+                <CarouselItem
+                  key={vaccine.id}
+                  className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                >
+                  <div className="pr-2">
+                    <VaccineCard
+                      vaccine={vaccine}
+                      onRemind={onRemind}
+                      contextLabel={contextLabel}
+                      isSavingReminder={isSavingReminder}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="-left-4 shadow-md bg-white/80 backdrop-blur" />
+            <CarouselNext className="-right-4 shadow-md bg-white/80 backdrop-blur" />
+          </Carousel>
+        </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {vaccines.map((vaccine) => (
@@ -67,6 +97,6 @@ export function ScheduleSection({
           ))}
         </div>
       )}
-    </section>
+    </motion.section>
   );
 }
