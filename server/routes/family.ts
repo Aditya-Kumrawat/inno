@@ -17,12 +17,17 @@ export const listFamilyMembers: RequestHandler = (_req, res) => {
 export const createFamilyMember: RequestHandler = (req, res) => {
   const payload = req.body as Partial<FamilyMemberPayload> | undefined;
 
-  if (!payload || typeof payload.name !== "string" || payload.name.trim() === "") {
+  if (
+    !payload ||
+    typeof payload.name !== "string" ||
+    payload.name.trim() === ""
+  ) {
     res.status(400).json({ error: "name is required" });
     return;
   }
 
-  const age = typeof payload.age === "number" ? payload.age : Number(payload.age);
+  const age =
+    typeof payload.age === "number" ? payload.age : Number(payload.age);
   if (Number.isNaN(age) || age < 0) {
     res.status(400).json({ error: "age must be a positive number" });
     return;

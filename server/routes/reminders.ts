@@ -4,8 +4,12 @@ import { ReminderPayload, ReminderRecord } from "@shared/api";
 const reminders: ReminderRecord[] = [];
 
 export const listReminders: RequestHandler = (req, res) => {
-  const userIdParam = Array.isArray(req.query.userId) ? req.query.userId[0] : req.query.userId;
-  const memberIdParam = Array.isArray(req.query.memberId) ? req.query.memberId[0] : req.query.memberId;
+  const userIdParam = Array.isArray(req.query.userId)
+    ? req.query.userId[0]
+    : req.query.userId;
+  const memberIdParam = Array.isArray(req.query.memberId)
+    ? req.query.memberId[0]
+    : req.query.memberId;
 
   const filtered = reminders.filter((reminder) => {
     if (userIdParam && reminder.userId !== userIdParam) {
@@ -23,7 +27,11 @@ export const listReminders: RequestHandler = (req, res) => {
 export const createReminder: RequestHandler = (req, res) => {
   const payload: ReminderPayload = req.body;
 
-  if (!payload || typeof payload.userId !== "string" || payload.userId.trim() === "") {
+  if (
+    !payload ||
+    typeof payload.userId !== "string" ||
+    payload.userId.trim() === ""
+  ) {
     res.status(400).json({ error: "userId is required" });
     return;
   }

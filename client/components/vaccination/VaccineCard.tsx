@@ -58,12 +58,19 @@ const formatAge = (age: number) => {
 const glassCardClass =
   "rounded-3xl border border-white/45 bg-gradient-to-br from-white/85 via-white/50 to-white/25 backdrop-blur-xl shadow-[0_30px_80px_rgba(79,70,229,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(79,70,229,0.24)]";
 
-export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder = false }: VaccineCardProps) {
+export function VaccineCard({
+  vaccine,
+  onRemind,
+  contextLabel,
+  isSavingReminder = false,
+}: VaccineCardProps) {
   const severity = severityConfig[vaccine.severity];
 
   return (
     <Dialog>
-      <Card className={cn(glassCardClass, "flex h-full flex-col justify-between")}>
+      <Card
+        className={cn(glassCardClass, "flex h-full flex-col justify-between")}
+      >
         <CardHeader className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <CardTitle className="text-lg font-semibold text-foreground">
@@ -72,7 +79,10 @@ export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder 
             <Badge className={severity.badgeClass}>{severity.label}</Badge>
           </div>
           <CardDescription className="text-sm text-muted-foreground">
-            Protects against <span className="font-medium text-foreground">{vaccine.disease}</span>
+            Protects against{" "}
+            <span className="font-medium text-foreground">
+              {vaccine.disease}
+            </span>
           </CardDescription>
         </CardHeader>
 
@@ -82,13 +92,17 @@ export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder 
             <div>{formatAge(vaccine.age)}</div>
             {contextLabel ? (
               <div className="mt-1 text-xs">
-                Tailored for <span className="font-medium text-foreground">{contextLabel}</span>
+                Tailored for{" "}
+                <span className="font-medium text-foreground">
+                  {contextLabel}
+                </span>
               </div>
             ) : null}
           </div>
           {vaccine.notes ? (
             <div className="text-sm text-muted-foreground">
-              <span className="font-medium text-foreground">Notes:</span> {vaccine.notes}
+              <span className="font-medium text-foreground">Notes:</span>{" "}
+              {vaccine.notes}
             </div>
           ) : null}
           <div className="flex items-center justify-end gap-2">
@@ -97,7 +111,11 @@ export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder 
                 View details
               </Button>
             </DialogTrigger>
-            <Button size="sm" onClick={() => onRemind(vaccine)} disabled={isSavingReminder}>
+            <Button
+              size="sm"
+              onClick={() => onRemind(vaccine)}
+              disabled={isSavingReminder}
+            >
               {isSavingReminder ? "Saving..." : "Remind Me"}
             </Button>
           </div>
@@ -113,23 +131,31 @@ export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder 
         </DialogHeader>
         <div className="space-y-4 text-sm text-muted-foreground">
           <div>
-            <span className="font-semibold text-foreground">Disease prevented:</span> {vaccine.disease}
+            <span className="font-semibold text-foreground">
+              Disease prevented:
+            </span>{" "}
+            {vaccine.disease}
           </div>
           <div className="flex items-center gap-2">
             <span className="font-semibold text-foreground">Severity:</span>
             <Badge className={severity.badgeClass}>{severity.label}</Badge>
           </div>
           <div>
-            <span className="font-semibold text-foreground">Recommended age:</span> {formatAge(vaccine.age)}
+            <span className="font-semibold text-foreground">
+              Recommended age:
+            </span>{" "}
+            {formatAge(vaccine.age)}
           </div>
           {vaccine.notes ? (
             <div>
-              <span className="font-semibold text-foreground">Guidance:</span> {vaccine.notes}
+              <span className="font-semibold text-foreground">Guidance:</span>{" "}
+              {vaccine.notes}
             </div>
           ) : null}
           {contextLabel ? (
             <div>
-              <span className="font-semibold text-foreground">Applies to:</span> {contextLabel}
+              <span className="font-semibold text-foreground">Applies to:</span>{" "}
+              {contextLabel}
             </div>
           ) : null}
         </div>

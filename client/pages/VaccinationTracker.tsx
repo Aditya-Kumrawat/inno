@@ -56,9 +56,11 @@ const fetchFamilyMembers = async (): Promise<FamilyMemberRecord[]> => {
   return (await response.json()) as FamilyMemberRecord[];
 };
 
-const addFamilyMemberRequest = async (
-  payload: { name: string; age: number; gender: Gender },
-): Promise<FamilyMemberRecord> => {
+const addFamilyMemberRequest = async (payload: {
+  name: string;
+  age: number;
+  gender: Gender;
+}): Promise<FamilyMemberRecord> => {
   const response = await fetch("/api/family", {
     method: "POST",
     headers: {
@@ -127,13 +129,17 @@ function PersonalSchedule({
     return (
       <Card className="border-dashed border-muted/70 bg-muted/10">
         <CardHeader>
-          <CardTitle className="text-lg">Your vaccination plan awaits</CardTitle>
+          <CardTitle className="text-lg">
+            Your vaccination plan awaits
+          </CardTitle>
           <CardDescription>
-            Provide your age and gender to generate a tailored vaccination schedule.
+            Provide your age and gender to generate a tailored vaccination
+            schedule.
           </CardDescription>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          We will highlight upcoming vaccines and those recommended within the past two years so you can stay on track.
+          We will highlight upcoming vaccines and those recommended within the
+          past two years so you can stay on track.
         </CardContent>
       </Card>
     );
@@ -163,7 +169,10 @@ function PersonalSchedule({
 
 interface FamilyMemberScheduleProps {
   member: FamilyMemberRecord;
-  onRemind: (vaccine: VaccineRecommendation, member: FamilyMemberRecord) => void;
+  onRemind: (
+    vaccine: VaccineRecommendation,
+    member: FamilyMemberRecord,
+  ) => void;
   isSavingReminder: boolean;
 }
 
@@ -194,7 +203,8 @@ function FamilyMemberSchedule({
         <CardHeader>
           <CardTitle className="text-base">Unable to load vaccines</CardTitle>
           <CardDescription>
-            We could not load the schedule for {member.name}. Please try again later.
+            We could not load the schedule for {member.name}. Please try again
+            later.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -247,7 +257,8 @@ export default function VaccinationTracker() {
     userId: string;
   } | null>(null);
 
-  const [personalSchedule, setPersonalSchedule] = useState<VaccinesResponse | null>(null);
+  const [personalSchedule, setPersonalSchedule] =
+    useState<VaccinesResponse | null>(null);
 
   const personalScheduleMutation = useMutation({
     mutationFn: ({ age, gender }: { age: number; gender: Gender }) =>
@@ -281,8 +292,15 @@ export default function VaccinationTracker() {
   });
 
   const addFamilyMemberMutation = useMutation({
-    mutationFn: ({ name, age, gender }: { name: string; age: number; gender: Gender }) =>
-      addFamilyMemberRequest({ name, age, gender }),
+    mutationFn: ({
+      name,
+      age,
+      gender,
+    }: {
+      name: string;
+      age: number;
+      gender: Gender;
+    }) => addFamilyMemberRequest({ name, age, gender }),
     onSuccess: (record) => {
       toast({
         title: "Family member added",
@@ -295,7 +313,9 @@ export default function VaccinationTracker() {
       toast({
         title: "Unable to add member",
         description:
-          error instanceof Error ? error.message : "Please try again in a moment.",
+          error instanceof Error
+            ? error.message
+            : "Please try again in a moment.",
         variant: "destructive",
       });
     },
@@ -314,7 +334,9 @@ export default function VaccinationTracker() {
   });
 
   const familyMembers = familyMembersQuery.data ?? [];
-  const [activeFamilyMember, setActiveFamilyMember] = useState<string | null>(null);
+  const [activeFamilyMember, setActiveFamilyMember] = useState<string | null>(
+    null,
+  );
 
   useEffect(() => {
     if (familyMembers.length === 0) {
@@ -335,7 +357,8 @@ export default function VaccinationTracker() {
     if (Number.isNaN(parsedAge) || parsedAge < 0) {
       toast({
         title: "Check the details",
-        description: "Age must be a valid number greater than or equal to zero.",
+        description:
+          "Age must be a valid number greater than or equal to zero.",
         variant: "destructive",
       });
       return;
@@ -347,7 +370,10 @@ export default function VaccinationTracker() {
       userId: `personal-${slugify(trimmedName)}`,
     };
     setPersonalContext(context);
-    personalScheduleMutation.mutate({ age: parsedAge, gender: personalForm.gender });
+    personalScheduleMutation.mutate({
+      age: parsedAge,
+      gender: personalForm.gender,
+    });
   };
 
   const handleAddFamilyMember = (event: React.FormEvent<HTMLFormElement>) => {
@@ -356,7 +382,8 @@ export default function VaccinationTracker() {
     if (Number.isNaN(parsedAge) || parsedAge < 0) {
       toast({
         title: "Check the age",
-        description: "Please provide a valid age before adding a family member.",
+        description:
+          "Please provide a valid age before adding a family member.",
         variant: "destructive",
       });
       return;
@@ -426,9 +453,12 @@ export default function VaccinationTracker() {
   const personalModeHeader = useMemo(
     () => (
       <div className="space-y-1">
-        <h1 className="text-3xl font-bold text-foreground">Vaccination Tracker</h1>
+        <h1 className="text-3xl font-bold text-foreground">
+          Vaccination Tracker
+        </h1>
         <p className="text-muted-foreground">
-          Manage personal and family vaccination schedules in one organised place.
+          Manage personal and family vaccination schedules in one organised
+          place.
         </p>
       </div>
     ),
@@ -437,7 +467,10 @@ export default function VaccinationTracker() {
 
   return (
     <div className="dashboard-page min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
-      <FloatingSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
+      <FloatingSidebar
+        isCollapsed={isCollapsed}
+        setIsCollapsed={setIsCollapsed}
+      />
       <FloatingTopBar isCollapsed={isCollapsed} />
 
       <div
@@ -450,7 +483,10 @@ export default function VaccinationTracker() {
               <span className="text-xs uppercase tracking-wide text-muted-foreground">
                 Mode
               </span>
-              <Tabs value={mode} onValueChange={(value) => setMode(value as Mode)}>
+              <Tabs
+                value={mode}
+                onValueChange={(value) => setMode(value as Mode)}
+              >
                 <TabsList>
                   <TabsTrigger value="personal">Personal</TabsTrigger>
                   <TabsTrigger value="family">Family</TabsTrigger>
@@ -466,7 +502,8 @@ export default function VaccinationTracker() {
                   <CardHeader>
                     <CardTitle className="text-xl">Personal Details</CardTitle>
                     <CardDescription>
-                      Enter your information to generate a personalised vaccination schedule.
+                      Enter your information to generate a personalised
+                      vaccination schedule.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
@@ -518,14 +555,22 @@ export default function VaccinationTracker() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="any">Any / Prefer not to say</SelectItem>
+                            <SelectItem value="any">
+                              Any / Prefer not to say
+                            </SelectItem>
                             <SelectItem value="female">Female</SelectItem>
                             <SelectItem value="male">Male</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
-                      <Button type="submit" className="w-full" disabled={personalScheduleMutation.isPending}>
-                        {personalScheduleMutation.isPending ? "Generating..." : "Generate Schedule"}
+                      <Button
+                        type="submit"
+                        className="w-full"
+                        disabled={personalScheduleMutation.isPending}
+                      >
+                        {personalScheduleMutation.isPending
+                          ? "Generating..."
+                          : "Generate Schedule"}
                       </Button>
                     </form>
                   </CardContent>
@@ -547,11 +592,15 @@ export default function VaccinationTracker() {
                   <CardHeader>
                     <CardTitle className="text-xl">Add Family Member</CardTitle>
                     <CardDescription>
-                      Track vaccinations for everyone in your family. Add each member to view their tailored schedule.
+                      Track vaccinations for everyone in your family. Add each
+                      member to view their tailored schedule.
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <form className="space-y-4" onSubmit={handleAddFamilyMember}>
+                    <form
+                      className="space-y-4"
+                      onSubmit={handleAddFamilyMember}
+                    >
                       <div className="space-y-2">
                         <Label htmlFor="family-name">Name</Label>
                         <Input
@@ -600,7 +649,9 @@ export default function VaccinationTracker() {
                             <SelectValue placeholder="Select" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="any">Any / Prefer not to say</SelectItem>
+                            <SelectItem value="any">
+                              Any / Prefer not to say
+                            </SelectItem>
                             <SelectItem value="female">Female</SelectItem>
                             <SelectItem value="male">Male</SelectItem>
                           </SelectContent>
@@ -611,7 +662,9 @@ export default function VaccinationTracker() {
                         className="w-full"
                         disabled={addFamilyMemberMutation.isPending}
                       >
-                        {addFamilyMemberMutation.isPending ? "Adding..." : "Add Member"}
+                        {addFamilyMemberMutation.isPending
+                          ? "Adding..."
+                          : "Add Member"}
                       </Button>
                     </form>
                   </CardContent>
@@ -621,11 +674,13 @@ export default function VaccinationTracker() {
                   <CardHeader>
                     <CardTitle className="text-lg">Family overview</CardTitle>
                     <CardDescription>
-                      Add each family member to compare upcoming vaccines and ensure nobody misses an important dose.
+                      Add each family member to compare upcoming vaccines and
+                      ensure nobody misses an important dose.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="text-sm text-muted-foreground">
-                    Once added, each member appears in the dashboard below with personalised upcoming and recent vaccines.
+                    Once added, each member appears in the dashboard below with
+                    personalised upcoming and recent vaccines.
                   </CardContent>
                 </Card>
               </div>
@@ -641,7 +696,9 @@ export default function VaccinationTracker() {
                 ) : familyMembersQuery.isError ? (
                   <Card className="border border-red-200 bg-red-50/70">
                     <CardHeader>
-                      <CardTitle className="text-lg">Unable to load family members</CardTitle>
+                      <CardTitle className="text-lg">
+                        Unable to load family members
+                      </CardTitle>
                       <CardDescription>
                         Please refresh the page to try again.
                       </CardDescription>
@@ -650,23 +707,37 @@ export default function VaccinationTracker() {
                 ) : familyMembers.length === 0 ? (
                   <Card className="border-dashed border-muted/70 bg-muted/10">
                     <CardHeader>
-                      <CardTitle className="text-lg">No family members yet</CardTitle>
+                      <CardTitle className="text-lg">
+                        No family members yet
+                      </CardTitle>
                       <CardDescription>
-                        Add your loved ones to manage everyone’s vaccinations in one place.
+                        Add your loved ones to manage everyone’s vaccinations in
+                        one place.
                       </CardDescription>
                     </CardHeader>
                   </Card>
                 ) : (
-                  <Tabs value={activeFamilyMember ?? undefined} onValueChange={setActiveFamilyMember}>
+                  <Tabs
+                    value={activeFamilyMember ?? undefined}
+                    onValueChange={setActiveFamilyMember}
+                  >
                     <TabsList className="flex flex-wrap">
                       {familyMembers.map((member) => (
-                        <TabsTrigger key={member.id} value={member.id} className="capitalize">
+                        <TabsTrigger
+                          key={member.id}
+                          value={member.id}
+                          className="capitalize"
+                        >
                           {member.name}
                         </TabsTrigger>
                       ))}
                     </TabsList>
                     {familyMembers.map((member) => (
-                      <TabsContent key={member.id} value={member.id} className="mt-6 space-y-6">
+                      <TabsContent
+                        key={member.id}
+                        value={member.id}
+                        className="mt-6 space-y-6"
+                      >
                         <FamilyMemberSchedule
                           member={member}
                           onRemind={handleFamilyReminder}

@@ -13,12 +13,20 @@ function normalizeGenderParam(value: unknown): Gender {
 }
 
 function matchesGender(entryGender: Gender, targetGender: Gender) {
-  return entryGender === "any" || targetGender === "any" || entryGender === targetGender;
+  return (
+    entryGender === "any" ||
+    targetGender === "any" ||
+    entryGender === targetGender
+  );
 }
 
 export const handleVaccines: RequestHandler = (req, res) => {
-  const ageParam = Array.isArray(req.query.age) ? req.query.age[0] : req.query.age;
-  const genderParam = Array.isArray(req.query.gender) ? req.query.gender[0] : req.query.gender;
+  const ageParam = Array.isArray(req.query.age)
+    ? req.query.age[0]
+    : req.query.age;
+  const genderParam = Array.isArray(req.query.gender)
+    ? req.query.gender[0]
+    : req.query.gender;
 
   const age = ageParam ? Number.parseFloat(ageParam) : Number.NaN;
   if (Number.isNaN(age) || age < 0) {
@@ -28,7 +36,9 @@ export const handleVaccines: RequestHandler = (req, res) => {
 
   const gender = normalizeGenderParam(genderParam);
 
-  const eligible = vaccinationSchedule.filter((entry) => matchesGender(entry.gender, gender));
+  const eligible = vaccinationSchedule.filter((entry) =>
+    matchesGender(entry.gender, gender),
+  );
 
   const upcoming = eligible
     .filter((entry) => entry.age >= age)
