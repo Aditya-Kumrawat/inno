@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { cn } from "@/lib/utils";
 import type { VaccineRecommendation } from "@shared/api";
 
 const severityConfig = {
@@ -54,12 +55,15 @@ const formatAge = (age: number) => {
   return `${age.toFixed(1)} years`;
 };
 
+const glassCardClass =
+  "rounded-3xl border border-white/45 bg-gradient-to-br from-white/85 via-white/50 to-white/25 backdrop-blur-xl shadow-[0_30px_80px_rgba(79,70,229,0.18)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_35px_90px_rgba(79,70,229,0.24)]";
+
 export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder = false }: VaccineCardProps) {
   const severity = severityConfig[vaccine.severity];
 
   return (
     <Dialog>
-      <Card className="flex h-full flex-col justify-between border border-muted/60 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+      <Card className={cn(glassCardClass, "flex h-full flex-col justify-between")}>
         <CardHeader className="space-y-3">
           <div className="flex items-center justify-between gap-3">
             <CardTitle className="text-lg font-semibold text-foreground">
@@ -73,7 +77,7 @@ export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder 
         </CardHeader>
 
         <CardContent className="flex flex-col gap-3 pt-0">
-          <div className="rounded-md bg-muted/40 p-3 text-sm text-muted-foreground">
+          <div className="rounded-2xl border border-white/40 bg-white/35 p-3 text-sm text-muted-foreground shadow-inner shadow-white/30">
             <div className="font-semibold text-foreground">Recommended at</div>
             <div>{formatAge(vaccine.age)}</div>
             {contextLabel ? (
@@ -100,7 +104,7 @@ export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder 
         </CardContent>
       </Card>
 
-      <DialogContent>
+      <DialogContent className="rounded-3xl border border-white/40 bg-gradient-to-br from-white/90 via-white/55 to-white/30 backdrop-blur-2xl shadow-[0_40px_90px_rgba(79,70,229,0.28)]">
         <DialogHeader>
           <DialogTitle>{vaccine.vaccine}</DialogTitle>
           <DialogDescription>
