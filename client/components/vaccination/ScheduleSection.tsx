@@ -1,7 +1,13 @@
 import React from "react";
 import { VaccineCard } from "@/components/vaccination/VaccineCard";
 import { cn } from "@/lib/utils";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { motion } from "framer-motion";
 import type { VaccineRecommendation } from "@shared/api";
 

@@ -214,7 +214,9 @@ function FamilyMemberSchedule({
     return (
       <Card className="rounded-3xl border border-red-200 bg-red-50/70">
         <CardHeader>
-          <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">Unable to load vaccines</CardTitle>
+          <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
+            Unable to load vaccines
+          </CardTitle>
           <CardDescription className="text-xs">
             We could not load the schedule for {member.name}. Please try again
             later.
@@ -249,7 +251,6 @@ function FamilyMemberSchedule({
     </div>
   );
 }
-
 
 export default function VaccinationTracker() {
   const { isCollapsed, setIsCollapsed } = useSidebar();
@@ -473,7 +474,8 @@ export default function VaccinationTracker() {
           Vaccination Tracker
         </h1>
         <p className="dashboard-text text-gray-600 text-base md:text-lg">
-          Manage personal and family vaccination schedules in one organised place.
+          Manage personal and family vaccination schedules in one organised
+          place.
         </p>
       </div>
     ),
@@ -630,7 +632,9 @@ export default function VaccinationTracker() {
                 >
                   <Card className={`${frostedCardClass}`}>
                     <CardHeader>
-                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">Your Plan</CardTitle>
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
+                        Your Plan
+                      </CardTitle>
                       <CardDescription className="text-xs">
                         Upcoming and recent vaccines tailored to you.
                       </CardDescription>
