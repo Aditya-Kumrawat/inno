@@ -18,19 +18,24 @@ import VaccinationTracker from "./pages/VaccinationTracker";
 import ExerciseGuidance from "./pages/ExerciseGuidance";
 import NotFound from "./pages/NotFound";
 
-// Suppress known Recharts defaultProps warning in development
-if (typeof console !== 'undefined' && import.meta.env && import.meta.env.DEV) {
+// Suppress known Recharts defaultProps warning (filter both console.error and console.warn)
+if (typeof console !== "undefined") {
+  const filterMsg = "Support for defaultProps will be removed from function components";
   const originalConsoleError = console.error.bind(console);
+  const originalConsoleWarn = console.warn ? console.warn.bind(console) : originalConsoleError;
   console.error = (...args: any[]) => {
     try {
       const msg = args[0];
-      if (typeof msg === 'string' && msg.includes('Support for defaultProps will be removed from function components')) {
-        return;
-      }
-    } catch (e) {
-      // fallthrough to original
-    }
+      if (typeof msg === "string" && msg.includes(filterMsg)) return;
+    } catch (e) {}
     originalConsoleError(...args);
+  };
+  console.warn = (...args: any[]) => {
+    try {
+      const msg = args[0];
+      if (typeof msg === "string" && msg.includes(filterMsg)) return;
+    } catch (e) {}
+    originalConsoleWarn(...args);
   };
 }
 
