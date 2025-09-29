@@ -20,9 +20,12 @@ import NotFound from "./pages/NotFound";
 
 // Suppress known Recharts defaultProps warning (filter both console.error and console.warn)
 if (typeof console !== "undefined") {
-  const filterMsg = "Support for defaultProps will be removed from function components";
+  const filterMsg =
+    "Support for defaultProps will be removed from function components";
   const originalConsoleError = console.error.bind(console);
-  const originalConsoleWarn = console.warn ? console.warn.bind(console) : originalConsoleError;
+  const originalConsoleWarn = console.warn
+    ? console.warn.bind(console)
+    : originalConsoleError;
   console.error = (...args: any[]) => {
     try {
       const msg = args[0];
