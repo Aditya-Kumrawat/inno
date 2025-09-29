@@ -638,6 +638,15 @@ export default function VaccinationTracker() {
                       Loading family dashboard...
                     </div>
                   </Card>
+                ) : familyMembersQuery.isError ? (
+                  <Card className="border border-red-200 bg-red-50/70">
+                    <CardHeader>
+                      <CardTitle className="text-lg">Unable to load family members</CardTitle>
+                      <CardDescription>
+                        Please refresh the page to try again.
+                      </CardDescription>
+                    </CardHeader>
+                  </Card>
                 ) : familyMembers.length === 0 ? (
                   <Card className="border-dashed border-muted/70 bg-muted/10">
                     <CardHeader>
