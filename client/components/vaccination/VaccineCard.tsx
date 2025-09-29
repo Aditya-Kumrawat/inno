@@ -37,6 +37,7 @@ interface VaccineCardProps {
   vaccine: VaccineRecommendation;
   onRemind: (vaccine: VaccineRecommendation) => void;
   contextLabel?: string;
+  isSavingReminder?: boolean;
 }
 
 const formatAge = (age: number) => {
@@ -53,7 +54,7 @@ const formatAge = (age: number) => {
   return `${age.toFixed(1)} years`;
 };
 
-export function VaccineCard({ vaccine, onRemind, contextLabel }: VaccineCardProps) {
+export function VaccineCard({ vaccine, onRemind, contextLabel, isSavingReminder = false }: VaccineCardProps) {
   const severity = severityConfig[vaccine.severity];
 
   return (
@@ -92,8 +93,8 @@ export function VaccineCard({ vaccine, onRemind, contextLabel }: VaccineCardProp
                 View details
               </Button>
             </DialogTrigger>
-            <Button size="sm" onClick={() => onRemind(vaccine)}>
-              Remind Me
+            <Button size="sm" onClick={() => onRemind(vaccine)} disabled={isSavingReminder}>
+              {isSavingReminder ? "Saving..." : "Remind Me"}
             </Button>
           </div>
         </CardContent>
@@ -129,7 +130,9 @@ export function VaccineCard({ vaccine, onRemind, contextLabel }: VaccineCardProp
           ) : null}
         </div>
         <div className="mt-4 flex justify-end">
-          <Button onClick={() => onRemind(vaccine)}>Remind Me</Button>
+          <Button onClick={() => onRemind(vaccine)} disabled={isSavingReminder}>
+            {isSavingReminder ? "Saving..." : "Remind Me"}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
