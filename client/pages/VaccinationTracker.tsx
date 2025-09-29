@@ -532,6 +532,9 @@ export default function VaccinationTracker() {
               <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
                 <div className="xl:col-span-4">
                   <VideoPanel />
+                  <div className="mt-4">
+                    <VaccineFacts />
+                  </div>
                 </div>
                 <div className="xl:col-span-8">
                   <div className="grid gap-6 lg:grid-cols-2">
@@ -642,6 +645,9 @@ export default function VaccinationTracker() {
               <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
                 <div className="xl:col-span-4">
                   <VideoPanel />
+                  <div className="mt-4">
+                    <VaccineFacts />
+                  </div>
                 </div>
                 <div className="xl:col-span-8">
                   <div className="grid gap-6 lg:grid-cols-2">
