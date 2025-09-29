@@ -52,15 +52,6 @@ export function VaccineFacts({ className }: { className?: string }) {
       </CardHeader>
       <CardContent className="p-0 text-xs text-muted-foreground">
         <p className="leading-relaxed">{fact}</p>
-        <div className="mt-3 flex justify-end">
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={() => setIndex(getRandomIndex(index, FACTS.length))}
-          >
-            New fact
-          </Button>
-        </div>
       </CardContent>
     </Card>
   );
