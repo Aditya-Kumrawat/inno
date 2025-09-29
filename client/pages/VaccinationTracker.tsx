@@ -137,7 +137,7 @@ function PersonalSchedule({
           <CardTitle className="text-lg">
             Your vaccination plan awaits
           </CardTitle>
-          <CardDescription>
+          <CardDescription className="text-xs">
             Provide your age and gender to generate a tailored vaccination
             schedule.
           </CardDescription>
@@ -207,7 +207,7 @@ function FamilyMemberSchedule({
       <Card className="rounded-3xl border border-red-200 bg-red-50/70">
         <CardHeader>
           <CardTitle className="text-base">Unable to load vaccines</CardTitle>
-          <CardDescription>
+          <CardDescription className="text-xs">
             We could not load the schedule for {member.name}. Please try again
             later.
           </CardDescription>
@@ -496,7 +496,7 @@ export default function VaccinationTracker() {
   const personalModeHeader = useMemo(
     () => (
       <div className="space-y-1">
-        <h1 className="text-3xl font-bold text-foreground">
+        <h1 className="text-2xl font-bold text-foreground">
           Vaccination Tracker
         </h1>
         <p className="text-muted-foreground">
@@ -548,8 +548,8 @@ export default function VaccinationTracker() {
                   <div className="grid gap-6 lg:grid-cols-2">
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-xl">Personal Details</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-base">Personal Details</CardTitle>
+                        <CardDescription className="text-xs">
                           Enter your information to generate a personalised
                           vaccination schedule.
                         </CardDescription>
@@ -557,7 +557,7 @@ export default function VaccinationTracker() {
                       <CardContent>
                         <form className="space-y-4" onSubmit={handlePersonalSubmit}>
                           <div className="space-y-2">
-                            <Label htmlFor="personal-name">Name</Label>
+                            <Label htmlFor="personal-name" className="text-xs">Name</Label>
                             <Input
                               id="personal-name"
                               value={personalForm.name}
@@ -568,10 +568,11 @@ export default function VaccinationTracker() {
                                 }))
                               }
                               placeholder="e.g. Riya Sharma"
+                              className="h-9 text-sm"
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="personal-age">Age (years)</Label>
+                            <Label htmlFor="personal-age" className="text-xs">Age (years)</Label>
                             <Input
                               id="personal-age"
                               type="number"
@@ -585,11 +586,12 @@ export default function VaccinationTracker() {
                                 }))
                               }
                               placeholder="e.g. 4 or 0.5"
+                              className="h-9 text-sm"
                               required
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Gender</Label>
+                            <Label className="text-xs">Gender</Label>
                             <Select
                               value={personalForm.gender}
                               onValueChange={(value) =>
@@ -612,6 +614,7 @@ export default function VaccinationTracker() {
                             </Select>
                           </div>
                           <Button
+                            size="sm"
                             type="submit"
                             className="w-full"
                             disabled={personalScheduleMutation.isPending}
@@ -626,8 +629,8 @@ export default function VaccinationTracker() {
 
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-xl">Your Plan</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-base">Your Plan</CardTitle>
+                        <CardDescription className="text-xs">
                           Upcoming and recent vaccines tailored to you.
                         </CardDescription>
                       </CardHeader>
@@ -655,8 +658,8 @@ export default function VaccinationTracker() {
                   <div className="grid gap-6 lg:grid-cols-2">
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-xl">Add Family Member</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-base">Add Family Member</CardTitle>
+                        <CardDescription className="text-xs">
                           Track vaccinations for everyone in your family. Add each
                           member to view their tailored schedule.
                         </CardDescription>
@@ -667,7 +670,7 @@ export default function VaccinationTracker() {
                           onSubmit={handleAddFamilyMember}
                         >
                           <div className="space-y-2">
-                            <Label htmlFor="family-name">Name</Label>
+                            <Label htmlFor="family-name" className="text-xs">Name</Label>
                             <Input
                               id="family-name"
                               value={familyForm.name}
@@ -678,11 +681,12 @@ export default function VaccinationTracker() {
                                 }))
                               }
                               placeholder="e.g. Aarav"
+                              className="h-9 text-sm"
                               required
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="family-age">Age (years)</Label>
+                            <Label htmlFor="family-age" className="text-xs">Age (years)</Label>
                             <Input
                               id="family-age"
                               type="number"
@@ -696,11 +700,12 @@ export default function VaccinationTracker() {
                                 }))
                               }
                               placeholder="e.g. 11"
+                              className="h-9 text-sm"
                               required
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Gender</Label>
+                            <Label className="text-xs">Gender</Label>
                             <Select
                               value={familyForm.gender}
                               onValueChange={(value) =>
@@ -723,6 +728,7 @@ export default function VaccinationTracker() {
                             </Select>
                           </div>
                           <Button
+                            size="sm"
                             type="submit"
                             className="w-full"
                             disabled={addFamilyMemberMutation.isPending}
@@ -737,8 +743,8 @@ export default function VaccinationTracker() {
 
                     <Card className={`${frostedCardClass}`}>
                       <CardHeader>
-                        <CardTitle className="text-lg">Family overview</CardTitle>
-                        <CardDescription>
+                        <CardTitle className="text-base">Family overview</CardTitle>
+                        <CardDescription className="text-xs">
                           Add each family member to compare upcoming vaccines and
                           ensure nobody misses an important dose.
                         </CardDescription>
@@ -763,10 +769,10 @@ export default function VaccinationTracker() {
                 ) : familyMembersQuery.isError ? (
                   <Card className="rounded-3xl border border-red-200 bg-red-50/70">
                     <CardHeader>
-                      <CardTitle className="text-lg">
+                      <CardTitle className="text-base">
                         Unable to load family members
                       </CardTitle>
-                      <CardDescription>
+                      <CardDescription className="text-xs">
                         Please refresh the page to try again.
                       </CardDescription>
                     </CardHeader>
@@ -774,10 +780,10 @@ export default function VaccinationTracker() {
                 ) : familyMembers.length === 0 ? (
                   <Card className={`${frostedCardClass}`}>
                     <CardHeader>
-                      <CardTitle className="text-lg">
+                      <CardTitle className="text-base">
                         No family members yet
                       </CardTitle>
-                      <CardDescription>
+                      <CardDescription className="text-xs">
                         Add your loved ones to manage everyone’s vaccinations in
                         one place.
                       </CardDescription>
