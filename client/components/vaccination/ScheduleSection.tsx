@@ -13,7 +13,7 @@ interface ScheduleSectionProps {
 }
 
 const emptyStateClass =
-  "rounded-3xl border border-dashed border-white/45 bg-gradient-to-br from-white/65 via-white/35 to-white/15 backdrop-blur-xl shadow-[0_25px_70px_rgba(79,70,229,0.12)]";
+  "rounded-3xl border border-dashed border-white/45 bg-gradient-to-br from-white/65 via-white/35 to-white/15 backdrop-blur-xl shadow-[0_20px_56px_rgba(79,70,229,0.12)]";
 
 export function ScheduleSection({
   title,
@@ -31,15 +31,15 @@ export function ScheduleSection({
     : subtitleBase;
 
   return (
-    <section className="space-y-5">
+    <section className="space-y-4">
       <header className="flex flex-wrap items-center justify-between gap-2">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-purple-500">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-purple-500">
             {title}
           </p>
-          <h3 className="text-xl font-semibold text-slate-900">{subtitle}</h3>
+          <h3 className="text-sm font-semibold leading-snug text-slate-900">{subtitle}</h3>
         </div>
-        <span className="text-sm text-muted-foreground">
+        <span className="text-xs text-muted-foreground">
           {vaccines.length} item{vaccines.length === 1 ? "" : "s"}
         </span>
       </header>
@@ -53,7 +53,7 @@ export function ScheduleSection({
           {emptyMessage}
         </div>
       ) : (
-        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {vaccines.map((vaccine) => (
             <VaccineCard
               key={vaccine.id}
