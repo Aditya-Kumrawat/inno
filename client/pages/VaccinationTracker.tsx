@@ -32,7 +32,7 @@ import type {
   VaccinesResponse,
   VaccineRecommendation,
 } from "@shared/api";
-import { useLocation } from "react-router-dom";
+
 import { VaccineFacts } from "@/components/vaccination/VaccineFacts";
 
 const fetchVaccinationSchedule = async (
@@ -137,7 +137,7 @@ function PersonalSchedule({
     return (
       <Card className={`${frostedCardClass}`}>
         <CardHeader>
-          <CardTitle className="text-lg">
+          <CardTitle className="dashboard-title text-xl font-semibold tracking-tight">
             Your vaccination plan awaits
           </CardTitle>
           <CardDescription className="text-xs">
@@ -211,7 +211,7 @@ function FamilyMemberSchedule({
     return (
       <Card className="rounded-3xl border border-red-200 bg-red-50/70">
         <CardHeader>
-          <CardTitle className="text-base">Unable to load vaccines</CardTitle>
+          <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">Unable to load vaccines</CardTitle>
           <CardDescription className="text-xs">
             We could not load the schedule for {member.name}. Please try again
             later.
@@ -245,31 +245,6 @@ function FamilyMemberSchedule({
   );
 }
 
-function VideoPanel() {
-  return (
-    <div className={`${frostedCardClass} p-3 sm:p-4 md:p-5`}>
-      <div className="relative overflow-hidden rounded-2xl border border-white/40 bg-white/30">
-        <div
-          className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop)",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-tr from-white/70 via-white/25 to-transparent" />
-          <div className="absolute inset-0 flex items-end p-4">
-            <div className="rounded-xl bg-white/60 px-3 py-2 text-[11px] font-medium text-slate-700 backdrop-blur-md">
-              Doctor-approved vaccines protect you and your family.
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function VaccinationTracker() {
   const { isCollapsed, setIsCollapsed } = useSidebar();
@@ -489,12 +464,11 @@ export default function VaccinationTracker() {
   const personalModeHeader = useMemo(
     () => (
       <div className="space-y-1">
-        <h1 className="text-2xl font-bold text-foreground">
+        <h1 className="dashboard-title text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900">
           Vaccination Tracker
         </h1>
-        <p className="text-muted-foreground">
-          Manage personal and family vaccination schedules in one organised
-          place.
+        <p className="dashboard-text text-gray-600 text-base md:text-lg">
+          Manage personal and family vaccination schedules in one organised place.
         </p>
       </div>
     ),
@@ -533,244 +507,230 @@ export default function VaccinationTracker() {
 
           <Tabs value={mode} onValueChange={(value) => setMode(value as Mode)}>
             <TabsContent value="personal" className="space-y-8">
-              <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
-                <div className="xl:col-span-4">
-                  <VideoPanel />
-                  <div className="mt-4">
-                    <VaccineFacts />
-                  </div>
-                </div>
-                <div className="xl:col-span-8">
-                  <div className="grid gap-6 lg:grid-cols-2">
-                    <Card className={`${frostedCardClass}`}>
-                      <CardHeader>
-                        <CardTitle className="text-base">
-                          Personal Details
-                        </CardTitle>
-                        <CardDescription className="text-xs">
-                          Enter your information to generate a personalised
-                          vaccination schedule.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <form
-                          className="space-y-4"
-                          onSubmit={handlePersonalSubmit}
-                        >
-                          <div className="space-y-2">
-                            <Label htmlFor="personal-name" className="text-xs">
-                              Name
-                            </Label>
-                            <Input
-                              id="personal-name"
-                              value={personalForm.name}
-                              onChange={(event) =>
-                                setPersonalForm((prev) => ({
-                                  ...prev,
-                                  name: event.target.value,
-                                }))
-                              }
-                              placeholder="e.g. Riya Sharma"
-                              className="h-9 text-sm"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="personal-age" className="text-xs">
-                              Age (years)
-                            </Label>
-                            <Input
-                              id="personal-age"
-                              type="number"
-                              min={0}
-                              step={0.1}
-                              value={personalForm.age}
-                              onChange={(event) =>
-                                setPersonalForm((prev) => ({
-                                  ...prev,
-                                  age: event.target.value,
-                                }))
-                              }
-                              placeholder="e.g. 4 or 0.5"
-                              className="h-9 text-sm"
-                              required
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label className="text-xs">Gender</Label>
-                            <Select
-                              value={personalForm.gender}
-                              onValueChange={(value) =>
-                                setPersonalForm((prev) => ({
-                                  ...prev,
-                                  gender: value as Gender,
-                                }))
-                              }
-                            >
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="any">
-                                  Any / Prefer not to say
-                                </SelectItem>
-                                <SelectItem value="female">Female</SelectItem>
-                                <SelectItem value="male">Male</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <Button
-                            size="sm"
-                            type="submit"
-                            className="w-full"
-                            disabled={personalScheduleMutation.isPending}
+              <div className="space-y-6">
+                <VaccineFacts />
+                <div className="grid gap-6 lg:grid-cols-2">
+                  <Card className={`${frostedCardClass}`}>
+                    <CardHeader>
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
+                        Personal Details
+                      </CardTitle>
+                      <CardDescription className="text-xs">
+                        Enter your information to generate a personalised
+                        vaccination schedule.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <form
+                        className="space-y-4"
+                        onSubmit={handlePersonalSubmit}
+                      >
+                        <div className="space-y-2">
+                          <Label htmlFor="personal-name" className="text-xs">
+                            Name
+                          </Label>
+                          <Input
+                            id="personal-name"
+                            value={personalForm.name}
+                            onChange={(event) =>
+                              setPersonalForm((prev) => ({
+                                ...prev,
+                                name: event.target.value,
+                              }))
+                            }
+                            placeholder="e.g. Riya Sharma"
+                            className="h-9 text-sm"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="personal-age" className="text-xs">
+                            Age (years)
+                          </Label>
+                          <Input
+                            id="personal-age"
+                            type="number"
+                            min={0}
+                            step={0.1}
+                            value={personalForm.age}
+                            onChange={(event) =>
+                              setPersonalForm((prev) => ({
+                                ...prev,
+                                age: event.target.value,
+                              }))
+                            }
+                            placeholder="e.g. 4 or 0.5"
+                            className="h-9 text-sm"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-xs">Gender</Label>
+                          <Select
+                            value={personalForm.gender}
+                            onValueChange={(value) =>
+                              setPersonalForm((prev) => ({
+                                ...prev,
+                                gender: value as Gender,
+                              }))
+                            }
                           >
-                            {personalScheduleMutation.isPending
-                              ? "Generating..."
-                              : "Generate Schedule"}
-                          </Button>
-                        </form>
-                      </CardContent>
-                    </Card>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="any">
+                                Any / Prefer not to say
+                              </SelectItem>
+                              <SelectItem value="female">Female</SelectItem>
+                              <SelectItem value="male">Male</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <Button
+                          size="sm"
+                          type="submit"
+                          className="w-full"
+                          disabled={personalScheduleMutation.isPending}
+                        >
+                          {personalScheduleMutation.isPending
+                            ? "Generating..."
+                            : "Generate Schedule"}
+                        </Button>
+                      </form>
+                    </CardContent>
+                  </Card>
 
-                    <Card className={`${frostedCardClass}`}>
-                      <CardHeader>
-                        <CardTitle className="text-base">Your Plan</CardTitle>
-                        <CardDescription className="text-xs">
-                          Upcoming and recent vaccines tailored to you.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <PersonalSchedule
-                          schedule={personalSchedule}
-                          isLoading={personalScheduleMutation.isPending}
-                          contextName={personalContext?.name}
-                          onRemind={handlePersonalReminder}
-                          isSavingReminder={reminderMutation.isPending}
-                        />
-                      </CardContent>
-                    </Card>
-                  </div>
+                  <Card className={`${frostedCardClass}`}>
+                    <CardHeader>
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">Your Plan</CardTitle>
+                      <CardDescription className="text-xs">
+                        Upcoming and recent vaccines tailored to you.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <PersonalSchedule
+                        schedule={personalSchedule}
+                        isLoading={personalScheduleMutation.isPending}
+                        contextName={personalContext?.name}
+                        onRemind={handlePersonalReminder}
+                        isSavingReminder={reminderMutation.isPending}
+                      />
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </TabsContent>
 
             <TabsContent value="family" className="space-y-8">
-              <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
-                <div className="xl:col-span-4">
-                  <VideoPanel />
-                  <div className="mt-4">
-                    <VaccineFacts />
-                  </div>
-                </div>
-                <div className="xl:col-span-8">
-                  <div className="grid gap-6 lg:grid-cols-2">
-                    <Card className={`${frostedCardClass}`}>
-                      <CardHeader>
-                        <CardTitle className="text-base">
-                          Add Family Member
-                        </CardTitle>
-                        <CardDescription className="text-xs">
-                          Track vaccinations for everyone in your family. Add
-                          each member to view their tailored schedule.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent>
-                        <form
-                          className="space-y-4"
-                          onSubmit={handleAddFamilyMember}
-                        >
-                          <div className="space-y-2">
-                            <Label htmlFor="family-name" className="text-xs">
-                              Name
-                            </Label>
-                            <Input
-                              id="family-name"
-                              value={familyForm.name}
-                              onChange={(event) =>
-                                setFamilyForm((prev) => ({
-                                  ...prev,
-                                  name: event.target.value,
-                                }))
-                              }
-                              placeholder="e.g. Aarav"
-                              className="h-9 text-sm"
-                              required
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="family-age" className="text-xs">
-                              Age (years)
-                            </Label>
-                            <Input
-                              id="family-age"
-                              type="number"
-                              min={0}
-                              step={0.1}
-                              value={familyForm.age}
-                              onChange={(event) =>
-                                setFamilyForm((prev) => ({
-                                  ...prev,
-                                  age: event.target.value,
-                                }))
-                              }
-                              placeholder="e.g. 11"
-                              className="h-9 text-sm"
-                              required
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label className="text-xs">Gender</Label>
-                            <Select
-                              value={familyForm.gender}
-                              onValueChange={(value) =>
-                                setFamilyForm((prev) => ({
-                                  ...prev,
-                                  gender: value as Gender,
-                                }))
-                              }
-                            >
-                              <SelectTrigger>
-                                <SelectValue placeholder="Select" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="any">
-                                  Any / Prefer not to say
-                                </SelectItem>
-                                <SelectItem value="female">Female</SelectItem>
-                                <SelectItem value="male">Male</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <Button
-                            size="sm"
-                            type="submit"
-                            className="w-full"
-                            disabled={addFamilyMemberMutation.isPending}
+              <div className="space-y-6">
+                <VaccineFacts />
+                <div className="grid gap-6 lg:grid-cols-2">
+                  <Card className={`${frostedCardClass}`}>
+                    <CardHeader>
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
+                        Add Family Member
+                      </CardTitle>
+                      <CardDescription className="text-xs">
+                        Track vaccinations for everyone in your family. Add
+                        each member to view their tailored schedule.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <form
+                        className="space-y-4"
+                        onSubmit={handleAddFamilyMember}
+                      >
+                        <div className="space-y-2">
+                          <Label htmlFor="family-name" className="text-xs">
+                            Name
+                          </Label>
+                          <Input
+                            id="family-name"
+                            value={familyForm.name}
+                            onChange={(event) =>
+                              setFamilyForm((prev) => ({
+                                ...prev,
+                                name: event.target.value,
+                              }))
+                            }
+                            placeholder="e.g. Aarav"
+                            className="h-9 text-sm"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="family-age" className="text-xs">
+                            Age (years)
+                          </Label>
+                          <Input
+                            id="family-age"
+                            type="number"
+                            min={0}
+                            step={0.1}
+                            value={familyForm.age}
+                            onChange={(event) =>
+                              setFamilyForm((prev) => ({
+                                ...prev,
+                                age: event.target.value,
+                              }))
+                            }
+                            placeholder="e.g. 11"
+                            className="h-9 text-sm"
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label className="text-xs">Gender</Label>
+                          <Select
+                            value={familyForm.gender}
+                            onValueChange={(value) =>
+                              setFamilyForm((prev) => ({
+                                ...prev,
+                                gender: value as Gender,
+                              }))
+                            }
                           >
-                            {addFamilyMemberMutation.isPending
-                              ? "Adding..."
-                              : "Add Member"}
-                          </Button>
-                        </form>
-                      </CardContent>
-                    </Card>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectItem value="any">
+                                Any / Prefer not to say
+                              </SelectItem>
+                              <SelectItem value="female">Female</SelectItem>
+                              <SelectItem value="male">Male</SelectItem>
+                            </SelectContent>
+                          </Select>
+                        </div>
+                        <Button
+                          size="sm"
+                          type="submit"
+                          className="w-full"
+                          disabled={addFamilyMemberMutation.isPending}
+                        >
+                          {addFamilyMemberMutation.isPending
+                            ? "Adding..."
+                            : "Add Member"}
+                        </Button>
+                      </form>
+                    </CardContent>
+                  </Card>
 
-                    <Card className={`${frostedCardClass}`}>
-                      <CardHeader>
-                        <CardTitle className="text-base">
-                          Family overview
-                        </CardTitle>
-                        <CardDescription className="text-xs">
-                          Add each family member to compare upcoming vaccines
-                          and ensure nobody misses an important dose.
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="text-sm text-muted-foreground">
-                        Once added, each member appears in the dashboard below
-                        with personalised upcoming and recent vaccines.
-                      </CardContent>
-                    </Card>
-                  </div>
+                  <Card className={`${frostedCardClass}`}>
+                    <CardHeader>
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
+                        Family overview
+                      </CardTitle>
+                      <CardDescription className="text-xs">
+                        Add each family member to compare upcoming vaccines
+                        and ensure nobody misses an important dose.
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="text-sm text-muted-foreground">
+                      Once added, each member appears in the dashboard below
+                      with personalised upcoming and recent vaccines.
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
 
@@ -787,7 +747,7 @@ export default function VaccinationTracker() {
                 ) : familyMembersQuery.isError ? (
                   <Card className="rounded-3xl border border-red-200 bg-red-50/70">
                     <CardHeader>
-                      <CardTitle className="text-base">
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
                         Unable to load family members
                       </CardTitle>
                       <CardDescription className="text-xs">
@@ -798,7 +758,7 @@ export default function VaccinationTracker() {
                 ) : familyMembers.length === 0 ? (
                   <Card className={`${frostedCardClass}`}>
                     <CardHeader>
-                      <CardTitle className="text-base">
+                      <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">
                         No family members yet
                       </CardTitle>
                       <CardDescription className="text-xs">
