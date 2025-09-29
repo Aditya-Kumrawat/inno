@@ -1,6 +1,8 @@
 import React from "react";
 import { VaccineCard } from "@/components/vaccination/VaccineCard";
 import { cn } from "@/lib/utils";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import { motion } from "framer-motion";
 import type { VaccineRecommendation } from "@shared/api";
 
 interface ScheduleSectionProps {
@@ -10,6 +12,7 @@ interface ScheduleSectionProps {
   contextLabel?: string;
   emptyMessage?: string;
   isSavingReminder?: boolean;
+  layout?: "grid" | "carousel";
 }
 
 const emptyStateClass =
@@ -22,6 +25,7 @@ export function ScheduleSection({
   contextLabel,
   emptyMessage = "No vaccines in this section for now.",
   isSavingReminder = false,
+  layout = "grid",
 }: ScheduleSectionProps) {
   const subtitleBase = title.toLowerCase().includes("upcoming")
     ? "Stay ahead with the next protection milestones"
