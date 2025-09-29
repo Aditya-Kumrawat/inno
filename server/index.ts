@@ -2,6 +2,9 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { handleVaccines } from "./routes/vaccines";
+import { createReminder, listReminders } from "./routes/reminders";
+import { createFamilyMember, listFamilyMembers } from "./routes/family";
 import {
   handleVapiProxy,
   handleVapiCall,
@@ -23,6 +26,14 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  app.get("/api/vaccines", handleVaccines);
+
+  app.get("/api/reminders", listReminders);
+  app.post("/api/reminders", createReminder);
+
+  app.get("/api/family", listFamilyMembers);
+  app.post("/api/family", createFamilyMember);
 
   // Vapi proxy routes to bypass client-side network restrictions
   app.get("/api/vapi/test", handleVapiTest);

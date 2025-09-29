@@ -43,6 +43,26 @@
 
     --radius: 1rem;
 
+    /* Brand palette (Bento UI inspired) */
+    --primary: 216.9 92.8% 60.6%; /* #3B82F6 Soft Blue */
+    --primary-foreground: 0 0% 100%;
+
+    --teal: 174 78% 40%; /* #14B8A6 Teal */
+    --teal-foreground: 0 0% 100%;
+
+    --success: 140 60% 45%; /* #22C55E Vibrant Green */
+    --success-foreground: 0 0% 100%;
+
+    --warm: 23 95% 53%; /* #F97316 Warm Orange */
+    --warm-foreground: 0 0% 100%;
+
+    --danger: 0 65% 51%; /* #DC2626 Red */
+    --danger-foreground: 0 0% 100%;
+
+    --off-white: 210 20% 98%; /* #F9FAFB */
+    --cool-gray: 217.6 6% 45.9%; /* #6B7280 */
+    --charcoal: 222.2 0% 6.5%; /* #111827 */
+
     /* Custom colors for the creative design */
     --purple-start: 280 100% 30%;
     --purple-end: 320 100% 20%;
@@ -247,5 +267,36 @@
     height: 4px;
     border-radius: 2px;
     background: transparent;
+  }
+
+  /* Glass morphism cards */
+  .glass-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(249, 250, 251, 0.65); /* soft pastel off-white */
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 6px 18px rgba(17, 24, 39, 0.06),
+      0 -4px 12px rgba(17, 24, 39, 0.03),
+      4px 0 8px rgba(17, 24, 39, 0.02),
+      -4px 0 8px rgba(17, 24, 39, 0.02);
+    backdrop-filter: blur(8px) saturate(120%);
+    -webkit-backdrop-filter: blur(8px) saturate(120%);
+    border-radius: 1rem;
+  }
+
+  .glass-card-lg {
+    position: relative;
+    overflow: hidden;
+    background: rgba(249, 250, 251, 0.7);
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    box-shadow:
+      0 8px 24px rgba(17, 24, 39, 0.07),
+      0 -4px 16px rgba(17, 24, 39, 0.03),
+      6px 0 10px rgba(17, 24, 39, 0.02),
+      -6px 0 10px rgba(17, 24, 39, 0.02);
+    backdrop-filter: blur(10px) saturate(115%);
+    -webkit-backdrop-filter: blur(10px) saturate(115%);
+    border-radius: 1.25rem;
   }
 }
