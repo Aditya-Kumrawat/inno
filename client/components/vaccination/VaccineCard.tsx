@@ -73,7 +73,7 @@ export function VaccineCard({
       >
         <CardHeader className="space-y-2 p-4">
           <div className="flex items-center justify-between gap-3">
-            <CardTitle className="text-base font-semibold leading-tight break-words text-foreground">
+            <CardTitle className="dashboard-title text-base md:text-lg font-semibold leading-tight tracking-tight break-words text-foreground">
               {vaccine.vaccine}
             </CardTitle>
             <Badge className={severity.badgeClass}>{severity.label}</Badge>
@@ -124,7 +124,7 @@ export function VaccineCard({
 
       <DialogContent className="rounded-3xl border border-white/40 bg-gradient-to-br from-white/90 via-white/55 to-white/30 backdrop-blur-2xl shadow-[0_40px_90px_rgba(79,70,229,0.28)] p-4 sm:p-5">
         <DialogHeader>
-          <DialogTitle className="text-base leading-tight break-words">
+          <DialogTitle className="dashboard-title text-base md:text-lg leading-tight break-words">
             {vaccine.vaccine}
           </DialogTitle>
           <DialogDescription>
