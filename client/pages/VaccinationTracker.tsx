@@ -57,15 +57,14 @@ const fetchFamilyMembers = async (): Promise<FamilyMemberRecord[]> => {
 };
 
 const addFamilyMemberRequest = async (
-  payload: FamilyMemberRecord | ReminderPayload | { name: string; age: number; gender: Gender },
+  payload: { name: string; age: number; gender: Gender },
 ): Promise<FamilyMemberRecord> => {
-  const body = payload as { name: string; age: number; gender: Gender };
   const response = await fetch("/api/family", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(payload),
   });
   if (!response.ok) {
     throw new Error("Unable to save family member.");
