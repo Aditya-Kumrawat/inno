@@ -23,12 +23,17 @@ export function ScheduleSection({
   emptyMessage = "No vaccines in this section for now.",
   isSavingReminder = false,
 }: ScheduleSectionProps) {
+  const subtitleBase = title.toLowerCase().includes("upcoming")
+    ? "Stay ahead with the next protection milestones"
+    : "Review vaccinations recommended within the last two years";
+  const subtitle = contextLabel ? `${subtitleBase} for ${contextLabel}` : subtitleBase;
+
   return (
     <section className="space-y-5">
       <header className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-purple-500">{title}</p>
-          <h3 className="text-xl font-semibold text-slate-900">Tailored recommendations</h3>
+          <h3 className="text-xl font-semibold text-slate-900">{subtitle}</h3>
         </div>
         <span className="text-sm text-muted-foreground">{vaccines.length} item{vaccines.length === 1 ? "" : "s"}</span>
       </header>
