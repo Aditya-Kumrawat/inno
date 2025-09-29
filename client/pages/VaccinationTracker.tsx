@@ -242,47 +242,26 @@ function FamilyMemberSchedule({
 }
 
 function VideoPanel() {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const videoUrl = params.get("video");
-  const [videoMeta, setVideoMeta] = useState<{ w: number; h: number } | null>(
-    null,
-  );
-
   return (
     <div className={`${frostedCardClass} p-3 sm:p-4 md:p-5`}>
       <div className="relative overflow-hidden rounded-2xl border border-white/40 bg-white/30">
-        {videoUrl ? (
-          <video
-            src={videoUrl}
-            className="block h-full w-full rounded-2xl object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            onLoadedMetadata={(e) => {
-              const v = e.currentTarget;
-              if (v.videoWidth && v.videoHeight) {
-                setVideoMeta({ w: v.videoWidth, h: v.videoHeight });
-              }
-            }}
-            style={videoMeta ? { aspectRatio: `${videoMeta.w}/${videoMeta.h}` } : { aspectRatio: "16/9" }}
-            controls={false}
-          />
-        ) : (
-          <div
-            className="flex aspect-[16/9] items-center justify-center p-6 text-center text-sm text-muted-foreground"
-            style={{
-              backgroundImage:
-                "url(https://cdn.builder.io/o/assets%2Fc4369bc924f040eb94eb923633069808%2F43b3447a0798456d89535bb5c79c8657?alt=media&token=379c0d35-6dbd-47cc-b084-c8f19a74b4ea&apiKey=c4369bc924f040eb94eb923633069808)",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          >
-            Provide a video URL using the "video" query parameter to display it here.
+        <div
+          className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1600&auto=format&fit=crop)",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-tr from-white/70 via-white/25 to-transparent" />
+          <div className="absolute inset-0 flex items-end p-4">
+            <div className="rounded-xl bg-white/60 px-3 py-2 text-[11px] font-medium text-slate-700 backdrop-blur-md">
+              Doctor-approved vaccines protect you and your family.
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
