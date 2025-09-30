@@ -5,6 +5,8 @@ import { handleDemo } from "./routes/demo";
 import { handleVaccines } from "./routes/vaccines";
 import { createReminder, listReminders } from "./routes/reminders";
 import { createFamilyMember, listFamilyMembers } from "./routes/family";
+import { listDoctors } from "./routes/doctors";
+import { createAppointment, listAppointments } from "./routes/appointments";
 import {
   handleVapiProxy,
   handleVapiCall,
