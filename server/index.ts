@@ -36,11 +36,11 @@ export function createServer() {
   app.post("/api/family", createFamilyMember);
 
   // Doctors directory
-  const { listDoctors } = require("./routes/doctors");
+
   app.get("/api/doctors", listDoctors);
 
   // Appointments
-  const { createAppointment, listAppointments } = require("./routes/appointments");
+
   app.get("/api/appointments", listAppointments);
   app.post("/api/appointments", createAppointment);
 
