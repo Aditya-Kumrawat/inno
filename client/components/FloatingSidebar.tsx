@@ -75,6 +75,12 @@ export const FloatingSidebar = ({
       icon: Syringe,
       href: "/dashboard/vaccination-tracker",
     },
+    {
+      id: "doctors",
+      label: "Doctors",
+      icon: Users,
+      href: "/dashboard/doctor-categories",
+    },
   ];
 
   const isActive = (href: string) => {
