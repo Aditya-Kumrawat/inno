@@ -52,3 +52,42 @@ export interface FamilyMemberRecord extends FamilyMemberPayload {
   id: string;
   createdAt: string;
 }
+
+// Doctor directory types
+export type DoctorCategory =
+  | "pediatrician"
+  | "dermatologist"
+  | "cardiologist"
+  | "general-physician"
+  | "gynecologist"
+  | "orthopedic";
+
+export interface DoctorRecord {
+  id: string;
+  name: string;
+  specialization: DoctorCategory;
+  experienceYears: number;
+  avatarUrl?: string;
+  bio?: string;
+  slots: string[]; // e.g., "2025-10-01T10:00:00Z" or human-readable like "10:00 AM"
+}
+
+export interface DoctorsResponse {
+  category: DoctorCategory;
+  doctors: DoctorRecord[];
+}
+
+export interface AppointmentPayload {
+  doctor_id: string;
+  doctor_name: string;
+  specialization: string;
+  slot: string;
+  user_name: string;
+  user_email: string;
+}
+
+export interface AppointmentRecord extends AppointmentPayload {
+  id: string;
+  createdAt: string;
+  meetingLink: string;
+}
