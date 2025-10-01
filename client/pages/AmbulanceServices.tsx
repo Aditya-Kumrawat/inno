@@ -38,9 +38,12 @@ function makeDivIcon(html: string) {
 const ambulanceIcon = makeDivIcon(
   '<div class="flex items-center justify-center w-7 h-7 rounded-full shadow bg-white">🚑</div>'
 );
-const hospitalIcon = makeDivIcon(
-  '<div class="flex items-center justify-center w-7 h-7 rounded-full shadow bg-white text-red-600">✚</div>'
-);
+const hospitalIcon = L.divIcon({
+  html: '<div class="flex items-center justify-center w-10 h-10 rounded-full shadow bg-white text-red-600 text-lg">✚</div>',
+  className: "",
+  iconSize: [40, 40],
+  iconAnchor: [20, 20],
+});
 const miniHospitalIcon = L.divIcon({
   html: '<div class="flex items-center justify-center w-4 h-4 rounded-full shadow bg-white text-red-600 text-[10px]">✚</div>',
   className: "",
@@ -127,13 +130,6 @@ export default function AmbulanceServices() {
       () => setUserPos([22.7205, 75.8571])
     );
   }, []);
-
-  useEffect(() => {
-    if (userPos) {
-      // initial road route from ambulance start
-      recomputeRoute(AMBULANCE_START, userPos, HOSPITAL_POS);
-    }
-  }, [userPos, recomputeRoute]);
 
 
   // Movement along computed road route for selected ambulance
