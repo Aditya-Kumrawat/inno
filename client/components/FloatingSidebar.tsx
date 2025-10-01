@@ -164,7 +164,9 @@ export const FloatingSidebar = ({
         </motion.button>
 
         {/* Navigation Menu */}
-        <div className={`flex-1 p-3 space-y-1 relative flex flex-col ${isCollapsed ? 'justify-center items-center' : 'justify-start items-stretch'}`}>
+        <div
+          className={`flex-1 p-3 space-y-1 relative flex flex-col ${isCollapsed ? "justify-center items-center" : "justify-start items-stretch"}`}
+        >
           {menuItems.map((item, index) => (
             <motion.button
               key={item.id}
@@ -182,10 +184,12 @@ export const FloatingSidebar = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className={`flex items-center justify-center rounded-full overflow-hidden flex-shrink-0 ${isCollapsed ? 'w-9 h-9' : 'w-10 h-10'} transition-all duration-200 ${isActive(item.href) ? 'bg-[#2563EB] border-transparent' : 'bg-[#eeeff4] border border-white/20 group-hover:border-white/30'}`}>
+              <div
+                className={`flex items-center justify-center rounded-full overflow-hidden flex-shrink-0 ${isCollapsed ? "w-9 h-9" : "w-10 h-10"} transition-all duration-200 ${isActive(item.href) ? "bg-[#2563EB] border-transparent" : "bg-[#eeeff4] border border-white/20 group-hover:border-white/30"}`}
+              >
                 <item.icon
                   size={isCollapsed ? 18 : 18}
-                  className={`transition-all duration-200 ${isActive(item.href) ? 'text-white' : 'text-gray-600 group-hover:text-gray-800'}`}
+                  className={`transition-all duration-200 ${isActive(item.href) ? "text-white" : "text-gray-600 group-hover:text-gray-800"}`}
                 />
               </div>
               <AnimatePresence>
