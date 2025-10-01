@@ -208,6 +208,18 @@ export default function AmbulanceServices() {
     return offsets.map((o, i) => ({ id: `h${i}`, pos: [base[0] + o[0], base[1] + o[1]] as [number, number] }));
   }, [userPos]);
 
+  const hospitals = useMemo(() => [HOSPITAL_POS, ...nearestHospitals.map((h) => h.pos)], [nearestHospitals]);
+  useEffect(() => {
+    if (ambulances.length === 0 && hospitals.length) {
+      const list = hospitals.slice(0, 7).map((hp, i) => ({
+        id: `amb${i + 1}`,
+        base: hp,
+        pos: [hp[0] + (i % 2 ? 0.001 : -0.001), hp[1] + (i % 3 ? 0.0015 : -0.0015)] as [number, number],
+      }));
+      setAmbulances(list);
+    }
+  }, [hospitals, ambulances.length]);
+
   return (
     <div className="dashboard-page min-h-screen bg-gradient-to-br from-white via-[#f8fbff] to-[#eef2ff]">
       <FloatingSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
