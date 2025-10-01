@@ -135,12 +135,6 @@ export default function AmbulanceServices() {
     }
   }, [userPos, recomputeRoute]);
 
-  const routePoints = useMemo(() => {
-    const pts: [number, number][] = [ambPos];
-    if (userPos) pts.push(userPos);
-    pts.push(HOSPITAL_POS);
-    return pts;
-  }, [ambPos, userPos]);
 
   // Movement logic
   useEffect(() => {
