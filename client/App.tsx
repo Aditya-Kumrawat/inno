@@ -19,6 +19,7 @@ import ExerciseGuidance from "./pages/ExerciseGuidance";
 import NotFound from "./pages/NotFound";
 import DoctorCategories from "./pages/DoctorCategories";
 import DoctorsByCategory from "./pages/Doctors";
+import AmbulanceServices from "./pages/AmbulanceServices";
 
 // Suppress known Recharts defaultProps warning (filter both console.error and console.warn)
 if (typeof console !== "undefined") {
@@ -77,6 +78,10 @@ const App = () => (
             />
             <Route path="/dashboard/doctor-categories" element={<DoctorCategories />} />
             <Route path="/dashboard/doctors/:category" element={<DoctorsByCategory />} />
+            <Route
+              path="/dashboard/ambulance-services"
+              element={<AmbulanceServices />}
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

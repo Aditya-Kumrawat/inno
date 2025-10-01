@@ -22,11 +22,20 @@ import {
   Camera,
   Cpu,
   Syringe,
+  Ambulance,
 } from "lucide-react";
 
 interface FloatingSidebarProps {
   isCollapsed: boolean;
   setIsCollapsed: (collapsed: boolean) => void;
+}
+
+interface MenuItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<any>;
+  href: string;
+  badge?: number;
 }
 
 export const FloatingSidebar = ({
@@ -37,7 +46,7 @@ export const FloatingSidebar = ({
   const location = useLocation();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { id: "home", label: "Dashboard", icon: Home, href: "/dashboard" },
     {
       id: "analytics",
@@ -74,6 +83,12 @@ export const FloatingSidebar = ({
       label: "Vaccination",
       icon: Syringe,
       href: "/dashboard/vaccination-tracker",
+    },
+    {
+      id: "ambulance",
+      label: "Ambulance Services",
+      icon: Ambulance,
+      href: "/dashboard/ambulance-services",
     },
     {
       id: "doctors",
