@@ -22,6 +22,7 @@ import {
   Camera,
   Cpu,
   Syringe,
+  Ambulance,
 } from "lucide-react";
 
 interface FloatingSidebarProps {
@@ -74,6 +75,12 @@ export const FloatingSidebar = ({
       label: "Vaccination",
       icon: Syringe,
       href: "/dashboard/vaccination-tracker",
+    },
+    {
+      id: "ambulance",
+      label: "Ambulance",
+      icon: Ambulance,
+      href: "/dashboard/ambulance-services",
     },
     {
       id: "doctors",

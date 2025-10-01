@@ -16,6 +16,7 @@ import ComputerVision from "./pages/ComputerVision";
 import DiseaseDetection from "./pages/DiseaseDetection";
 import VaccinationTracker from "./pages/VaccinationTracker";
 import ExerciseGuidance from "./pages/ExerciseGuidance";
+import AmbulanceServices from "./pages/AmbulanceServices";
 import NotFound from "./pages/NotFound";
 import DoctorCategories from "./pages/DoctorCategories";
 import DoctorsByCategory from "./pages/Doctors";
@@ -75,6 +76,7 @@ const App = () => (
               path="/dashboard/exercise-guidance"
               element={<ExerciseGuidance />}
             />
+            <Route path="/dashboard/ambulance-services" element={<AmbulanceServices />} />
             <Route path="/dashboard/doctor-categories" element={<DoctorCategories />} />
             <Route path="/dashboard/doctors/:category" element={<DoctorsByCategory />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
