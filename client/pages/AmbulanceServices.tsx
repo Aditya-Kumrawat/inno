@@ -223,7 +223,14 @@ export default function AmbulanceServices() {
       <FloatingTopBar isCollapsed={isCollapsed} />
       <div className={`transition-all duration-300 ${isCollapsed ? "ml-20" : "ml-72"} pt-28`}>
         <div className="mx-auto w-full max-w-7xl px-6 pb-16">
-          <h1 className="dashboard-title text-3xl md:text-4xl font-extrabold tracking-tight text-gray-900 mb-6">Ambulance Services</h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="dashboard-title text-3xl md:text-4xl font-extrabold tracking-tight mb-6 bg-gradient-to-r from-brand.blue to-brand.teal bg-clip-text text-transparent"
+          >
+            Ambulance Services
+          </motion.h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-10 gap-6">
             {/* Left: 70% (lg: col-span-7) */}
