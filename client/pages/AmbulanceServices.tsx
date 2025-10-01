@@ -253,8 +253,19 @@ export default function AmbulanceServices() {
                       <Polyline positions={roadRoute} pathOptions={{ color: "#2563eb", weight: 4 }} />
                     )}
 
-                    {/* Ambulance */}
-                    <Marker position={ambPos} icon={ambulanceIcon} />
+                    {/* Ambulances (max 7) */}
+                    {ambulances.map((amb) => (
+                      <Marker key={amb.id} position={amb.pos} icon={ambulanceIcon}>
+                        <Popup>
+                          <div className="space-y-2 text-sm">
+                            <div className="font-medium">Ambulance {amb.id.toUpperCase()}</div>
+                            <div>Location: {amb.pos[0].toFixed(4)}, {amb.pos[1].toFixed(4)}</div>
+                            <div>Destination: {amb.base[0].toFixed(4)}, {amb.base[1].toFixed(4)}</div>
+                            <Button size="sm" className="mt-2 w-full" onClick={() => startAmbulance(amb)}>Book this ambulance</Button>
+                          </div>
+                        </Popup>
+                      </Marker>
+                    ))}
 
                     {/* User location */}
                     {userPos && (
