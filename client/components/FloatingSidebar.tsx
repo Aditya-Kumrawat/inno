@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -21,11 +21,21 @@ import {
   Star,
   Camera,
   Cpu,
+  Syringe,
+  Ambulance,
 } from "lucide-react";
 
 interface FloatingSidebarProps {
   isCollapsed: boolean;
   setIsCollapsed: (collapsed: boolean) => void;
+}
+
+interface MenuItem {
+  id: string;
+  label: string;
+  icon: React.ComponentType<any>;
+  href: string;
+  badge?: number;
 }
 
 export const FloatingSidebar = ({
@@ -36,45 +46,13 @@ export const FloatingSidebar = ({
   const location = useLocation();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const menuItems = [
+  const menuItems: MenuItem[] = [
     { id: "home", label: "Dashboard", icon: Home, href: "/dashboard" },
     {
       id: "analytics",
       label: "Analytics",
       icon: BarChart3,
       href: "/dashboard/analytics",
-    },
-    {
-      id: "products",
-      label: "Products",
-      icon: Package,
-      href: "/dashboard/products",
-    },
-    {
-      id: "orders",
-      label: "Orders",
-      icon: ShoppingCart,
-      href: "/dashboard/orders",
-      badge: 5,
-    },
-    {
-      id: "customers",
-      label: "Customers",
-      icon: Users,
-      href: "/dashboard/customers",
-    },
-    {
-      id: "messages",
-      label: "Messages",
-      icon: MessageSquare,
-      href: "/dashboard/messages",
-      badge: 3,
-    },
-    {
-      id: "calendar",
-      label: "Calendar",
-      icon: Calendar,
-      href: "/dashboard/calendar",
     },
     {
       id: "chatbot",
@@ -87,6 +65,36 @@ export const FloatingSidebar = ({
       label: "Computer Vision",
       icon: Camera,
       href: "/dashboard/computer-vision",
+    },
+    {
+      id: "exercise",
+      label: "Exercise",
+      icon: Cpu,
+      href: "/dashboard/exercise-guidance",
+    },
+    {
+      id: "disease-detection",
+      label: "Disease Detection",
+      icon: Star,
+      href: "/dashboard/disease-detection",
+    },
+    {
+      id: "vaccination",
+      label: "Vaccination",
+      icon: Syringe,
+      href: "/dashboard/vaccination-tracker",
+    },
+    {
+      id: "ambulance",
+      label: "Ambulance Services",
+      icon: Ambulance,
+      href: "/dashboard/ambulance-services",
+    },
+    {
+      id: "doctors",
+      label: "Doctors",
+      icon: Users,
+      href: "/dashboard/doctor-categories",
     },
   ];
 
@@ -109,24 +117,15 @@ export const FloatingSidebar = ({
 
   return (
     <motion.div
+      layout
       className={`fixed left-4 top-4 bottom-4 ${
         isCollapsed ? "w-16" : "w-64"
       } z-50 max-h-screen`}
       animate={{ width: isCollapsed ? 64 : 256 }}
-      transition={{ duration: 0.3, ease: "easeInOut" }}
+      transition={{ duration: 0.45, ease: [0.2, 0.9, 0.2, 1] }}
     >
       {/* Smooth Off-White Glass Sidebar */}
-      <div
-        className="h-full overflow-hidden transition-all duration-300"
-        style={{
-          background: "rgba(245, 245, 245, 0.55)",
-          backdropFilter: "blur(10px) saturate(150%)",
-          WebkitBackdropFilter: "blur(10px) saturate(150%)",
-          borderRadius: "1.25rem",
-          border: "1px solid rgba(255, 255, 255, 0.3)",
-          boxShadow: "0 6px 24px rgba(0, 0, 0, 0.12)",
-        }}
-      >
+      <div className="h-full sidebar-glass">
         {/* Logo Section */}
         <motion.div
           className="p-4 border-b border-white/30 transition-colors duration-300"
@@ -134,7 +133,7 @@ export const FloatingSidebar = ({
         >
           <div className="flex items-center gap-3">
             <motion.div
-              className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center font-bold text-sm shadow-lg text-white"
+              className="w-8 h-8 bg-gradient-to-r from-[#3B82F6] to-[#14B8A6] rounded-lg flex items-center justify-center font-bold text-sm shadow-lg text-white"
               whileHover={{ scale: 1.05 }}
             >
               D
@@ -159,11 +158,11 @@ export const FloatingSidebar = ({
         <motion.button
           className="absolute -right-3 top-6 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300 text-gray-600 hover:text-gray-800"
           style={{
-            background: "rgba(255, 255, 255, 0.8)",
+            background: "rgba(255, 255, 255, 0.85)",
             backdropFilter: "blur(8px)",
             WebkitBackdropFilter: "blur(8px)",
-            border: "1px solid rgba(255, 255, 255, 0.5)",
-            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
+            border: "1.5px solid rgba(255, 255, 255, 0.7)",
+            boxShadow: "0 4px 12px rgba(17,24,39,0.06)",
           }}
           onClick={() => setIsCollapsed(!isCollapsed)}
           whileHover={{ scale: 1.1 }}
@@ -173,15 +172,15 @@ export const FloatingSidebar = ({
         </motion.button>
 
         {/* Navigation Menu */}
-        <div className="flex-1 p-3 space-y-1 relative">
+        <div className={`flex-1 p-3 space-y-1 relative flex flex-col ${isCollapsed ? 'justify-center items-center' : 'justify-start items-stretch'}`}>
           {menuItems.map((item, index) => (
             <motion.button
               key={item.id}
               className={`w-full flex items-center gap-3 transition-all duration-200 group relative z-10 ${
                 isCollapsed ? "p-2 justify-center" : "p-3"
-              } rounded-xl ${
+              } rounded-2xl ${
                 isActive(item.href)
-                  ? "text-white bg-gradient-to-r from-purple-500 to-blue-500 shadow-lg"
+                  ? "text-white bg-[#2563EB] shadow-lg"
                   : "hover:bg-white/40 text-gray-700 hover:text-gray-900"
               }`}
               onClick={() => navigate(item.href)}
@@ -191,14 +190,12 @@ export const FloatingSidebar = ({
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <item.icon
-                size={isCollapsed ? 20 : 18}
-                className={`transition-all duration-200 ${
-                  isActive(item.href)
-                    ? "text-white"
-                    : "text-gray-600 group-hover:text-gray-800"
-                }`}
-              />
+              <div className={`flex items-center justify-center rounded-full overflow-hidden flex-shrink-0 ${isCollapsed ? 'w-9 h-9' : 'w-10 h-10'} transition-all duration-200 ${isActive(item.href) ? 'bg-[#2563EB] border-transparent' : 'bg-[#eeeff4] border border-white/20 group-hover:border-white/30'}`}>
+                <item.icon
+                  size={isCollapsed ? 18 : 18}
+                  className={`transition-all duration-200 ${isActive(item.href) ? 'text-white' : 'text-gray-600 group-hover:text-gray-800'}`}
+                />
+              </div>
               <AnimatePresence>
                 {!isCollapsed && (
                   <motion.span
