@@ -162,16 +162,26 @@ export default function AmbulanceServices() {
     };
   }, [isMoving, roadRoute, selectedAmbId]);
 
-  const onBook = useCallback(() => {
+  const startAmbulance = useCallback((amb: { id: string; pos: [number, number]; base: [number, number] }) => {
     if (!userPos) {
       alert("Fetching your location. Please allow location access and try again.");
       return;
     }
-    setPhase("to-user");
+    setSelectedAmbId(amb.id);
+    setDestination(amb.base);
     setIsMoving(true);
-    // Recompute from current ambulance position
-    recomputeRoute(ambPos, userPos, HOSPITAL_POS);
-  }, [userPos, ambPos, recomputeRoute]);
+    setRouteIndex(0);
+    recomputeRoute(amb.pos, userPos, amb.base);
+  }, [userPos, recomputeRoute]);
+
+  const onBookNearest = useCallback(() => {
+    if (!userPos || ambulances.length === 0) {
+      alert("Fetching your location or ambulances unavailable.");
+      return;
+    }
+    const nearest = ambulances.reduce((best, a) => (distance(a.pos, userPos) < distance(best.pos, userPos) ? a : best), ambulances[0]);
+    startAmbulance(nearest);
+  }, [userPos, ambulances, startAmbulance]);
 
   const onCancel = useCallback(() => {
     setIsMoving(false);
