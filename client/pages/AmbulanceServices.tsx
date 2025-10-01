@@ -41,6 +41,12 @@ const ambulanceIcon = makeDivIcon(
 const hospitalIcon = makeDivIcon(
   '<div class="flex items-center justify-center w-7 h-7 rounded-full shadow bg-white text-red-600">✚</div>'
 );
+const miniHospitalIcon = L.divIcon({
+  html: '<div class="flex items-center justify-center w-4 h-4 rounded-full shadow bg-white text-red-600 text-[10px]">✚</div>',
+  className: "",
+  iconSize: [18, 18],
+  iconAnchor: [9, 9],
+});
 
 function distance(a: [number, number], b: [number, number]) {
   const dLat = a[0] - b[0];
@@ -65,6 +71,44 @@ export default function AmbulanceServices() {
   const [phase, setPhase] = useState<"to-user" | "to-hospital">("to-user");
   const timerRef = useRef<number | null>(null);
 
+  // Dynamic emergency contacts (persisted locally)
+  const [contacts, setContacts] = useState<{ name: string; phone: string }[]>([
+    { name: "Riya Sharma", phone: "+91 98765 43210" },
+    { name: "Arjun Verma", phone: "+91 91234 56780" },
+    { name: "Family Group", phone: "+91 90000 00000" },
+  ]);
+  const [newContact, setNewContact] = useState({ name: "", phone: "" });
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("emergencyContacts");
+      if (raw) setContacts(JSON.parse(raw));
+    } catch {}
+  }, []);
+  useEffect(() => {
+    try {
+      localStorage.setItem("emergencyContacts", JSON.stringify(contacts));
+    } catch {}
+  }, [contacts]);
+
+  // Road-aligned route (OSRM). Fallback to straight if unavailable.
+  const [roadRoute, setRoadRoute] = useState<[number, number][] | null>(null);
+  const recomputeRoute = useCallback(async (start: [number, number], mid: [number, number], end: [number, number]) => {
+    try {
+      const coords = [start, mid, end]
+        .map((p) => `${p[1]},${p[0]}`) // lon,lat
+        .join(";");
+      const url = `https://router.project-osrm.org/route/v1/driving/${coords}?overview=full&geometries=geojson`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error("routing failed");
+      const data = await res.json();
+      const points: [number, number][] = data.routes[0].geometry.coordinates.map((c: [number, number]) => [c[1], c[0]]);
+      setRoadRoute(points);
+    } catch (e) {
+      setRoadRoute(null);
+    }
+  }, []);
+
   // Geolocation
   useEffect(() => {
     if (!navigator.geolocation) {
@@ -78,6 +122,13 @@ export default function AmbulanceServices() {
       () => setUserPos([22.7205, 75.8571])
     );
   }, []);
+
+  useEffect(() => {
+    if (userPos) {
+      // initial road route from ambulance start
+      recomputeRoute(AMBULANCE_START, userPos, HOSPITAL_POS);
+    }
+  }, [userPos, recomputeRoute]);
 
   const routePoints = useMemo(() => {
     const pts: [number, number][] = [ambPos];
@@ -123,7 +174,9 @@ export default function AmbulanceServices() {
     }
     setPhase("to-user");
     setIsMoving(true);
-  }, [userPos]);
+    // Recompute from current ambulance position
+    recomputeRoute(ambPos, userPos, HOSPITAL_POS);
+  }, [userPos, ambPos, recomputeRoute]);
 
   const onCancel = useCallback(() => {
     setIsMoving(false);
@@ -132,6 +185,17 @@ export default function AmbulanceServices() {
   }, []);
 
   const mapCenter = userPos ?? AMBULANCE_START;
+
+  const nearestHospitals = useMemo(() => {
+    const base = userPos ?? HOSPITAL_POS;
+    const offsets = [
+      [0.005, 0.004],
+      [-0.004, 0.006],
+      [0.006, -0.003],
+      [-0.003, -0.004],
+    ];
+    return offsets.map((o, i) => ({ id: `h${i}`, pos: [base[0] + o[0], base[1] + o[1]] as [number, number] }));
+  }, [userPos]);
 
   return (
     <div className="dashboard-page min-h-screen bg-gradient-to-br from-white via-[#f8fbff] to-[#eef2ff]">
@@ -161,8 +225,8 @@ export default function AmbulanceServices() {
                       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
 
-                    {/* Route: Ambulance -> User -> Hospital */}
-                    <Polyline positions={routePoints} pathOptions={{ color: "#2563eb", weight: 4 }} />
+                    {/* Route: Ambulance -> User -> Hospital (road-aligned if available) */}
+                    <Polyline positions={roadRoute ?? routePoints} pathOptions={{ color: "#2563eb", weight: 4 }} />
 
                     {/* Ambulance */}
                     <Marker position={ambPos} icon={ambulanceIcon} />
@@ -172,10 +236,14 @@ export default function AmbulanceServices() {
                       <CircleMarker center={userPos} radius={8} pathOptions={{ color: "#3b82f6", fillColor: "#3b82f6", fillOpacity: 0.9 }} />
                     )}
 
-                    {/* Hospital */}
+                    {/* Hospital (primary) */}
                     <Marker position={HOSPITAL_POS} icon={hospitalIcon} />
+                    {/* Nearby hospitals pins */}
+                    {nearestHospitals.map((h) => (
+                      <Marker key={h.id} position={h.pos} icon={miniHospitalIcon} />
+                    ))}
 
-                    <FitToRoute points={routePoints} />
+                    <FitToRoute points={roadRoute ?? routePoints} />
                   </MapContainer>
                 )}
               </div>
@@ -210,27 +278,56 @@ export default function AmbulanceServices() {
                   <CardTitle className="dashboard-title text-lg font-semibold tracking-tight">Emergency Contacts</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <div className="flex items-center justify-between rounded-xl border bg-white/60 p-3">
-                    <div>
-                      <div className="text-sm font-medium">Riya Sharma</div>
-                      <div className="text-xs text-muted-foreground">+91 98765 43210</div>
+                  {/* Add contact form */}
+                  <div className="rounded-xl border bg-white/70 p-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      <input
+                        type="text"
+                        placeholder="Name"
+                        value={newContact.name}
+                        onChange={(e) => setNewContact((v) => ({ ...v, name: e.target.value }))}
+                        className="col-span-1 sm:col-span-1 h-9 rounded-lg border px-3 text-sm"
+                      />
+                      <input
+                        type="tel"
+                        placeholder="Phone"
+                        value={newContact.phone}
+                        onChange={(e) => setNewContact((v) => ({ ...v, phone: e.target.value }))}
+                        className="col-span-1 sm:col-span-1 h-9 rounded-lg border px-3 text-sm"
+                      />
+                      <Button
+                        size="sm"
+                        onClick={() => {
+                          const n = newContact.name.trim();
+                          const p = newContact.phone.trim();
+                          if (!n || !p) {
+                            alert("Please enter name and phone");
+                            return;
+                          }
+                          setContacts((c) => [...c, { name: n, phone: p }]);
+                          setNewContact({ name: "", phone: "" });
+                        }}
+                        className="w-full"
+                      >
+                        Add
+                      </Button>
                     </div>
-                    <Button size="sm" onClick={() => alert("SMS sent to Riya")}>Notify</Button>
                   </div>
-                  <div className="flex items-center justify-between rounded-xl border bg-white/60 p-3">
-                    <div>
-                      <div className="text-sm font-medium">Arjun Verma</div>
-                      <div className="text-xs text-muted-foreground">+91 91234 56780</div>
+
+                  {/* Contacts list */}
+                  {contacts.map((c, i) => (
+                    <div key={`${c.name}-${i}`} className="flex items-center justify-between rounded-xl border bg-white/60 p-3">
+                      <div>
+                        <div className="text-sm font-medium">{c.name}</div>
+                        <div className="text-xs text-muted-foreground">{c.phone}</div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Button size="sm" onClick={() => alert(`SMS sent to ${c.name}`)}>Notify</Button>
+                        <Button size="sm" variant="secondary" onClick={() => setContacts((list) => list.filter((_, idx) => idx !== i))}>Remove</Button>
+                      </div>
                     </div>
-                    <Button size="sm" onClick={() => alert("SMS sent to Arjun")}>Notify</Button>
-                  </div>
-                  <div className="flex items-center justify-between rounded-xl border bg-white/60 p-3">
-                    <div>
-                      <div className="text-sm font-medium">Family Group</div>
-                      <div className="text-xs text-muted-foreground">+91 90000 00000</div>
-                    </div>
-                    <Button size="sm" onClick={() => alert("SMS sent to Family Group")}>Notify</Button>
-                  </div>
+                  ))}
+
                   <Button className="w-full" onClick={() => alert("Emergency message sent to all contacts")}>Notify All</Button>
                 </CardContent>
               </Card>
