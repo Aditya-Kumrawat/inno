@@ -283,7 +283,6 @@ export default function Dashboard() {
                     />
                   </div>
 
-                  {/* @ts-ignore - model-viewer web component */}
                   <div className="relative z-10 w-full h-full overflow-visible">
                     <model-viewer
                       src="https://cdn.builder.io/o/assets%2F13b906ad39be4bc99170117fa7908edc%2F17dc1a1ebf484d88b74b53c84ec62453?alt=media&token=765a47e4-6697-4e40-9380-3a940b09ff98&apiKey=13b906ad39be4bc99170117fa7908edc"
