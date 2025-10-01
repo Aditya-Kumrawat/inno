@@ -7,7 +7,7 @@ import { FloatingTopBar } from "@/components/FloatingTopBar";
 import { useSidebar } from "@/contexts/SidebarContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { AlertTriangle, Phone, Siren, Ambulance as AmbulanceIcon, ShieldAlert, FlameKindling, MapPin, Navigation } from "lucide-react";
+import { AlertTriangle, Phone, Siren, Ambulance as AmbulanceIcon, ShieldAlert, FlameKindling } from "lucide-react";
 
 const frostedCardClass =
   "rounded-3xl border border-white/45 bg-gradient-to-br from-white/85 via-white/50 to-white/25 backdrop-blur-xl shadow-[0_30px_80px_rgba(59,130,246,0.18)]";
@@ -195,25 +195,13 @@ export default function AmbulanceServices() {
 
   const nearestHospitals = useMemo(() => {
     const base = userPos ?? HOSPITAL_POS;
-    const hospitalData = [
-      { name: "Indore Central Hospital", offset: [0, 0], distance: "0.5 km", phone: "+91 98765 00000" },
-      { name: "City General Hospital", offset: [0.005, 0.004], distance: "1.2 km", phone: "+91 98765 11111" },
-      { name: "Apollo Medical Center", offset: [-0.004, 0.006], distance: "1.8 km", phone: "+91 98765 22222" },
-      { name: "Fortis Healthcare", offset: [0.006, -0.003], distance: "2.1 km", phone: "+91 98765 33333" },
-      { name: "Max Super Specialty", offset: [-0.003, -0.004], distance: "2.5 km", phone: "+91 98765 44444" },
-      { name: "Medanta Hospital", offset: [0.007, 0.002], distance: "2.8 km", phone: "+91 98765 55555" },
-      { name: "Lifepoint Multispecialty", offset: [-0.005, -0.005], distance: "3.0 km", phone: "+91 98765 66666" },
-      { name: "CHL Hospital", offset: [0.004, -0.006], distance: "3.2 km", phone: "+91 98765 77777" },
-      { name: "Bombay Hospital", offset: [-0.006, 0.003], distance: "3.5 km", phone: "+91 98765 88888" },
-      { name: "Greater Kailash Hospital", offset: [0.008, -0.004], distance: "3.8 km", phone: "+91 98765 99999" },
+    const offsets = [
+      [0.005, 0.004],
+      [-0.004, 0.006],
+      [0.006, -0.003],
+      [-0.003, -0.004],
     ];
-    return hospitalData.map((h, i) => ({
-      id: `h${i}`,
-      name: h.name,
-      pos: [base[0] + h.offset[0], base[1] + h.offset[1]] as [number, number],
-      distance: h.distance,
-      phone: h.phone,
-    }));
+    return offsets.map((o, i) => ({ id: `h${i}`, pos: [base[0] + o[0], base[1] + o[1]] as [number, number] }));
   }, [userPos]);
 
   const hospitals = useMemo(() => [HOSPITAL_POS, ...nearestHospitals.map((h) => h.pos)], [nearestHospitals]);
@@ -248,7 +236,7 @@ export default function AmbulanceServices() {
                 </Button>
               </div>
 
-              <div className="h-[400px] rounded-xl overflow-hidden border border-white/50 shadow-xl bg-white/70">
+              <div className="h-[500px] rounded-xl overflow-hidden border border-white/50 shadow-xl bg-white/70">
                 {mapCenter && (
                   <MapContainer center={mapCenter} zoom={13} className="h-full w-full">
                     <TileLayer
@@ -284,86 +272,13 @@ export default function AmbulanceServices() {
                     <Marker position={HOSPITAL_POS} icon={hospitalIcon} />
                     {/* Nearby hospitals pins */}
                     {nearestHospitals.map((h) => (
-                      <Marker key={h.id} position={h.pos} icon={miniHospitalIcon}>
-                        <Popup>
-                          <div className="space-y-1 text-sm">
-                            <div className="font-medium">{h.name}</div>
-                            <div className="text-xs text-muted-foreground">{h.distance} away</div>
-                            <div className="text-xs">{h.phone}</div>
-                          </div>
-                        </Popup>
-                      </Marker>
+                      <Marker key={h.id} position={h.pos} icon={miniHospitalIcon} />
                     ))}
 
                     <FitToRoute points={roadRoute ?? []} />
                   </MapContainer>
                 )}
               </div>
-
-              {/* Nearby Hospitals List */}
-              <Card className={frostedCardClass}>
-                <CardHeader>
-                  <CardTitle className="dashboard-title text-lg font-semibold tracking-tight flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-red-600" />
-                    Nearby Hospitals ({nearestHospitals.length})
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2">
-                    {nearestHospitals.map((hospital) => (
-                      <div
-                        key={hospital.id}
-                        className="flex items-start justify-between rounded-lg border bg-white/80 p-4 shadow-sm hover:shadow-md transition-all hover:scale-[1.02]"
-                      >
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2">
-                            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-red-50 text-red-600 text-xl">
-                              ✚
-                            </div>
-                            <div>
-                              <h3 className="font-semibold text-sm">{hospital.name}</h3>
-                              <p className="text-xs text-muted-foreground flex items-center gap-1 mt-1">
-                                <Navigation className="h-3 w-3" />
-                                {hospital.distance}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground ml-12">
-                            <Phone className="h-3 w-3" />
-                            {hospital.phone}
-                          </div>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            className="text-xs"
-                            onClick={() => {
-                              window.open(
-                                `https://www.google.com/maps/dir/?api=1&destination=${hospital.pos[0]},${hospital.pos[1]}`,
-                                '_blank'
-                              );
-                            }}
-                          >
-                            <Navigation className="h-3 w-3 mr-1" />
-                            Navigate
-                          </Button>
-                          <Button
-                            size="sm"
-                            className="text-xs bg-green-600 hover:bg-green-700"
-                            onClick={() => {
-                              window.location.href = `tel:${hospital.phone}`;
-                            }}
-                          >
-                            <Phone className="h-3 w-3 mr-1" />
-                            Call
-                          </Button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
             </div>
 
             {/* Right: 30% (lg: col-span-3) */}
@@ -459,7 +374,6 @@ export default function AmbulanceServices() {
           </div>
         </div>
       </div>
-
     </div>
   );
 }
