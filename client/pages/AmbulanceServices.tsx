@@ -66,10 +66,15 @@ function stepTowards(curr: [number, number], target: [number, number], step = 0.
 export default function AmbulanceServices() {
   const { isCollapsed, setIsCollapsed } = useSidebar();
   const [userPos, setUserPos] = useState<[number, number] | null>(null);
-  const [ambPos, setAmbPos] = useState<[number, number]>(AMBULANCE_START);
   const [isMoving, setIsMoving] = useState(false);
   const [phase, setPhase] = useState<"to-user" | "to-hospital">("to-user");
   const timerRef = useRef<number | null>(null);
+
+  // Multi-ambulance state and active selection
+  const [ambulances, setAmbulances] = useState<{ id: string; pos: [number, number]; base: [number, number] }[]>([]);
+  const [selectedAmbId, setSelectedAmbId] = useState<string | null>(null);
+  const [destination, setDestination] = useState<[number, number] | null>(null);
+  const [routeIndex, setRouteIndex] = useState(0);
 
   // Dynamic emergency contacts (persisted locally)
   const [contacts, setContacts] = useState<{ name: string; phone: string }[]>([
