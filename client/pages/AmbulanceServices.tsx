@@ -249,7 +249,9 @@ export default function AmbulanceServices() {
                     />
 
                     {/* Route: Ambulance -> User -> Hospital (road-aligned if available) */}
-                    <Polyline positions={roadRoute ?? routePoints} pathOptions={{ color: "#2563eb", weight: 4 }} />
+                    {roadRoute && (
+                      <Polyline positions={roadRoute} pathOptions={{ color: "#2563eb", weight: 4 }} />
+                    )}
 
                     {/* Ambulance */}
                     <Marker position={ambPos} icon={ambulanceIcon} />
