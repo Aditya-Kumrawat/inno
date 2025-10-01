@@ -136,35 +136,31 @@ export default function AmbulanceServices() {
   }, [userPos, recomputeRoute]);
 
 
-  // Movement logic
+  // Movement along computed road route for selected ambulance
   useEffect(() => {
-    if (!isMoving || !userPos) return;
+    if (!isMoving || !roadRoute || !selectedAmbId) return;
 
-    const tick = () => {
-      const target = phase === "to-user" ? userPos : HOSPITAL_POS;
-      setAmbPos((curr) => {
-        const next = stepTowards(curr, target);
-        const arrived = distance(next, target) <= 0.0008; // ~few dozen meters
-        if (arrived) {
-          if (phase === "to-user") {
-            setPhase("to-hospital");
-          } else {
-            setIsMoving(false); // finished
-          }
+    const step = () => {
+      setRouteIndex((idx) => {
+        const nextIdx = Math.min(idx + 2, roadRoute.length - 1);
+        const nextPos = roadRoute[nextIdx];
+        setAmbulances((list) => list.map((a) => (a.id === selectedAmbId ? { ...a, pos: nextPos } : a)));
+        if (nextIdx >= roadRoute.length - 1) {
+          setIsMoving(false);
         }
-        return next;
+        return nextIdx;
       });
     };
 
-    tick();
-    timerRef.current = window.setInterval(tick, 2000);
+    step();
+    timerRef.current = window.setInterval(step, 2000);
     return () => {
       if (timerRef.current) {
         clearInterval(timerRef.current);
         timerRef.current = null;
       }
     };
-  }, [isMoving, userPos, phase]);
+  }, [isMoving, roadRoute, selectedAmbId]);
 
   const onBook = useCallback(() => {
     if (!userPos) {
