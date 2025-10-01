@@ -232,7 +232,7 @@ export default function AmbulanceServices() {
             {/* Left: 70% (lg: col-span-7) */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-3">
-                <Button onClick={onBook} className="bg-green-600 hover:bg-green-700">
+                <Button onClick={onBookNearest} className="bg-green-600 hover:bg-green-700">
                   <Siren className="mr-2 h-4 w-4" /> Book Ambulance
                 </Button>
                 <Button variant="destructive" onClick={onCancel}>
