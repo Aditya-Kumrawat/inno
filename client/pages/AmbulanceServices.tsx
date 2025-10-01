@@ -279,7 +279,7 @@ export default function AmbulanceServices() {
                       <Marker key={h.id} position={h.pos} icon={miniHospitalIcon} />
                     ))}
 
-                    <FitToRoute points={roadRoute ?? routePoints} />
+                    <FitToRoute points={roadRoute ?? []} />
                   </MapContainer>
                 )}
               </div>
