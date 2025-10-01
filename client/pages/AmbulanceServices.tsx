@@ -185,9 +185,15 @@ export default function AmbulanceServices() {
 
   const onCancel = useCallback(() => {
     setIsMoving(false);
+    setRouteIndex(0);
     setPhase("to-user");
-    setAmbPos(AMBULANCE_START);
-  }, []);
+    setRoadRoute(null);
+    if (selectedAmbId) {
+      setAmbulances((list) => list.map((a) => (a.id === selectedAmbId ? { ...a, pos: a.base } : a)));
+    }
+    setSelectedAmbId(null);
+    setDestination(null);
+  }, [selectedAmbId]);
 
   const mapCenter = userPos ?? AMBULANCE_START;
 
