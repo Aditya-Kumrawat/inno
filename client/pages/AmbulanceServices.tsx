@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Polyline, CircleMarker, Popup, useMap 
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { FloatingSidebar } from "@/components/FloatingSidebar";
+import { motion } from "framer-motion";
 import { FloatingTopBar } from "@/components/FloatingTopBar";
 import { useSidebar } from "@/contexts/SidebarContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
