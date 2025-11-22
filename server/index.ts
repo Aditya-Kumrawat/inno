@@ -2,6 +2,11 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { handleVaccines } from "./routes/vaccines";
+import { createReminder, listReminders } from "./routes/reminders";
+import { createFamilyMember, listFamilyMembers } from "./routes/family";
+import { listDoctors } from "./routes/doctors";
+import { createAppointment, listAppointments } from "./routes/appointments";
 import {
   handleVapiProxy,
   handleVapiCall,
@@ -23,6 +28,23 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  app.get("/api/vaccines", handleVaccines);
+
+  app.get("/api/reminders", listReminders);
+  app.post("/api/reminders", createReminder);
+
+  app.get("/api/family", listFamilyMembers);
+  app.post("/api/family", createFamilyMember);
+
+  // Doctors directory
+
+  app.get("/api/doctors", listDoctors);
+
+  // Appointments
+
+  app.get("/api/appointments", listAppointments);
+  app.post("/api/appointments", createAppointment);
 
   // Vapi proxy routes to bypass client-side network restrictions
   app.get("/api/vapi/test", handleVapiTest);
